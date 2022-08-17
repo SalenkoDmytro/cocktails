@@ -1,0 +1,94 @@
+.gallery {
+  font-family: var(--gallery-font-family);
+}
+
+.gallery__title {
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 191;
+  color: --title-light-color;
+
+  @include mq(fab) {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  @include mq(tab) {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  @include mq(desk) {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+
+.gallery__list {
+  @include mq(tab) {
+    --card-item: 2;
+    --card-gap: 20px;
+  }
+
+  @include mq(desk) {
+    --card-item: 3;
+    --card-gap: 20px;
+  }
+}
+
+// .gallery__img {
+//   width: 280px;
+
+//   @include mq(fab) {
+//     width: 280px;
+//   }
+
+//   @include mq(tab) {
+//     width: 335px;
+//   }
+
+//   @include mq(desk) {
+//     width: 395px;
+//   }
+// }
+
+.gallery__list-name {
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.gallery__btn-more {
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  border-radius: 4px;
+
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--white-color);
+  background-color: var(--btn-bg-color);
+}
+
+.gallery__btn-fav {
+  padding-left: 16px;
+  padding-top: 8px;
+  padding-right: 16px;
+  padding-bottom: 8px;
+  border-radius: 4px;
+
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: var(--btn-bg-color);
+  background-color: var(--white-color);
+}
