@@ -1,0 +1,26 @@
+.section {
+  padding: 40px 20px 20px;
+  @include mq(tab) {
+    padding: 60px 35px;
+  }
+  @include mq(desk) {
+    padding: 60px 15px;
+  }
+}
+
+.section__title {
+  text-align: center;
+  color: var(--title-color);
+  font-family: var(--title-font-family);
+
+  @include mq(tab) {
+    font-weight: 700px;
+    font-size: 32px;
+    line-height: 1.31;
+  }
+
+  @include mq(desk) {
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
