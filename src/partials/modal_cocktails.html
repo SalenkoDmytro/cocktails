@@ -1,31 +1,34 @@
-<div class='backdrop visually-hidden' data-modal>
+<div class='backdrop visually-hidden' data-bg-cocktail>
   <div class='modal__cocktail'>
     <div class='modal__wrap'>
       <img class='cocktail__img' src='https://vzboltay.com/uploads/posts/2019-06/1559398287_absinthe-frappe.jpg'
            alt='cocktail'
            loading='lazy'
       />
-
       <div class='cocktail__wrap'>
         <h2 class='cocktail__name'>Negroni</h2>
         <h3 class='cocktail__title'>Ingredients</h3>
         <p class='cocktail__text'>Per cocktail</p>
 
-        <ul class='ingredient'>
+        <ul class='ingredient js-open-modal-ingredient'>
           <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span> <a
-            class='link' href=''>Ice</a>
+            class='link' href='' data-type='open-ingredient'>Ice</a>
           </li>
           <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> 1 ounce</span> <a
-            class='link' href=''>gin</a></li>
+            class='link' href='' data-type='open-ingredient'>gin</a>
+          </li>
           <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> 1 ounce</span> <a
-            class='link' href=''>Campari</a></li>
+            class='link' href='' data-type='open-ingredient'>Campari</a>
+          </li>
           <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> 1 ounce</span> <a
-            class='link' href=''>sweet vermouth</a></li>
+            class='link' href='' data-type='open-ingredient'>sweet vermouth</a>
+          </li>
           <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Garnish:</span> <a
-            class='link' href=''>orange peel</a></li>
+            class='link' href='' data-type='open-ingredient'>orange peel</a>
+          </li>
         </ul>
       </div>
-      <button type='button' class='btn--close' data-modal-close>
+      <button type='button' class='btn--close' data-modal-close-cocktail>
         <svg width='32' height='32'>
           <use href='./images/icons.svg#icon-close'></use>
         </svg>
