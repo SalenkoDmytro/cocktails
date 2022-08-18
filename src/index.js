@@ -1,18 +1,10 @@
-import './sass/index.scss'
+import './sass/index.scss';
+import './js/services/firebase-authorization';
 
 
-
-import CocktailApiService from './js/services/CocktailApiService'
-// import { refs } from './js/services/refs';
-// import { appendImagesContainerEl } from './js/markup/markup'
-
-import headerTmp from './partials/gallery.hbs';
-
-const array = ["a", "b", "c"];
-
-console.log(headerTmp(array));
-
-
+// import CocktailApiService from './js/services/CocktailApiService'
+// import { refs } from './js/config/refs';
+// // import { appendImagesContainerEl } from './js/markup/markup'
 
 // export async function onContainerClick(e) {
 //     const search = "Negroni"
@@ -21,16 +13,17 @@ console.log(headerTmp(array));
 //     await cocktailApiService.fetchCocktaileByName();
 //     const { drinks } = cocktailApiService;
 
-//     const array = []
-//     for (let i = 0; i < 3; i++) {
-//         const randomDrink = await cocktailApiService.fetchRandomCocktaile()
-//         array.push(randomDrink[0]);
-//     }
-
 //     console.log(array);
+
+// const array = []
+// for (let i = 0; i < 3; i++) {
+//     const randomDrink = await cocktailApiService.fetchRandomCocktaile()
+//     array.push(randomDrink[0]);
+// }
+
+// console.log(array);
 //     appendImagesContainerEl(array, refs.ul)
 // }
 
-// refs.container.addEventListener('click', onContainerClick)
-
+// // refs.container.addEventListener('click', onContainerClick)
 
