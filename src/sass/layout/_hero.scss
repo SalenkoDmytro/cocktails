@@ -6,14 +6,14 @@
 
     @include mq(tab) {
         flex-direction: row;
-        justify-content: space-between
+        justify-content: space-between;
     }
 
 }
 
 .hero__title {
-    font-family: 'Poppins';
-    color: #FD5103;
+    font-family: var(--primary-font-family);
+    color: var(--accent-color);
 
 
     font-weight: 600;
@@ -59,8 +59,7 @@
     &:hover,
     &:focus {
         transform: scale(2);
-
-        color: var(--accent-color);
+        color:var(--accent-color);
     }
 
     box-sizing: border-box;
@@ -68,11 +67,13 @@
     width: 24px;
     height: 25px;
     font-family: 'Poppins';
-    color: #5F6775;
+    color:var(--filter-letter-light-color);
 
     font-weight: 700;
     font-size: 14px;
     line-height: 1.5;
+    
+    transition: transform var(--transition);
 
 
     @include mq(desk) {
@@ -90,7 +91,7 @@
 
 .hero__text {
     display: none;
-    font-family: 'Poppins';
+    font-family: var(--primary-font-family);
 
     font-weight: 500;
     font-size: 14px;
@@ -132,27 +133,28 @@
 .hero-button {
     min-width: 93px;
     cursor: pointer;
-    border: 1px solid #FD5103;
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
     text-align: start;
     align-items: center;
-    background-color: #fff;
-    font-family: 'Poppins';
+    background-color: var(--white-color);
+    font-family: var(--primary-font-family);
     font-weight: 700;
     font-size: 16px;
     line-height: 1.35;
-    color: #FD5103;
+    color: var(--accent-color);
 
     margin-top: 20px;
     margin-bottom: 20px;
     padding-left: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
+    transition: color var(--transition), background-color var(--transition);
 
     &:hover,
     &:focus {
-        background-color: #FD5103;
-        color: #fff;
+        background-color: var(--accent-color);
+        color:var(--white-color);
     }
 
     @include mq(tab) {
