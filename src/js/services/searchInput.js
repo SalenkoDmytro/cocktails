@@ -1,4 +1,5 @@
 import CocktailApiService from './CocktailApiService';
+import renderRandomData from './renderRandomData';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
@@ -14,7 +15,7 @@ async function onInputChange(e) {
   if (e.target.value.trim() === '') {
     try {
       cocktailApiService.resetSetting();
-      const responce = await cocktailApiService.fetchRandomCocktaile();
+      const responce = await renderRandomData();
       console.log('Надо зарендерить >>>', responce);
     } catch (error) {
       console.log(error.message);
