@@ -1,10 +1,19 @@
 .modal__cocktail {
-  outline: 1px solid tomato;
-  max-width: 822px;
+  width: 822px;
+  height: 598px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  background: var(--white-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.14),
+  0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.cocktail__ingredient {
+  width: 715px;
+  height: 537px;
 }
 
 .modal__wrap {
@@ -18,25 +27,32 @@
 }
 
 .modal__btn {
-  margin: 40px 28px 28px 609px;
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+
   text-align: center;
   border-color: transparent;
   border-radius: 4px;
   width: 185px;
   height: 48px;
-  //padding: 12px 24px;
   font-family: var(--gallery-font-family);
   font-weight: 400;
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #FFFFFF;
-  background: #FD5103;
+  color: var(--white-color);
+  background: var(--btn-text-color);
 }
 
-.cocktail__wrap {
-  margin-left: 32px;
+.modal__btn:hover {
+background: var(--btn-bg-color);
+  color: var(--white-color);
 }
+
+//.cocktail__wrap {
+//  margin-left: 32px;
+//}
 
 .cocktail__img {
   border-radius: 4px 4px 4px 45px;
@@ -44,6 +60,7 @@
 
 .cocktail__name {
   margin-top: 40px;
+  margin-left: 32px;
   font-family: var(--gallery-font-family);
   font-weight: 900;
   font-size: 32px;
@@ -53,6 +70,7 @@
 
 .cocktail__title {
   margin-top: 28px;
+  margin-left: 32px;
   font-family: var(--primary-font-family);
   font-weight: 600;
   font-size: 16px;
@@ -63,6 +81,7 @@
 
 .cocktail__text {
   margin-top: 8px;
+  margin-left: 32px;
   font-family: var(--primary-font-family);
   font-weight: 300;
   font-size: 14px;
@@ -72,6 +91,7 @@
 
 .ingredient {
   margin-top: 8px;
+  margin-left: 32px;
 }
 
 .ingredient__item {
@@ -79,7 +99,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  color: #5F6775;
+  color: var(--filter-letter-dark-color);
 }
 
 .ingredient__accent {
@@ -107,16 +127,13 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
-  color: #5F6775;
+  color: var(--filter-letter-dark-color);
 }
 
 .btn--close {
   position: absolute;
   top: 12px;
   right: 12px;
-
-  width: 32px;
-  height: 32px;
   justify-content: flex-end;
   align-items: flex-start;
   margin-left: auto;
@@ -130,24 +147,30 @@
 
 .accent__text {
   font-weight: 600;
-  color: #000000;
+  color: var(--black-color);
 }
 
 .description__text {
-  padding-top: 28px;
+  margin-top: 28px;
+  margin-left: 32px;
   max-width: 654px;;
   font-family: var(--primary-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
-  color: #5F6775;
+  color: var(--filter-letter-dark-color);
 }
 
 .characteristic {
   margin-top: 28px;
+  margin-left: 28px;
 }
 
 .view {
   margin-bottom: 40px;
 }
 
+.line {
+  border-bottom: 1px solid #FD5103;
+  width: 715px;
+}
