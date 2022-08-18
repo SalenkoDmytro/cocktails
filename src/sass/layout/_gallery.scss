@@ -1,4 +1,4 @@
-// common styles
+// --- common styles
 .gallery {
   font-family: var(--gallery-font-family);
   // outline: 2px dotted limegreen;
@@ -28,10 +28,14 @@
     line-height: 1.5;
   }
 }
-// gallery cocktails styles
+
+// --- gallery cocktails styles
 .gallery__list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
   @include mq(tab) {
     --card-item: 2;
     --card-gap: 20px;
@@ -43,47 +47,62 @@
   }
 }
 
-// .gallery__item {
-//   // padding: 20px;
-// }
-
 .gallery__img {
   margin-bottom: 20px;
   width: 100%;
 }
 
 .gallery__list-name {
-  margin-bottom: 16px;
+  margin-bottom: 25px;
   text-align: center;
   font-weight: 900;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.2;
+  color: var(--title-light-color);
+
+  @include mq(fab) {
+    margin-bottom: 25px;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  @include mq(tab) {
+    margin-bottom: 25px;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  @include mq(desk) {
+    margin-bottom: 30px;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 1.2;
+  }
 }
 
 .gallery__list-item {
   border: 1px solid var(--accent-color);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
-// gallery styles for ingredients
+// --- gallery styles for ingredients
 .gallery__list-ingr {
+  display: flex;
+  @include mq(tab) {
+    --card-item: 2;
+    --card-gap: 20px;
+  }
+
+  @include mq(desk) {
+    --card-item: 3;
+    --card-gap: 20px;
+  }
+
   & .gallery__list-item {
     padding: 20px;
-
-    @include mq(fab) {
-      padding: 20px;
-      max-width: 49%;
-    }
-
-    @include mq(tab) {
-      padding-bottom: 28px;
-      max-width: 49%;
-    }
-
-    @include mq(desk) {
-      padding-bottom: 28px;
-      max-width: 32%;
-    }
   }
 
   & .gallery__list-name {
@@ -151,7 +170,7 @@
   }
 }
 
-// buttons styles
+// --- buttons styles
 .gallery__btn-container {
   padding-left: 20px;
   padding-right: 20px;
