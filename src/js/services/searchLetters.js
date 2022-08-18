@@ -9,6 +9,7 @@ lettersList.addEventListener('click', onLetterClick);
 async function onLetterClick(e) {
   if (!e.target.dataset.letter) return;
   cocktailApiService.searchQuery = e.target.dataset.letter;
+
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
     if (!cocktailApiService.drinks)
