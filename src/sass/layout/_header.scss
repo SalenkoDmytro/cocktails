@@ -1,0 +1,138 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo {
+  font-family: var(--title-font-family);
+  font-weight: 400;
+  color: var(--accent-color);
+  font-size: 22px;
+  line-height: 1.1;
+  @mixin mq($tab) {
+    font-size: 28px;
+    line-height: 0.86;
+  }
+}
+
+.header__nav-list {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    margin-left: 43px;
+    gap: 60px;
+  }
+}
+
+.header__nav-item {
+  font-family: (--title-font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.header__search {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  margin-left: 251px;
+  position: relative;
+}
+
+// .header__search-wrapper::after {
+//   content: '';
+//   width: 50px;
+//   height: 40px;
+//   border: 1px solid #fd5103;
+//   transform: rotate(90deg);
+// }
+
+.header__search-border {
+  position: absolute;
+  width: 37px;
+  height: 0px;
+  top: 19px;
+  right: 230px;
+  border: 1px solid #fd5103;
+  transform: rotate(90deg);
+}
+
+.header__search-icon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header__search-input {
+  padding: 8px 8px 8px 48px;
+  width: 288px;
+  height: 40px;
+  border: 1px solid #fd5103;
+  border-radius: 5px;
+}
+
+.header__theme-list {
+  display: none;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    margin-left: 172px;
+    gap: 12px;
+  }
+}
+
+.header__theme-item {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.header__theme-light {
+  color: var(--accent-color);
+}
+
+.header__switcher {
+  width: 40px;
+  height: 20px;
+  background: #ffffff;
+  border: 0.604701px solid #fd5103;
+  border-radius: 20px;
+}
+
+// .header__switcher-circle {
+//   position: absolute;
+//   width: 16px;
+//   height: 16px;
+//   left: 1px;
+//   top: 2px;
+//   color: var(--accent-color);
+//   border: 1px solid #fd5103;
+//   border-radius: 50%;
+// }
+.header__theme-dark {
+  color: var(--filter-letter-dark-color);
+}
+
+.menu-open {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  margin-left: auto;
+  border: 0;
+  background-color: transparent;
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+}
+
+.menu-open__icon {
+  fill: rgba(0, 0, 0, 1);
+  transition: fill var(--transition);
+  &:hover,
+  &:focus {
+    fill: var(--accent-text-color);
+  }
+}
