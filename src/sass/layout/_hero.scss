@@ -1,0 +1,167 @@
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    @include mq(tab) {
+        flex-direction: row;
+        justify-content: space-between
+    }
+
+}
+
+.hero__title {
+    font-family: 'Poppins';
+    color: #FD5103;
+
+
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 42px;
+    max-width: 280px;
+
+    @include mq(tab) {
+        max-width: 336px;
+    }
+
+    @include mq(desk) {
+        font-size: 52px;
+        line-height: 1.54;
+        max-width: 688px;
+    }
+}
+
+.hero__list {
+    display: none;
+
+
+    @include mq(tab) {
+        width: 324px;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+    }
+
+    @include mq(desk) {
+        width: 520px;
+    }
+}
+
+.hero__item {
+    display: block;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+
+        color: #FD5103;
+    }
+
+    box-sizing: border-box;
+
+    width: 24px;
+    height: 25px;
+    font-family: 'Poppins';
+    color: #5F6775;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+
+
+    @include mq(desk) {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+
+    }
+
+
+}
+
+
+
+
+.hero__text {
+    display: none;
+    font-family: 'Poppins';
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 0.02em;
+    color: #202025;
+    opacity: 0.8;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    @include mq(tab) {
+        display: block;
+        font-size: 14px;
+        line-height: 2;
+    }
+
+    @include mq(desk) {
+
+        font-size: 18px;
+        line-height: 1.56;
+    }
+}
+
+.hero__text.mob {
+    display: block;
+    color: #000000;
+    margin-top: 28px;
+    margin-bottom: 0;
+
+    @include mq(tab) {
+
+        display: none;
+    }
+}
+
+
+
+
+.hero-button {
+    min-width: 93px;
+    cursor: pointer;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    text-align: start;
+    align-items: center;
+    background-color: #fff;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #FD5103;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    &:hover,
+    &:focus {
+        background-color: #FD5103;
+        color: #fff;
+    }
+
+    @include mq(tab) {
+
+        display: none;
+    }
+}
+
+.picture-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
