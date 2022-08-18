@@ -54,11 +54,13 @@
 .hero__item {
     display: block;
     cursor: pointer;
+    transition: color var(--transition);
 
     &:hover,
     &:focus {
+        transform: scale(2);
 
-        color: #FD5103;
+        color: var(--accent-color);
     }
 
     box-sizing: border-box;
