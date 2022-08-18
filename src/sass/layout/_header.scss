@@ -9,7 +9,7 @@
   color: var(--accent-color);
   font-size: 22px;
   line-height: 1.1;
-  @mixin mq($tab) {
+  @include mq(tab) {
     font-size: 28px;
     line-height: 0.86;
   }
@@ -17,7 +17,7 @@
 
 .header__nav-list {
   display: none;
-  @media screen and (min-width: 1280px) {
+  @include mq(desk) {
     display: flex;
     margin-left: 43px;
     gap: 60px;
@@ -74,7 +74,7 @@
 
 .header__theme-list {
   display: none;
-  @media screen and (min-width: 1280px) {
+  @include mq(desk) {
     display: flex;
     margin-left: auto;
     gap: 12px;
@@ -124,7 +124,7 @@
   margin-left: auto;
   border: 0;
   background-color: transparent;
-  @media screen and (min-width: 1280px) {
+  @include mq(desk) {
     display: none;
   }
 }
