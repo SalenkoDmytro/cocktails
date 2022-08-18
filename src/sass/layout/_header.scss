@@ -1,4 +1,4 @@
-.header {
+.header__container {
   display: flex;
   align-items: flex-end;
   padding-top: 20px;
@@ -42,6 +42,14 @@
   position: relative;
 }
 
+.header__search-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px;
+  background-color: transparent;
+  position: absolute;
+  left: 0;
+}
 // .header__search-wrapper::after {
 //   content: '';
 //   width: 50px;
@@ -55,7 +63,7 @@
   width: 37px;
   height: 0px;
   top: 19px;
-  right: 230px;
+  right: -19px;
   border: 1px solid #fd5103;
   transform: rotate(90deg);
 }
@@ -73,6 +81,7 @@
   height: 40px;
   border: 1px solid #fd5103;
   border-radius: 5px;
+  outline: none;
 }
 
 .header__theme-list {
