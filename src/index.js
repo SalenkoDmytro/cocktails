@@ -1,3 +1,7 @@
+import './sass/index.scss'
+
+
+
 import CocktailApiService from './js/services/CocktailApiService'
 // import { refs } from './js/services/refs';
 // import { appendImagesContainerEl } from './js/markup/markup'
