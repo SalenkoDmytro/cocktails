@@ -40,6 +40,12 @@
   }
 }
 
+.gallery__list-name {
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
 .gallery__list-item {
   border: 1px solid var(--accent-color);
   border-radius: 4px;
@@ -48,38 +54,95 @@
 .gallery__list-ingr {
   & .gallery__list-item {
     padding: 20px;
-    border-radius: 0;
+
+    @include mq(fab) {
+      padding: 20px;
+    }
+
+    @include mq(tab) {
+      padding-bottom: 28px;
+    }
+
+    @include mq(desk) {
+      padding-bottom: 28px;
+    }
+  }
+
+  & .gallery__list-name {
+    margin-bottom: 20px;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.6;
+    color: var(--title-light-color);
+
+    @include mq(fab) {
+      font-weight: 900;
+      font-size: 26px;
+    }
+
+    @include mq(tab) {
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--black-color);
+    }
+
+    @include mq(desk) {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 1.5;
+    }
   }
 
   & .gallery__list-type {
+    margin-bottom: 20px;
+    font-family: 'Poppins';
     font-weight: 600;
     font-size: 14px;
     line-height: 1.5;
     text-transform: uppercase;
+
+    @include mq(fab) {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    @include mq(tab) {
+      padding-bottom: 28px;
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    @include mq(desk) {
+      padding-bottom: 28px;
+      font-weight: 900;
+      font-size: 28px;
+      line-height: 1.2;
+    }
   }
 }
 
 // .gallery__img {
 //   width: 280px;
 
-//   @include mq(fab) {
-//     width: 280px;
-//   }
-
-//   @include mq(tab) {
-//     width: 335px;
-//   }
-
-//   @include mq(desk) {
-//     width: 395px;
-//   }
+// @include mq(fab) {
+//   width: 280px;
 // }
 
-.gallery__list-name {
-  font-weight: 900;
-  font-size: 32px;
-  line-height: 1.2;
-  text-align: center;
+// @include mq(tab) {
+//   width: 335px;
+// }
+
+// @include mq(desk) {
+//   width: 395px;
+// }
+// }
+
+.gallery__btn-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .gallery__btn {
@@ -88,10 +151,25 @@
 
   font-weight: 400;
   font-size: 14px;
+  line-height: 1.7;
   text-align: center;
   letter-spacing: 0.02em;
   outline: transparent;
   border-color: transparent;
+
+  @include mq(fab) {
+    width: 280px;
+  }
+
+  @include mq(tab) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  @include mq(desk) {
+    font-size: 20px;
+    line-height: 1.2;
+  }
 }
 
 .gallery__btn-more {
