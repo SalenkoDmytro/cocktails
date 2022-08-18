@@ -1,14 +1,43 @@
 import CocktailApiService from './CocktailApiService';
 
 const cocktailApiService = new CocktailApiService();
+const debounce = require('lodash.debounce');
+const DEBOUNCE_DELAY = 500;
 
-const form = document.querySelector('form');
+const form = document.querySelector('.header__search-wrapper');
+const input = form.elements.search;
 
-// form.addEventListener('submit', onSubmitBtnClick);
+form.addEventListener('submit', onSubmitBtnClick);
+input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
-function onSubmitBtnClick(e) {
+async function onInputChange(e) {
+  if (e.target.value.trim() === '') {
+    try {
+      cocktailApiService.resetSetting();
+      const responce = await cocktailApiService.fetchRandomCocktaile();
+      console.log('Надо зарендерить >>>', responce);
+    } catch (error) {
+      console.log(error.message);
+    }
+    return;
+  }
+  fetchSearchValue();
+}
+
+async function onSubmitBtnClick(e) {
   e.preventDefault();
-  cocktailApiService.querySelector = form.elements.name.value;
+  if (e.currentTarget.elements.search.value.trim() === '') return;
+  fetchSearchValue();
+  form.reset();
+}
 
-  e.currentTarget.reset();
+async function fetchSearchValue() {
+  const searchText = input.value.trim();
+  cocktailApiService.searchQuery = searchText;
+  try {
+    await cocktailApiService.fetchCocktaileByName();
+    console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+  } catch (error) {
+    console.log(error.message);
+  }
 }
