@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page title</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./sass/index.scss" />
-  <script type="module" src="./index.js"></script>
-</head>
-
-<body>
-
   <head>
-    <include src="./partials/header.html"></include>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="./sass/index.scss" /> -->
+    <script type="module" src="./index.js"></script>
   </head>
-  <main>
-    <include src="./partials/hero.html"></include>
-    <include src="./partials/gallery.html"></include>
-    <include src="./partials/menu.html"></include>
-    <include src="./partials/modal_cocktails.html"></include>
-    <include src="./partials/modal_ingridients.html"></include>
-    <include src="./partials/pagination.html"></include>
-  </main>
-  <footer>
-    <include src="./partials/footer.html"></include>
-  </footer>
 
-</body>
-
+  <body>
+    <head>
+      <include src="./partials/header.html"></include>
+    </head>
+    <main>
+      <include src="./partials/hero.html"></include>
+      <include src="./partials/gallery.html"></include>
+      <include src="./partials/menu.html"></include>
+      <include src="./partials/modal_cocktails.html"></include>
+      <include src="./partials/modal_ingridients.html"></include>
+      <include src="./partials/pagination.html"></include>
+    </main>
+    <footer>
+      <include src="./partials/footer.html"></include>
+    </footer>
+  </body>
 </html>
