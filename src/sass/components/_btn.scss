@@ -1,0 +1,13 @@
+.btn {
+  /* reset browser styles  - для кнопки потрібно скидати стилі*/
+  display: inline-flex;
+  text-align: center;
+  border-color: transparent;
+
+  justify-content: center;
+  align-items: center;
+  border-width: 0;
+  font-family: inherit;
+  font-style: inherit;
+  border-radius: 4px;
+}
