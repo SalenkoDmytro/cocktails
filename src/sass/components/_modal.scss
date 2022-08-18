@@ -1,0 +1,153 @@
+.modal__cocktail {
+  outline: 1px solid tomato;
+  max-width: 822px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal__wrap {
+  display: flex;
+  align-items: flex-start;
+}
+
+.cocktail__img {
+  width: 288px;
+  height: 320px;
+}
+
+.modal__btn {
+  margin: 40px 28px 28px 609px;
+  text-align: center;
+  border-color: transparent;
+  border-radius: 4px;
+  width: 185px;
+  height: 48px;
+  //padding: 12px 24px;
+  font-family: var(--gallery-font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #FFFFFF;
+  background: #FD5103;
+}
+
+.cocktail__wrap {
+  margin-left: 32px;
+}
+
+.cocktail__img {
+  border-radius: 4px 4px 4px 45px;
+}
+
+.cocktail__name {
+  margin-top: 40px;
+  font-family: var(--gallery-font-family);
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--modal-title--black);
+}
+
+.cocktail__title {
+  margin-top: 28px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--modal-title--black);
+}
+
+.cocktail__text {
+  margin-top: 8px;
+  font-family: var(--primary-font-family);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--modal-title--black);
+}
+
+.ingredient {
+  margin-top: 8px;
+}
+
+.ingredient__item {
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5F6775;
+}
+
+.ingredient__accent {
+  color: var(--modal-title--black);
+}
+
+.recipe__wrap {
+  margin-left: 28px;
+}
+
+.recipe__title {
+  margin-top: 28px;
+  font-family: var(--primary-font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--modal-title--black);
+}
+
+.recipe__text {
+  margin-top: 24px;
+  max-width: 615px;
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #5F6775;
+}
+
+.btn--close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 32px;
+  height: 32px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-left: auto;
+  padding: 0;
+  display: flex;
+  background-color: transparent;
+  border: transparent;
+}
+
+//.......modal-2
+
+.accent__text {
+  font-weight: 600;
+  color: #000000;
+}
+
+.description__text {
+  padding-top: 28px;
+  max-width: 654px;;
+  font-family: var(--primary-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #5F6775;
+}
+
+.characteristic {
+  margin-top: 28px;
+}
+
+.view {
+  margin-bottom: 40px;
+}
+
