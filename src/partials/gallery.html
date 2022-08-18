@@ -1,61 +1,141 @@
-<section class="gallery">
-    <!-- gallery cocktails -->
-    <div class="container gallery__container">
-        <h2 class="gallery__title">Cocktails</h2>
-        <ul class="gallery__list card-set js-open-modal-cocktail">
-            <li class="gallery__list-item card-set-item">
-                <img class="gallery__img" src="./images/gallery/vampiro__lg.jpg" alt="Negroni cocktail" loading="lazy">
-                <p class="gallery__list-name">Negroni</p>
-                <button class="gallery__btn gallery__btn-more" type="button" data-type="open-learn-more">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Add to <svg width="16" height="14">
-                        <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>
-                    </svg></button>
-            </li>
-            <li class="gallery__list-item card-set-item" >
-                <img class="gallery__img" src="./images/gallery/amaretto-sunrise__lg.jpg" alt="Margarita cocktail" loading="lazy">
-                <p class="gallery__list-name">Margarita</p>
-                <button class="gallery__btn gallery__btn-more" type="button" data-type="open-learn-more">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Add to <svg width="16" height="14">
-                        <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>
-                    </svg></button>
-            </li>
-            <li class="gallery__list-item card-set-item">
-                <img class="gallery__img" src="./images/gallery/apello__lg.jpg" alt="Cosmopolitan cocktail" loading="lazy">
-                <p class="gallery__list-name">Cosmopolitan</p>
-                <button class="gallery__btn gallery__btn-more" type="button" data-type="open-learn-more">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Add to <svg width="16" height="14">
-                        <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>
-                    </svg></button>
-            </li>
-        </ul>
-    </div>
+<section class="section gallery">
+  <!-- gallery cocktails -->
+  <div class="gallery__container container">
+    <h2 class="gallery__title">Cocktails</h2>
+    <ul class="gallery__list card-set js-open-modal-cocktail">
+      <li class="gallery__list-item card-set-item">
+        <img
+          class="gallery__img"
+          src="./images/gallery/vampiro__lg.jpg"
+          alt="Negroni cocktail"
+          loading="lazy"
+        />
+        <p class="gallery__list-name">Negroni</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button" data-type='open-learn-more'>
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Add to
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
 
-    <!-- gallery favorite ingredients -->
-    <div class="container gallery__container">
-        <h2 class="gallery__title">Favorite ingredients</h2>
-        <ul class="gallery__list-ingr card-set">
-            <li class="gallery__list-item card-set-item">
-                <p class="gallery__list-name">Campari</p>
-                <p class="gallery__list-type">Liqueur</p>
-                <button class="gallery__btn gallery__btn-more" type="button">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Remove <svg width="16" height="14"><use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use></svg></button>
-            </li>
-            <li class="gallery__list-item card-set-item">
-                <p class="gallery__list-name">Blanco tequila</p>
-                <p class="gallery__list-type">Distilled beverage</p>
-                <button class="gallery__btn gallery__btn-more" type="button">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Remove <svg width="16" height="14">
-                        <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>
-                    </svg></button>
-            </li>
-            <li class="gallery__list-item card-set-item">
-                <p class="gallery__list-name">Vermouth</p>
-                <p class="gallery__list-type">fortified wine</p>
-                <button class="gallery__btn gallery__btn-more" type="button">Learn more</button>
-                <button class="gallery__btn gallery__btn-fav" type="button">Remove <svg width="16" height="14">
-                        <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>
-                    </svg></button>
-            </li>
-        </ul>
-    </div>
+      <li class="gallery__list-item card-set-item">
+        <img
+          class="gallery__img"
+          src="./images/gallery/amaretto-sunrise__lg.jpg"
+          alt="Margarita cocktail"
+          loading="lazy"
+        />
+        <p class="gallery__list-name">Margarita</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button" data-type='open-learn-more'>
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Add to
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="gallery__list-item card-set-item">
+        <img
+          class="gallery__img"
+          src="./images/gallery/apello__lg.jpg"
+          alt="Cosmopolitan cocktail"
+          loading="lazy"
+        />
+        <p class="gallery__list-name">Cosmopolitan</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button" data-type='open-learn-more'>
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Add to
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- gallery favorite ingredients -->
+  <div class="gallery__container">
+    <h2 class="gallery__title">Favorite ingredients</h2>
+    <ul class="gallery__list-ingr card-set">
+      <li class="gallery__list-item card-set-item">
+        <p class="gallery__list-name">Campari</p>
+        <p class="gallery__list-type">Liqueur</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button">
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Remove
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+
+      <li class="gallery__list-item card-set-item">
+        <p class="gallery__list-name">Blanco tequila</p>
+        <p class="gallery__list-type">Distilled beverage</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button">
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Remove
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+      <li class="gallery__list-item card-set-item">
+        <p class="gallery__list-name">Vermouth</p>
+        <p class="gallery__list-type">fortified wine</p>
+        <div class="gallery__btn-container">
+          <button class="gallery__btn gallery__btn-more" type="button">
+            Learn more
+          </button>
+          <button class="gallery__btn gallery__btn-fav" type="button">
+            Remove
+            <svg width="16" height="14">
+              <use
+                class="gallery__btn-fav-svg"
+                href="./images/icons.svg#icon-heart"
+              ></use>
+            </svg>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
 </section>
