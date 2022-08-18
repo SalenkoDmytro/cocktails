@@ -3,6 +3,7 @@ import './js/services/firebase-authorization';
 import './js/services/searchLetters';
 import './js/services/searchInput';
 import './sass/index.scss';
+
 import './js/services/renderRandomData';
 
 import CocktailApiService from './js/services/CocktailApiService';
