@@ -1,10 +1,11 @@
+// common styles
 .gallery {
   font-family: var(--gallery-font-family);
+  // outline: 2px dotted limegreen;
 }
 
 .gallery__title {
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 60px;
   text-align: center;
   font-weight: 600;
   font-size: 22px;
@@ -27,8 +28,10 @@
     line-height: 1.5;
   }
 }
-
+// gallery cocktails styles
 .gallery__list {
+  display: flex;
+  justify-content: space-between;
   @include mq(tab) {
     --card-item: 2;
     --card-gap: 20px;
@@ -40,7 +43,18 @@
   }
 }
 
+// .gallery__item {
+//   // padding: 20px;
+// }
+
+.gallery__img {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
 .gallery__list-name {
+  margin-bottom: 16px;
+  text-align: center;
   font-weight: 900;
   font-size: 32px;
   line-height: 1.2;
@@ -51,20 +65,24 @@
   border-radius: 4px;
 }
 
+// gallery styles for ingredients
 .gallery__list-ingr {
   & .gallery__list-item {
     padding: 20px;
 
     @include mq(fab) {
       padding: 20px;
+      max-width: 49%;
     }
 
     @include mq(tab) {
       padding-bottom: 28px;
+      max-width: 49%;
     }
 
     @include mq(desk) {
       padding-bottom: 28px;
+      max-width: 32%;
     }
   }
 
@@ -73,14 +91,17 @@
     font-weight: 900;
     font-size: 26px;
     line-height: 1.6;
-    color: var(--title-light-color);
+    color: var(--dark-bg-color);
 
     @include mq(fab) {
       font-weight: 900;
-      font-size: 26px;
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--black-color);
     }
 
     @include mq(tab) {
+      margin-bottom: 28px;
       font-weight: 900;
       font-size: 28px;
       line-height: 1.2;
@@ -88,9 +109,11 @@
     }
 
     @include mq(desk) {
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 1.5;
+      margin-bottom: 28px;
+      font-weight: 900;
+      font-size: 32px;
+      line-height: 1.2;
+      color: var(--black-color);
     }
   }
 
@@ -101,46 +124,38 @@
     font-size: 14px;
     line-height: 1.5;
     text-transform: uppercase;
+    color: var(--black-color);
 
     @include mq(fab) {
       font-weight: 600;
       font-size: 14px;
       line-height: 1.5;
+      color: var(--medium-grey-color);
     }
 
     @include mq(tab) {
       padding-bottom: 28px;
       font-weight: 900;
-      font-size: 28px;
-      line-height: 1.2;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--medium-grey-color);
     }
 
     @include mq(desk) {
       padding-bottom: 28px;
-      font-weight: 900;
-      font-size: 28px;
-      line-height: 1.2;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--medium-grey-color);
     }
   }
 }
 
-// .gallery__img {
-//   width: 280px;
-
-// @include mq(fab) {
-//   width: 280px;
-// }
-
-// @include mq(tab) {
-//   width: 335px;
-// }
-
-// @include mq(desk) {
-//   width: 395px;
-// }
-// }
-
+// buttons styles
 .gallery__btn-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -158,7 +173,8 @@
   border-color: transparent;
 
   @include mq(fab) {
-    width: 280px;
+    font-size: 20px;
+    line-height: 1.2;
   }
 
   @include mq(tab) {
