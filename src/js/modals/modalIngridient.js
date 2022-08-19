@@ -19,7 +19,6 @@ function onOpenModalIngredient(e) {
 }
 
 function closeModal(e) {
-  console.log(e);
   toggleModal(refs.backdropIngredient)
 }
 
