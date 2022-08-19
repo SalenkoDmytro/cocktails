@@ -34,7 +34,8 @@ export default class CocktailApiService {
   async fetchRandomCocktaile() {
     const url = `${this.BASE_URL}random.php`;
     const response = await axios.get(url);
-    return response.data.drinks;
+    // return response.data.drinks;
+    this.randomDrink = response.data.drinks;
   }
 
   addFavouriteDrinksById(idDrink) {
