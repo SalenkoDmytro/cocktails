@@ -215,3 +215,43 @@
   font-size: 18px;
   line-height: 1.33;
 }
+
+.header__logo {
+  position: relative;
+}
+
+.coctail-header {
+  position: absolute;
+  bottom: 11px;
+  left: 78.8px;
+
+  @include mq(tab) {
+    bottom: 11px;
+    left: 100.5px;
+  }
+
+  z-index: -1;
+}
+
+.drink-header {
+  position: absolute;
+  bottom: 21px;
+  left: 85.8px;
+
+  @include mq(tab) {
+    bottom: 23px;
+    left: 109.5px;
+  }
+}
+
+.drink-white {
+  position: absolute;
+  bottom: 21px;
+  left: 85.8px;
+  z-index: -1;
+
+  @include mq(tab) {
+    bottom: 23px;
+    left: 109.5px;
+  }
+}
