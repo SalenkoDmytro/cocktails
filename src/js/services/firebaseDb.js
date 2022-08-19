@@ -2,7 +2,7 @@
 // import { getUser } from "./firebase-authorization";
 //added
 // let arrayIdMessage = [];
-
+//aaa
 // export function addMessage(data) {
 //     try {
 //         push(ref(db, 'chat/'), data);
