@@ -1,45 +1,107 @@
 <!-- <section class="section"> -->
 <div class="container header__container header">
-    <a href="./index.html" class="header__logo">COCKTAILS</a>
-    <!-- <svg class="header__logo-icon" width="24" height="24">
+  <a href="./index.html" class="header__logo"
+    ><span>COCKTAILS</span>
+    <picture>
+      <source
+        srcset="./images/cocktail1xtab.png 1x, ./images/cocktail2xtab.png 2x"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/cocktail1xmob.png 1x, ./images/cocktail2xmob.png 2x"
+        media="(max-width: 767px)"
+      />
+      <img
+        class="coctail-header"
+        loading="lazy"
+        src="./images/cocktail1xmob.png"
+        alt="coctail"
+      />
+    </picture>
+    <picture>
+      <source
+        srcset="./images/white1xtab.png 1x, ./images/white2xtab.png 2x"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/white1xmob.png 1x, ./images/white2xmob.png 2x"
+        media="(max-width: 767px)"
+      />
+      <img
+        class="drink-white"
+        loading="lazy"
+        src="./images/white1xmob.png"
+        alt="drink"
+      />
+    </picture>
+
+    <picture>
+      <source
+        srcset="./images/vector1xtab.png 1x, ./images/vector2xtab.png 2x"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/vector1xmob.png 1x, ./images/vector2xmob.png 2x"
+        media="(max-width: 767px)"
+      />
+      <img
+        id="fill"
+        class="drink-header"
+        loading="lazy"
+        src="./images/vector1xmob.png"
+        alt="drink"
+      />
+    </picture>
+  </a>
+  <!-- <svg class="header__logo-icon" width="24" height="24">
             <use href="./images/logo.svg#image0_1_669"></use>
         </svg> -->
-    <ul class="header__nav-list">
-        <li class="header__nav-item">
-            <a class="header__nav-link" href="">Home</a>
-        </li>
-        <li class="header__nav-item">
-            <a class="header__nav-link" href="">Favorite</a>
-        </li>
-    </ul>
-    <div class="header__search">
-        <form class="header__search-wrapper">
-            <input type="search" placeholder="Search" name="search" class="header__search-input" />
-            <button class="header__search-btn" type="submit">
-                <span class="header__search-border"></span>
-                <svg class="header__search-icon" width="24" height="24">
-                    <use href="./images/icons.svg#icon-earch">re</use>
-                </svg>
-            </button>
-        </form>
-    </div>
-    <ul class="header__theme-list">
-        <li class="header__theme-item header__theme-light">Light</li>
-
-        <div class="toggle">
-            <input type="checkbox" name="toggle" id="toggle-button" class="toggle-button">
-            <label for="toggle-button" class="text"></label>
-        </div>
-        <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
-        <li class="header__theme-item header__theme-dark">Dark</li>
-    </ul>
-    <button class="btn js-btn-login" type="button" data-modal-sign-in-open>
-        Sign in
-    </button>
-    <button type="button" class="btn__burger-menu-open btn">
-        <svg class="menu-open__icon" width="40" height="40">
-            <use href="./images/icons.svg#icon-menu"></use>
+  <ul class="header__nav-list">
+    <li class="header__nav-item">
+      <a class="header__nav-link" href="">Home</a>
+    </li>
+    <li class="header__nav-item">
+      <a class="header__nav-link" href="">Favorite</a>
+    </li>
+  </ul>
+  <div class="header__search">
+    <form class="header__search-wrapper">
+      <input
+        type="search"
+        placeholder="Search"
+        name="search"
+        class="header__search-input"
+      />
+      <button class="header__search-btn" type="submit">
+        <span class="header__search-border"></span>
+        <svg class="header__search-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-earch">re</use>
         </svg>
-    </button>
+      </button>
+    </form>
+  </div>
+  <ul class="header__theme-list">
+    <li class="header__theme-item header__theme-light">Light</li>
+
+    <div class="toggle">
+      <input
+        type="checkbox"
+        name="toggle"
+        id="toggle-button"
+        class="toggle-button"
+      />
+      <label for="toggle-button" class="text"></label>
+    </div>
+    <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
+    <li class="header__theme-item header__theme-dark">Dark</li>
+  </ul>
+  <button class="btn js-btn-login" type="button" data-modal-sign-in-open>
+    Sign in
+  </button>
+  <button type="button" class="btn__burger-menu-open btn">
+    <svg class="menu-open__icon" width="40" height="40">
+      <use href="./images/icons.svg#icon-menu"></use>
+    </svg>
+  </button>
 </div>
 <!-- </section> -->
