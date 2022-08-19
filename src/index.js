@@ -1,10 +1,10 @@
-import './js/services/firebaseAuthorization';
-import './js/services/searchLetters';
-import './js/services/searchInput';
-// import './js/modals/modalСocktail';
-import './js/modals/modalIngridient';
-import './js/services/renderRandomData';
 import './sass/index.scss';
+import './js/services/firebaseAuthorization';
+import './js/services/searchInput';
+import './js/services/renderRandomData';
+import './js/services/searchLetters';
+import './js/modals/modalCocktail';
+import './js/modals/modalIngredient';
 
 
 import CocktailApiService from './js/services/CocktailApiService';
