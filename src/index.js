@@ -1,5 +1,5 @@
 import './sass/index.scss';
-import './js/services/firebase-authorization';
+import './js/services/firebaseAuthorization';
 import './js/services/searchLetters';
 import './js/services/searchInput';
 import './sass/index.scss';
@@ -14,4 +14,3 @@ import CocktailApiService from './js/services/CocktailApiService';
 import headerTmp from './partials/gallery.hbs';
 
 const array = ['a', 'b', 'c'];
-
