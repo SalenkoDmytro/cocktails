@@ -18,15 +18,16 @@
     "url": "https://github.com/DenysKhm/goit-js-project_team3/issues"
   },
   "dependencies": {
+    "axios": "^0.27.2",
+    "firebase": "^9.9.3",
     "lodash.debounce": "^4.0.8",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.5"
   },
   "devDependencies": {
+    "@parcel/transformer-css": "^2.7.0",
     "@parcel/transformer-sass": "^2.6.0",
-    "axios": "^0.27.2",
     "buffer": "^6.0.3",
-    "firebase": "^9.9.2",
-    "notiflix": "^3.2.5",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-hbs": "^1.0.4",
