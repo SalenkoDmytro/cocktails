@@ -5,15 +5,21 @@
 @import './utils/mixin';
 
 @import './base/common';
-@import './base/card-set';
+@import './base/cardSet';
 @import './base/container';
 @import './base/section';
 
 @import './components/btn';
-@import './components/mobile-menu';
+@import './components/mobileMenu';
+@import './components/siteNav';
+@import './components/spinner';
+@import './components/switcherDarkLight';
 @import './components/backdrop';
 @import './components/modal';
-@import './components/site-nav';
+@import './components/modalCocktails';
+@import './components/modalIngridients';
+@import './components/modalSignIn';
+@import './components/modalTeam';
 
 @import './layout/header';
 @import './layout/hero';
