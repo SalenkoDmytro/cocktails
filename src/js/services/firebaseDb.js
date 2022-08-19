@@ -1,7 +1,6 @@
 // import { getDatabase, ref, push, onValue } from "firebase/database";
 // import { getUser } from "./firebase-authorization";
-
-
+//added
 // let arrayIdMessage = [];
 
 // export function addMessage(data) {
