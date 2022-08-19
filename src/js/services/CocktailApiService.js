@@ -25,10 +25,11 @@ export default class CocktailApiService {
     this.drinks = response.data.drinks;
   }
 
-  async fetchIngredientsByName() {
-    const url = `${this.BASE_URL}search.php?i=${this.searchQuery}`;
+  async fetchIngredientsByName(query) {
+    const url = `${this.BASE_URL}search.php?i=${query || this.searchQuery}`;
     const response = await axios.get(url);
     this.ingredients = response.data.ingredients;
+    return response.data.ingredients
   }
 
   async fetchRandomCocktaile() {
