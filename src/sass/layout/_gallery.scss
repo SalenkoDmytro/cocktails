@@ -15,7 +15,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 191;
-  color: --title-light-color;
+  color: var(--title-light-color);
 
   @include mq(fab) {
     font-weight: 700;
