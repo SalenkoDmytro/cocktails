@@ -3,7 +3,7 @@ import './js/services/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
-// import './js/modals/modalCocktail';
+import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
 
 
