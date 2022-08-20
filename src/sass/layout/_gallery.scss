@@ -4,13 +4,18 @@
   // outline: 2px dotted limegreen;
 }
 
+.gallery__container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
 .gallery__title {
   margin-bottom: 60px;
   text-align: center;
   font-weight: 600;
   font-size: 22px;
   line-height: 191;
-  color: --title-light-color;
+  color: var(--title-light-color);
 
   @include mq(fab) {
     font-weight: 700;
@@ -48,6 +53,7 @@
 }
 
 .gallery__img {
+  display: block;
   margin-bottom: 20px;
   width: 100%;
 }
@@ -110,6 +116,7 @@
     font-weight: 900;
     font-size: 26px;
     line-height: 1.6;
+    text-align: inherit;
     color: var(--dark-bg-color);
 
     @include mq(fab) {
@@ -172,11 +179,11 @@
 
 // --- buttons styles
 .gallery__btn-container {
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
   padding-bottom: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .gallery__btn {
@@ -208,12 +215,24 @@
 }
 
 .gallery__btn-more {
+  padding-left: 38px;
+  padding-right: 38px;
   color: var(--white-color);
   background-color: var(--btn-bg-color);
+  &:hover,
+  &:focus {
+    background-color: var(--btn-hover-color);
+    color: var(--white-color);
+  }
 }
 
 .gallery__btn-fav {
   color: var(--btn-bg-color);
   background-color: var(--white-color);
   border: 1px solid var(--btn-outline-color);
+  &:hover,
+  &:focus {
+    outline: 1px solid var(--btn-hover-color);
+    color: var(--btn-hover-color);
+  }
 }
