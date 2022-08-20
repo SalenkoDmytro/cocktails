@@ -86,22 +86,23 @@
       </button>
     </form>
   </div>
-  <ul class="header__theme-list">
-    <li class="header__theme-item header__theme-light">Light</li>
-
-    <div class="toggle">
-      <input
-        type="checkbox"
-        name="toggle"
-        id="toggle-button"
-        class="toggle-button"
-      />
-      <label for="toggle-button" class="text"></label>
-    </div>
-    <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
-    <li class="header__theme-item header__theme-dark">Dark</li>
-  </ul>
-  <button class="btn js-btn-login" type="button" data-modal-sign-in-open>
+    <ul class="header__theme-list">
+      <li class="header__theme-item header__theme-light">Light</li>
+      <li>
+        <div class="toggle">
+          <input
+            type="checkbox"
+            name="toggle"
+            id="toggle-button"
+            class="toggle-button dark-mode-toggle"
+          />
+          <label for="toggle-button" class="text"></label>
+        </div>
+      </li>
+      <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
+      <li class="header__theme-item header__theme-dark">Dark</li>
+    </ul>
+    <button class="btn login-btn js-btn-login" type="button" data-modal-sign-in-open>
     Sign in
   </button>
   <button type="button" class="btn__burger-menu-open btn">
