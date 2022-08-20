@@ -11,6 +11,7 @@ export const refs = {
     cocktailName: document.querySelector('.cocktail__name'),
     instructions: document.querySelector('.recipe__text'),
     cocktailList: document.querySelector('.ingredient'),
-  }
+  },
+  ingredientRef: document.querySelector('.ingredient__wrap'),
 };
 

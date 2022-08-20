@@ -1,31 +1,27 @@
 <div class='backdrop visually-hidden' data-bg-cocktail>
   <div class='modal__cocktail'>
-    <div class='modal__wrap'>
-      <img class='cocktail__img' src=''
-           alt='cocktail'
-           loading='lazy'
-      />
-      <div class='cocktail__wrap'>
-        <h2 class='cocktail__name'></h2>
-        <h3 class='cocktail__title'>Ingredients</h3>
-        <p class='cocktail__text'>Per cocktail</p>
+    <div class='cocktail__wrap'>
+      <div class='modal__wrap'>
+        <img class='cocktail__img' alt='cocktail' loading='lazy'/>
+        <div class='cocktail__wrap'>
+          <h2 class='cocktail__name'></h2>
+          <h3 class='cocktail__title'>Ingredients</h3>
+          <p class='cocktail__text'>Per cocktail</p>
 
-        <ul class='ingredient js-open-modal-ingredient'>
-<!--          <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span> <a-->
-<!--            class='link' href='' data-type='open-ingredient'>Ice</a>-->
-<!--          </li>-->
-        </ul>
+          <ul class='ingredient js-open-modal-ingredient'>
+          </ul>
+        </div>
+        <button type='button' class='btn--close' data-modal-close-cocktail>
+          <svg width='32' height='32'>
+            <use href='./images/icons.svg#icon-close'></use>
+          </svg>
+        </button>
       </div>
-      <button type='button' class='btn--close' data-modal-close-cocktail>
-        <svg width='32' height='32'>
-          <use href='./images/icons.svg#icon-close'></use>
-        </svg>
-      </button>
-    </div>
 
-    <div class='recipe__wrap'>
-      <h4 class='recipe__title'>Instructions:</h4>
-      <p class='recipe__text'></p>
+      <div class='recipe__wrap'>
+        <h4 class='recipe__title'>Instructions:</h4>
+        <p class='recipe__text'></p>
+      </div>
     </div>
     <button type='button' class='modal__btn'>Add to favorite</button>
     <button type='button' class='modal__btn visually-hidden'>Remove from favorite</button>
