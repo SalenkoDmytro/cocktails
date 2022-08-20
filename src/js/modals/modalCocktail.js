@@ -36,7 +36,7 @@ function markupCocktail(cocktail) {
     const ingredient = cocktail[ingredientKey];
     const measure = cocktail[measureKey];
     if (ingredient) {
-      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${measure}</span> <a
+      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> ${measure}</span> <a
             class='link ingredient-link' data-type='open-ingredient'>${ingredient}</a>
           </li>`;
     }

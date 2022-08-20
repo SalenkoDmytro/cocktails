@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--background-color);
 }
 
 .modal__ingredient,
@@ -16,7 +16,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background: var(--white-color);
+  background: var(--modal-bg-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.14),
   0 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px 0 0 0;
@@ -70,7 +70,7 @@
   font-weight: 900;
   font-size: 32px;
   line-height: 1.2;
-  color: var(--modal-title--black);
+  color: var(--modal-title-color);
 }
 
 .ingredient__title,
@@ -82,7 +82,7 @@
   font-size: 16px;
   line-height: 1.5;
   text-transform: uppercase;
-  color: var(--modal-title--black);
+  color: var(--modal-title-color);
 }
 
 .cocktail__text {
@@ -92,12 +92,14 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--modal-title--black);
+  color: var(--modal-title-color);
 }
 
 .ingredient {
   margin-top: 8px;
   margin-left: 32px;
+  height: 125px;
+  overflow: overlay;
 }
 
 .ingredient__item {
@@ -105,11 +107,11 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--filter-letter-dark-color);
+  color: var(--modal-text-color);
 }
 
 .ingredient__accent {
-  color: var(--modal-title--black);
+  color: var(--modal-title-color);
 }
 
 .ingredient-link {
@@ -127,7 +129,7 @@
   font-size: 16px;
   line-height: 1.6;
   text-transform: uppercase;
-  color: var(--modal-title--black);
+  color: var(--modal-title-color);
 }
 
 .recipe__text {
@@ -137,7 +139,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
-  color: var(--filter-letter-dark-color);
+  color: var(--modal-text-color);
   max-height: 90px;
   overflow: overlay;
 }
@@ -153,13 +155,14 @@
   display: flex;
   background-color: transparent;
   border: transparent;
+  fill: var(--modal-close-icon-color);
 }
 
 //.......modal-2
 
 .accent__text {
   font-weight: 600;
-  color: var(--black-color);
+  color: var(--modal-accent-text-color);
 }
 
 .description__text {
@@ -170,7 +173,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
-  color: var(--filter-letter-dark-color);
+  color: var(--modal-text-color);
   max-height: 110px;
   overflow: overlay;
 }

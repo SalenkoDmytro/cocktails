@@ -1,66 +1,114 @@
 <!-- <section class="section"> -->
-  <div class="container header__container header">
-    <a href="./index.html" class="header__logo"><span>COCKTAILS</span>
-      <!-- <picture>
-        <source srcset="./images/cocktailXmob.png" type="image/png" media="(min-width: 768px)" />
-        <source srcset="./images/cocktail1mob.png 1x, ./images/cocktail2mob.png 2x" type="image/png"
-          media="(max-width: 767px)" />
-        <img class="coctail-header" loading="lazy" src="./images/cocktail1xmob.png" alt="coctail" />
-      </picture> -->
-      <!-- <picture>
-        <source srcset="./images/white1tab.png 1x, ./images/white2tab.png 2x" type="image/png"
-          media="(min-width: 768px)" />
-        <source srcset="./images/white1mob.png 1x, ./images/white2mob.png 2x" type="image/png"
-          media="(max-width: 767px)" />
-        <img class="drink-white" loading="lazy" src="./images/white1mob.png" alt="drink" />
-      </picture> -->
-      <!-- <picture>
-        <source srcset="./images/vector1tab.png 1x, ./images/vector2tab.png 2x" type="image/png"
-          media="(min-width: 768px)" />
-        <source srcset="./images/vector1mob.png 1x, ./images/vector2mob.png 2x" type="image/png"
-          media="(max-width: 767px)" />
-        <img id="fill" class="drink-header" loading="lazy" src="./images/vector1mob.png" alt="drink" />
-      </picture> -->
-    </a>
-  
-    <!-- <svg class="header__logo-icon" width="24" height="24">
-              <use href="./images/logo.svg#image0_1_669"></use>
-          </svg> -->
-    <ul class="header__nav-list">
-      <li class="header__nav-item">
-        <a class="header__nav-link" href="">Home</a>
-      </li>
-      <li class="header__nav-item">
-        <a class="header__nav-link" href="">Favorite</a>
-      </li>
-    </ul>
-    <div class="header__search">
-      <form class="header__search-wrapper">
-        <input type="search" placeholder="Search" name="search" class="header__search-input" />
-        <button class="header__search-btn" type="submit">
-          <span class="header__search-border"></span>
-          <svg class="header__search-icon" width="24" height="24">
-            <use href="./images/icons.svg#icon-earch">re</use>
-          </svg>
-        </button>
-      </form>
-    </div>
+<div class="container header__container header">
+  <a href="./index.html" class="header__logo"
+    ><span>COCKTAILS</span>
+    <!-- <picture>
+      <source
+        srcset="./images/cocktailXmob.png"
+        type="image/png"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/cocktail1mob.png 1x, ./images/cocktail2mob.png 2x"
+        type="image/png"
+        media="(max-width: 767px)"
+      />
+      <img
+        class="coctail-header"
+        loading="lazy"
+        src="./images/cocktail1xmob.png"
+        alt="coctail"
+      />
+    </picture> -->
+    <!-- <picture>
+      <source
+        srcset="./images/white1tab.png 1x, ./images/white2tab.png 2x"
+        type="image/png"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/white1mob.png 1x, ./images/white2mob.png 2x"
+        type="image/png"
+        media="(max-width: 767px)"
+      />
+      <img
+        class="drink-white"
+        loading="lazy"
+        src="./images/white1mob.png"
+        alt="drink"
+      />
+    </picture>
+
+    <picture>
+      <source
+        srcset="./images/vector1tab.png 1x, ./images/vector2tab.png 2x"
+        type="image/png"
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="./images/vector1mob.png 1x, ./images/vector2mob.png 2x"
+        type="image/png"
+        media="(max-width: 767px)"
+      />
+      <img
+        id="fill"
+        class="drink-header"
+        loading="lazy"
+        src="./images/vector1mob.png"
+        alt="drink"
+      />
+    </picture> -->
+  </a>
+  <!-- <svg class="header__logo-icon" width="24" height="24">
+            <use href="./images/logo.svg#image0_1_669"></use>
+        </svg> -->
+  <ul class="header__nav-list">
+    <li class="header__nav-item">
+      <a class="header__nav-link" href="">Home</a>
+    </li>
+    <li class="header__nav-item">
+      <a class="header__nav-link" href="">Favorite</a>
+    </li>
+  </ul>
+  <div class="header__search">
+    <form class="header__search-wrapper">
+      <input
+        type="search"
+        placeholder="Search"
+        name="search"
+        class="header__search-input"
+      />
+      <button class="header__search-btn" type="submit">
+        <span class="header__search-border"></span>
+        <svg class="header__search-icon" width="24" height="24">
+          <use href="./images/icons.svg#icon-earch">re</use>
+        </svg>
+      </button>
+    </form>
+  </div>
     <ul class="header__theme-list">
       <li class="header__theme-item header__theme-light">Light</li>
-      <li class="toggle">
-        <input type="checkbox" name="toggle" id="toggle-button" class="toggle-button" />
-        <label for="toggle-button" class="text"></label>
+      <li>
+        <div class="toggle">
+          <input
+            type="checkbox"
+            name="toggle"
+            id="toggle-button"
+            class="toggle-button dark-mode-toggle"
+          />
+          <label for="toggle-button" class="text"></label>
+        </div>
       </li>
       <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
       <li class="header__theme-item header__theme-dark">Dark</li>
     </ul>
-    <button class="btn js-btn-login" type="button">
-      Sign in
-    </button>
-    <button type="button" class="btn__burger-menu-open btn">
-      <svg class="menu-open__icon" width="40" height="40">
-        <use href="./images/icons.svg#icon-menu"></use>
-      </svg>
-    </button>
-  </div>
-  <!-- </section> -->
+    <button class="btn login-btn js-btn-login" type="button" data-modal-sign-in-open>
+    Sign in
+  </button>
+  <button type="button" class="btn__burger-menu-open btn">
+    <svg class="menu-open__icon" width="40" height="40">
+      <use href="./images/icons.svg#icon-menu"></use>
+    </svg>
+  </button>
+</div>
+<!-- </section> -->

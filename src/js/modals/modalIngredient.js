@@ -32,13 +32,14 @@ function toggleModal(element) {
 }
 
 function markupIngredient(ingredient) {
-  const { strIngredient: name, strType: type = '', strDescription: description = 'No description' } = ingredient;
+  console.log(ingredient);
+  const { strIngredient: name, strType: type = '', strDescription: description } = ingredient;
 
 
   const markup = `<h2 class='ingredient__name'>${name}</h2>
         <h3 class='ingredient__title view'>${type}</h3>
         <div class='line'></div>
-        <p class='description__text'><span class='accent__text'>${name} </span>${description.replace(name, '')}</p>`;
+        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>`;
 
   refs.ingredientRef.innerHTML = markup;
 }
