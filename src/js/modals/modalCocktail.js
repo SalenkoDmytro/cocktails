@@ -11,8 +11,8 @@ refs.closeModalCocktailBtn.addEventListener('click', toggleModal);
 async function onOpenModalCocktail(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
-  const cocktail = await cocktailApiService.fetchRandomCocktaile();
-  await markupCocktail(cocktail);
+  await cocktailApiService.fetchRandomCocktaile();
+  await markupCocktail(cocktailApiService.randomDrink[0]);
 
   const dataType = e.target.getAttribute('data-type');
   if (dataType === 'open-learn-more') {
@@ -25,15 +25,16 @@ function toggleModal() {
 }
 
 function markupCocktail(cocktail) {
-  img.src = cocktail[0].strDrinkThumb;
-  cocktailName.innerHTML = cocktail[0].strDrink;
-  instructions.innerHTML = cocktail[0].strInstructions;
+  const {strDrinkThumb, strDrink, strInstructions} = cocktail
+  img.src = strDrinkThumb;
+  cocktailName.innerHTML = strDrink;
+  instructions.innerHTML = strInstructions;
   let ingredients = '';
   for (let i = 1; i <= 15; i += 1) {
     const ingredientKey = 'strIngredient' + i;
     const measureKey = 'strMeasure' + i;
-    const ingredient = cocktail[0][ingredientKey];
-    const measure = cocktail[0][measureKey];
+    const ingredient = cocktail[ingredientKey];
+    const measure = cocktail[measureKey];
     if (ingredient) {
       ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${measure}</span> <a
             class='link ingredient-link' data-type='open-ingredient'>${ingredient}</a>

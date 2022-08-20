@@ -12,7 +12,6 @@ function onModalClose(element) {
   element.classList.add('visually-hidden');
 }
 
-
 export function onBackdropClickWrapper(element) {
   return function onBackdropClick(event) {
     if (event.currentTarget === event.target) {

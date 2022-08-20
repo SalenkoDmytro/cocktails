@@ -11,8 +11,8 @@ async function onOpenModalIngredient(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropIngredient));
   refs.backdropIngredient.addEventListener('click', onBackdropClickWrapper(refs.backdropIngredient));
   const ingredientName = e.target.textContent;
-  const ingredient = await cocktailApiService.fetchIngredientsByName(ingredientName);
-  await markupIngredient(ingredient);
+  await cocktailApiService.fetchIngredientsByName(ingredientName);
+  await markupIngredient(cocktailApiService.ingredients[0]);
 
   const dataType = e.target.getAttribute('data-type');
 
@@ -24,6 +24,7 @@ async function onOpenModalIngredient(e) {
 
 function closeModal(e) {
   toggleModal(refs.backdropIngredient);
+  toggleModal(refs.backdropCocktail);
 }
 
 function toggleModal(element) {
@@ -31,9 +32,8 @@ function toggleModal(element) {
 }
 
 function markupIngredient(ingredient) {
-  const name = ingredient[0].strIngredient;
-  const type = ingredient[0].strType || '';
-  const description = ingredient[0].strDescription || 'No description';
+  const { strIngredient: name, strType: type = '', strDescription: description = 'No description' } = ingredient;
+
 
   const markup = `<h2 class='ingredient__name'>${name}</h2>
         <h3 class='ingredient__title view'>${type}</h3>
