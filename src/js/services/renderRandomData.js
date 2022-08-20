@@ -2,11 +2,20 @@ import CocktailApiService from './CocktailApiService';
 const cocktailApiService = new CocktailApiService();
 
 export default async function renderRandomData(quantity = 9) {
-  const arrayOfPromises = [];
+  const array = [];
+
   for (let i = 0; i < quantity; i += 1) {
-    const responce = await cocktailApiService.fetchRandomCocktaile();
-    arrayOfPromises.push(...responce);
+    await cocktailApiService.fetchRandomCocktaile();
+    array.push(...cocktailApiService.randomDrink);
   }
-  const result = await Promise.all(arrayOfPromises);
-  return result;
+
+  checkUniqueId(array);
+  return array;
+}
+
+function checkUniqueId(arr) {
+  const idOfCocktails = [...new Set(arr.map(el => el.idDrink))];
+  if (idOfCocktails.length < 9) {
+    return renderRandomData();
+  }
 }
