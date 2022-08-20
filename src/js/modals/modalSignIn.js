@@ -1,15 +1,9 @@
-(() => {
-  const refs = {
-    openModalBtnSignIn: document.querySelector('.js-btn-login'),
-    closeModalBtnSignIn: document.querySelector('.modal__close-btn'),
-    modal: document.querySelector('.js-data-mod'),
-  };
+import { refs } from '../config/refs';
 
-  refs.openModalBtnSignIn.addEventListener('click', toggleModal);
-  refs.closeModalBtnSignIn.addEventListener('click', toggleModal);
+refs.buttonLogin.addEventListener('click', toggleModalSignIn);
+refs.closeModalBtnSignIn.addEventListener('click', toggleModalSignIn);
 
-  function toggleModal() {
-    refs.modal.classList.toggle('visually-hidden');
-    console.log(refs.modal);
-  }
-})();
+function toggleModalSignIn() {
+  refs.modalSignIn.classList.toggle('visually-hidden');
+  console.log('qwe');
+}

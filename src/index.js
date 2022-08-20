@@ -6,6 +6,8 @@ import './js/services/searchLetters';
 import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
 
+import './js/modals/modalSignIn';
+
 
 import CocktailApiService from './js/services/CocktailApiService';
 
