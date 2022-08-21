@@ -36,7 +36,6 @@ function toggleModal(element) {
 }
 
 function markupIngredient(ingredient) {
-  console.log(ingredient);
   const {
     strIngredient: name,
     strType: type,
@@ -50,9 +49,6 @@ function markupIngredient(ingredient) {
         <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>
         <ul class='characteristic'>
             <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${name || '-'}</li>
-<!--            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Country of origin:</span>-->
-<!--              Italy-->
-<!--            </li>-->
             <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${question || ''}
             </li>
             <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcohol content:</span>

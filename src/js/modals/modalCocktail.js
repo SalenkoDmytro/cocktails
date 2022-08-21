@@ -8,15 +8,11 @@ const cocktailApiService = new CocktailApiService();
 refs.openModalCocktailBtn.addEventListener('click', onOpenModalCocktail);
 refs.closeModalCocktailBtn.addEventListener('click', toggleModal);
 
-console.log('openModalCocktailBtn', refs.openModalCocktailBtn);
-
 async function onOpenModalCocktail(e) {
-  console.log('onOpenModalCocktail');
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
     await cocktailApiService.fetchRandomCocktaile();
-    console.log('randomDrink', cocktailApiService.randomDrink);
     await markupCocktail(cocktailApiService.randomDrink[0]);
 
     const dataType = e.target.getAttribute('data-type');
