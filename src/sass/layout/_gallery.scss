@@ -6,7 +6,7 @@
 
 .gallery__container {
   padding-top: 60px;
-  padding-bottom: 60px;
+  // padding-bottom: 60px;
 }
 
 .gallery__title {
@@ -39,8 +39,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  // padding-left: 20px;
+  // padding-right: 20px;
 
   @include mq(tab) {
     --card-item: 2;
