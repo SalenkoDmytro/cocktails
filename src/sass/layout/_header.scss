@@ -249,11 +249,25 @@
   position: absolute;
   bottom: 21px;
   left: 85.8px;
+  animation: myframes 2s ease-in-out 0s;
 
   @include mq(tab) {
     bottom: 23px;
     left: 109.5px;
   }
+}
+
+@keyframes myframes {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+
+  10% {
+    transform: scale(0, .2) translateY(8);
+  }
+
+
+
 }
 
 .drink-white {
@@ -267,4 +281,8 @@
     left: 109.5px;
   }
 }
+
+
+
+
 // ----test----
