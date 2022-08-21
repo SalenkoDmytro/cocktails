@@ -10,6 +10,6 @@
   refs.closeMenuBtn.addEventListener('click', toggleMenu);
 
   function toggleMenu() {
-    refs.modal.classList.toggle('is-hidden');
+    refs.menu.classList.toggle('is-hidden');
   }
 })();
