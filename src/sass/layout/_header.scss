@@ -1,3 +1,11 @@
+// .header {
+//   position: fixed;
+//   background-color: #fff;
+//   z-index: 2;
+//   width: 100%;
+//   margin: 0 auto;
+// }
+
 .header__container {
   display: flex;
   align-items: flex-end;
@@ -209,11 +217,12 @@
 }
 
 .toggle-button:checked::after {
-  transform: translateX(calc(100% + 3px));
+  transform: translateX(calc(100% + 3.9px));
   background-color: #fff;
 }
 
 .toggle-button:checked {
+  border: 0.604701px solid #fff;
   background-color: var(--accent-color);
 }
 
