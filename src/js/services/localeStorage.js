@@ -23,7 +23,7 @@ export function saveDataLocalStorage(key, array) {
     localStorage.setItem(key, JSON.stringify(array));
 }
 
-export const addFavourite(array = [], ingredients) => {
+export const addFavourite = (array = [], ingredients) => {
     if (!array.length) return;
     const arrayFavourite = array.push(ingredients);
     return arrayFavourite;
