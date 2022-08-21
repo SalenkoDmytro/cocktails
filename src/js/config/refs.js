@@ -16,5 +16,6 @@ export const refs = {
     cocktailList: document.querySelector('.ingredient'),
   },
   ingredientRef: document.querySelector('.ingredient__wrap'),
+  // characteristicIngredient: document.querySelector('.characteristic'),
 };
 
