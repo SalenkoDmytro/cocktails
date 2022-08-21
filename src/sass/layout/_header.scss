@@ -28,10 +28,12 @@
 }
 
 .header__nav-item {
-  font-family: (--title-font-family);
+  font-family: var(--title-font-family);
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
+  letter-spacing: 0.02em;
+  color: var(--manu-theme-color);
 }
 
 .header__search {
@@ -93,6 +95,7 @@
   border: 1px solid #fd5103;
   border-radius: 5px;
   outline: none;
+  background-color: var(--search-input-color) ;
 }
 
 .header__theme-list {
@@ -111,7 +114,11 @@
 }
 
 .header__theme-light {
-  color: var(--accent-color);
+  font-family: var(--title-font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var( --accent-theme-color);
 }
 
 .header__switcher {
@@ -134,7 +141,11 @@
 // }
 
 .header__theme-dark {
-  color: var(--filter-letter-dark-color);
+  font-family: var(--title-font-family);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--theme-dark-color);
 }
 
 .btn__burger-menu-open {
@@ -142,7 +153,7 @@
   padding-bottom: 10px;
   width: 40px;
   height: 40px;
-  padding: 0;
+  //padding: 0;
   display: flex;
   margin-left: auto;
   border: 0;
@@ -153,7 +164,7 @@
 }
 
 .menu-open__icon {
-  fill: rgba(0, 0, 0, 1);
+  fill: var(--btn-mob-menu-color);
   transition: fill var(--transition);
   &:hover,
   &:focus {
@@ -206,8 +217,9 @@
   background-color: var(--accent-color);
 }
 
-.js-btn-login {
-  padding: 5px 10px;
+.login-btn {
+  font-family: var(--title-font-family);
+  padding: 5px 15px;
   background-color: var(--accent-color);
   color: #fff;
   margin-left: auto;
@@ -237,11 +249,25 @@
   position: absolute;
   bottom: 21px;
   left: 85.8px;
+  animation: myframes 2s ease-in-out 0s;
 
   @include mq(tab) {
     bottom: 23px;
     left: 109.5px;
   }
+}
+
+@keyframes myframes {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+
+  10% {
+    transform: scale(0, .2) translateY(8);
+  }
+
+
+
 }
 
 .drink-white {
@@ -255,4 +281,8 @@
     left: 109.5px;
   }
 }
+
+
+
+
 // ----test----

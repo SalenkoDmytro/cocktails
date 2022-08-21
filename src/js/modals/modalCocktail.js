@@ -11,12 +11,16 @@ refs.closeModalCocktailBtn.addEventListener('click', toggleModal);
 async function onOpenModalCocktail(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
-  await cocktailApiService.fetchRandomCocktaile();
-  await markupCocktail(cocktailApiService.randomDrink[0]);
+  try {
+    await cocktailApiService.fetchRandomCocktaile();
+    await markupCocktail(cocktailApiService.randomDrink[0]);
 
-  const dataType = e.target.getAttribute('data-type');
-  if (dataType === 'open-learn-more') {
-    refs.backdropCocktail.classList.toggle('visually-hidden');
+    const dataType = e.target.getAttribute('data-type');
+    if (dataType === 'open-learn-more') {
+      refs.backdropCocktail.classList.toggle('visually-hidden');
+    }
+  } catch (err) {
+    console.error(err);
   }
 }
 
@@ -25,7 +29,7 @@ function toggleModal() {
 }
 
 function markupCocktail(cocktail) {
-  const {strDrinkThumb, strDrink, strInstructions} = cocktail
+  const { strDrinkThumb, strDrink, strInstructions } = cocktail;
   img.src = strDrinkThumb;
   cocktailName.innerHTML = strDrink;
   instructions.innerHTML = strInstructions;
@@ -36,7 +40,7 @@ function markupCocktail(cocktail) {
     const ingredient = cocktail[ingredientKey];
     const measure = cocktail[measureKey];
     if (ingredient) {
-      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${measure}</span> <a
+      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> ${measure || ''}</span> <a
             class='link ingredient-link' data-type='open-ingredient'>${ingredient}</a>
           </li>`;
     }

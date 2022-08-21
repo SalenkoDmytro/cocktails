@@ -6,7 +6,7 @@
   --light-bg-color: #fcfcfc;
   --dark-bg-color: #202025;
 
-  --white-color: #ffffff;
+  --white-color: #fcfcfc;
   --black-color: #000000;
   --medium-grey-color: #5f6775;
 
@@ -34,4 +34,25 @@
   --card-item: 1;
   --card-gap: 20px;
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  //theme
+  --body-background-color: #FFFFFF;
+  --accent-theme-color: #fd5103;
+  --theme-dark-color: #5f6775;
+  --manu-theme-color: #202025;
+  --search-input-color: #FFFFFF;
+  --btn-mob-menu-color: #202025;
+
+  --hero-text-color: #202025;
+  --hero-bg-input-color: #fcfcfc;
+
+  --gallery-btn-fav-color: #ffffff;
+  --gallery-title-color: #000000;
+  --gallery-subtitle-color: #5F6775;
+  --modal-bg-color: #ffffff;
+  --modal-title-color: #000917;
+  --modal-text-color: #5f6775;
+  --modal-accent-text-color: #000000;
+  --background-color: rgba(0, 0, 0, 0.5);
+  --modal-close-icon-color: #202025;
 }

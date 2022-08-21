@@ -33,23 +33,23 @@ const provider = new GoogleAuthProvider();
 //   }
 // });
 
-const modalBtnSignIn = document.querySelector('.modal-button-sign-in');
+// const modalBtnSignIn = document.querySelector('.modal-button-sign-in');
 
-// TODO Change - Add listener when modal open
-modalBtnSignIn.addEventListener("click", onLoginClick);
+// // TODO Change - Add listener when modal open
+// modalBtnSignIn.addEventListener("click", onLoginClick);
 
-async function onLoginClick(evt) {
-  let sign = evt.target.dataset.sign;
-  if (sign === "Sign-in") {
-    userSignInWithGoogle();
-    modalBtnSignIn.dataset.sign = "Sign-out";
-    modalBtnSignIn.textContent = "Sign out";
-  } else {
-    userSignOut();
-    modalBtnSignIn.dataset.sign = "Sign-in"
-    modalBtnSignIn.textContent = "Sign in";
-  }
-}
+// async function onLoginClick(evt) {
+//   let sign = evt.target.dataset.sign;
+//   if (sign === "Sign-in") {
+//     userSignInWithGoogle();
+//     modalBtnSignIn.dataset.sign = "Sign-out";
+//     modalBtnSignIn.textContent = "Sign out";
+//   } else {
+//     userSignOut();
+//     modalBtnSignIn.dataset.sign = "Sign-in"
+//     modalBtnSignIn.textContent = "Sign in";
+//   }
+// }
 
 //Після авторизації фетчимо юзера.
 // authUser.uid ~ drinkingUser.Id; айдішки рівні за смислом.

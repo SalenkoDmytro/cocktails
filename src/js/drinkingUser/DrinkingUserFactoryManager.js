@@ -1,4 +1,4 @@
-import DrinkingUserManager from "./UserManager";
+import DrinkingUserManager from "../drinkingUser/UserManager";
 
 export default class DrinkingUserFactoryManager {
     getManager(managerName, option) {

@@ -5,6 +5,7 @@ import './js/services/renderRandomData';
 import './js/services/searchLetters';
 import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
+import './js/dark/themeToggle';
 
 import './js/modals/modalSignIn';
 
@@ -18,4 +19,4 @@ import CocktailApiService from './js/services/CocktailApiService';
 
 import headerTmp from './partials/gallery.hbs';
 
-const array = ['a', 'b', 'c'];
+const array = ['a', 'b', 'c', 'd'];

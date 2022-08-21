@@ -1,5 +1,24 @@
 .footer {
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 110px;
   background-color: var(--accent-color);
+}
+
+.footer__text {
+  font-family: var(--gallery-font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: var(--white-color);
+}
+
+.footer__wrap {
+  text-transform: uppercase;
+}
+
+.footer__link {
+  text-decoration: underline;
 }
