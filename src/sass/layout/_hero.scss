@@ -59,7 +59,7 @@
     &:hover,
     &:focus {
         transform: scale(2);
-        color:var(--accent-color);
+        color: var(--accent-color);
     }
 
     box-sizing: border-box;
@@ -72,7 +72,7 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 1.5;
-    
+
     transition: transform var(--transition);
 
 
@@ -119,7 +119,7 @@
     display: block;
     color: #000000;
     margin-top: 28px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 
     @include mq(tab) {
 
@@ -131,6 +131,8 @@
 
 
 .hero-button {
+    display: flex;
+    justify-content: space-between;
     min-width: 93px;
     cursor: pointer;
     border: 1px solid var(--accent-color);
@@ -143,19 +145,13 @@
     font-size: 16px;
     line-height: 1.35;
     color: var(--accent-color);
+    margin: 0 auto;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
+
     padding-left: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
     transition: color var(--transition), background-color var(--transition);
-
-    &:hover,
-    &:focus {
-        background-color: var(--accent-color);
-        color:var(--white-color);
-    }
 
     @include mq(tab) {
 
@@ -168,4 +164,104 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+// select
+.app {
+    margin-top: 0;
+
+    display: flex;
+    justify-content: center;
+
+    @include mq(tab) {
+
+        display: none;
+    }
+}
+
+.wrap {
+    width: 500px;
+}
+
+.select {
+    width: 100%;
+    position: relative;
+
+
+}
+
+.select.open {
+    .select__dropdown {
+        display: block;
+    }
+
+    .select__input {
+        border-bottom: none;
+    }
+}
+
+.select__input {
+    width: 93px;
+    height: 34px;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+
+    cursor: pointer;
+    text-align: start;
+    align-items: center;
+    background-color: var(--white-color);
+    font-family: var(--primary-font-family);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.35;
+    color: var(--accent-color);
+    margin: 0 auto;
+
+
+
+
+    transition: color var(--transition), background-color var(--transition);
+
+
+
+}
+
+.select__dropdown {
+    width: 94px;
+    margin: 0 auto;
+    position: absolute;
+    border: 1px solid #FD5103;
+    border-radius: 4px;
+    top: 34px;
+    left: 0;
+    right: 0;
+    max-height: 84px;
+    overflow-y: auto;
+
+}
+
+.select__list {
+    padding-left: 10px;
+}
+
+.select__item {
+    height: 28px;
+    font-family: var(--primary-font-family);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+
+    display: flex;
+    align-items: center;
+
+
+
+    color: var(--medium-grey-color);
+}
+
+.input-span {
+    padding-left: 10px;
 }

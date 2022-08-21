@@ -2,51 +2,57 @@
 <div class="container header__container header">
   <a href="./index.html" class="header__logo"
     ><span>COCKTAILS</span>
-    <!-- <picture>
+    <picture>
       <source
-        srcset="./images/cocktailXmob.png"
+        srcset="
+          ./images/test/cocktailXtab.png,
+          ./images/test/cocktailXxtab.png 2x
+        "
         type="image/png"
         media="(min-width: 768px)"
       />
       <source
-        srcset="./images/cocktail1mob.png 1x, ./images/cocktail2mob.png 2x"
+        srcset="
+          ./images/test/cocktailXmob.png  1x,
+          ./images/test/cocktailXxmob.png 2x
+        "
         type="image/png"
         media="(max-width: 767px)"
       />
       <img
         class="coctail-header"
         loading="lazy"
-        src="./images/cocktail1xmob.png"
+        src="./images/test/cocktailXmob.png"
         alt="coctail"
       />
-    </picture> -->
-    <!-- <picture>
+    </picture>
+    <picture>
       <source
-        srcset="./images/white1tab.png 1x, ./images/white2tab.png 2x"
+        srcset="./images/test/whiteXtab.png 1x, ./images/test/whiteXxtab.png 2x"
         type="image/png"
         media="(min-width: 768px)"
       />
       <source
-        srcset="./images/white1mob.png 1x, ./images/white2mob.png 2x"
+        srcset="./images/test/whiteXmob.png 1x, ./images/test/whiteXxmob.png 2x"
         type="image/png"
         media="(max-width: 767px)"
       />
       <img
         class="drink-white"
         loading="lazy"
-        src="./images/white1mob.png"
+        src="./images/test/whiteXmob.png"
         alt="drink"
       />
     </picture>
 
     <picture>
       <source
-        srcset="./images/vector1tab.png 1x, ./images/vector2tab.png 2x"
+        srcset="./images/test/vtab.png 1x, ./images/test/vectab.png 2x"
         type="image/png"
         media="(min-width: 768px)"
       />
       <source
-        srcset="./images/vector1mob.png 1x, ./images/vector2mob.png 2x"
+        srcset="./images/test/vmob.png 1x, ./images/test/vecmob.png 2x"
         type="image/png"
         media="(max-width: 767px)"
       />
@@ -54,10 +60,10 @@
         id="fill"
         class="drink-header"
         loading="lazy"
-        src="./images/vector1mob.png"
+        src="./images/test/vmob.png"
         alt="drink"
       />
-    </picture> -->
+    </picture>
   </a>
   <!-- <svg class="header__logo-icon" width="24" height="24">
             <use href="./images/logo.svg#image0_1_669"></use>
@@ -86,23 +92,27 @@
       </button>
     </form>
   </div>
-    <ul class="header__theme-list">
-      <li class="header__theme-item header__theme-light">Light</li>
-      <li>
-        <div class="toggle">
-          <input
-            type="checkbox"
-            name="toggle"
-            id="toggle-button"
-            class="toggle-button dark-mode-toggle"
-          />
-          <label for="toggle-button" class="text"></label>
-        </div>
-      </li>
-      <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
-      <li class="header__theme-item header__theme-dark">Dark</li>
-    </ul>
-    <button class="btn login-btn js-btn-login" type="button" data-modal-sign-in-open>
+  <ul class="header__theme-list">
+    <li class="header__theme-item header__theme-light">Light</li>
+    <li>
+      <div class="toggle">
+        <input
+          type="checkbox"
+          name="toggle"
+          id="toggle-button"
+          class="toggle-button dark-mode-toggle"
+        />
+        <label for="toggle-button" class="text"></label>
+      </div>
+    </li>
+    <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
+    <li class="header__theme-item header__theme-dark">Dark</li>
+  </ul>
+  <button
+    class="btn login-btn js-btn-login"
+    type="button"
+    data-modal-sign-in-open
+  >
     Sign in
   </button>
   <button type="button" class="btn__burger-menu-open btn">
