@@ -1,10 +1,10 @@
 import CocktailApiService from './CocktailApiService';
+import { refs } from '../config/refs';
 
 const cocktailApiService = new CocktailApiService();
 
-const lettersList = document.querySelector('.hero__list');
-
-lettersList.addEventListener('click', onLetterClick);
+refs.lettersList.addEventListener('click', onLetterClick);
+refs.lettersListMobile.addEventListener('click', onMobLetterClick);
 
 async function onLetterClick(e) {
   if (!e.target.dataset.letter) return;
@@ -19,4 +19,9 @@ async function onLetterClick(e) {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+async function onMobLetterClick(e) {
+  e.target.nodeName;
+  console.log(e.target.nodeName === 'LI');
 }
