@@ -164,7 +164,7 @@
 }
 
 .menu-open__icon {
-  fill: rgba(0, 0, 0, 1);
+  fill: var(--btn-mob-menu-color);
   transition: fill var(--transition);
   &:hover,
   &:focus {
