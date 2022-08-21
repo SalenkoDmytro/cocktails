@@ -1,7 +1,12 @@
 export const refs = {
+  
   buttonLogin: document.querySelector('.js-btn-login'),
   closeModalBtnSignIn: document.querySelector('.js-btn-close-login'),
   modalSignIn: document.querySelector('.js-data-mod'),
+
+  openMenuBtn: document.querySelector('[data-menu-open]'),
+  closeMenuBtn: document.querySelector('[data-menu-close]'),
+  menu: document.querySelector('[data-menu]'),
 
   openModalCocktailBtn: document.querySelector('.js-open-modal-cocktail'),
   closeModalCocktailBtn: document.querySelector('[data-modal-close-cocktail]'),
@@ -16,5 +21,9 @@ export const refs = {
     cocktailList: document.querySelector('.ingredient'),
   },
   ingredientRef: document.querySelector('.ingredient__wrap'),
+
+  openModalTeam: document.querySelector('.js-modal-open-team'),
+  closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
+  backdropModalTeam: document.querySelector('.js-modal-team'),
 };
 
