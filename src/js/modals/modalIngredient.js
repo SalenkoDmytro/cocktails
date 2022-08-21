@@ -36,11 +36,30 @@ function toggleModal(element) {
 }
 
 function markupIngredient(ingredient) {
-  const { strIngredient: name, strType: type, strDescription: description } = ingredient;
+  console.log(ingredient);
+  const {
+    strIngredient: name,
+    strType: type,
+    strDescription: description,
+    strABV: degree,
+    strAlcohol: question,
+  } = ingredient;
   const markup = `<h2 class='ingredient__name'>${name}</h2>
         <h3 class='ingredient__title view'>${type || ''}</h3>
         <div class='line'></div>
-        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>`;
+        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>
+        <ul class='characteristic'>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${name || '-'}</li>
+<!--            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Country of origin:</span>-->
+<!--              Italy-->
+<!--            </li>-->
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${question || ''}
+            </li>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcohol content:</span>
+              ${degree ? degree + '%' : '-'}
+            </li>
+          </ul>`;
 
   refs.ingredientRef.innerHTML = markup;
+
 }
