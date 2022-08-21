@@ -74,7 +74,7 @@ function btnToggle(btn, isChecked) {
 
     } else {
         btn.classList.remove("is-checked");
-        btn.style.backgroundColor = "white";
+        btn.style.backgroundColor = "inherit";
     }
 }
 

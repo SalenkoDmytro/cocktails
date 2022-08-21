@@ -11,7 +11,7 @@ export default class UserManager {
 
     //TODO методи юзера
 
-    //* Забрати юзера з бази
+    // //* Забрати юзера з бази
     fetchUserById(id) {
         if (!id) {
             throw new Error("could fetch empty user id");

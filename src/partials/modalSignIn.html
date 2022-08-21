@@ -1,124 +1,51 @@
-<!-- <section class="section"> -->
-<div class="container header__container header">
-  <a href="./index.html" class="header__logo"
-    ><span>COCKTAILS</span>
-    <picture>
-      <source
-        srcset="
-          ./images/test/cocktailXtab.png,
-          ./images/test/cocktailXxtab.png 2x
-        "
-        type="image/png"
-        media="(min-width: 768px)"
-      />
-      <source
-        srcset="
-          ./images/test/cocktailXmob.png  1x,
-          ./images/test/cocktailXxmob.png 2x
-        "
-        type="image/png"
-        media="(max-width: 767px)"
-      />
-      <img
-        class="coctail-header"
-        loading="lazy"
-        src="./images/test/cocktailXmob.png"
-        alt="coctail"
-      />
-    </picture>
-    <picture>
-      <source
-        srcset="./images/test/whiteXtab.png 1x, ./images/test/whiteXxtab.png 2x"
-        type="image/png"
-        media="(min-width: 768px)"
-      />
-      <source
-        srcset="./images/test/whiteXmob.png 1x, ./images/test/whiteXxmob.png 2x"
-        type="image/png"
-        media="(max-width: 767px)"
-      />
-      <img
-        class="drink-white"
-        loading="lazy"
-        src="./images/test/whiteXmob.png"
-        alt="drink"
-      />
-    </picture>
-
-    <picture>
-      <source
-        srcset="./images/test/vtab.png 1x, ./images/test/vectab.png 2x"
-        type="image/png"
-        media="(min-width: 768px)"
-      />
-      <source
-        srcset="./images/test/vmob.png 1x, ./images/test/vecmob.png 2x"
-        type="image/png"
-        media="(max-width: 767px)"
-      />
-      <img
-        id="fill"
-        class="drink-header"
-        loading="lazy"
-        src="./images/test/vmob.png"
-        alt="drink"
-      />
-    </picture>
-  </a>
-  <!-- <svg class="header__logo-icon" width="24" height="24">
-            <use href="./images/logo.svg#image0_1_669"></use>
-        </svg> -->
-  <ul class="header__nav-list">
-    <li class="header__nav-item">
-      <a class="header__nav-link" href="">Home</a>
-    </li>
-    <li class="header__nav-item">
-      <a class="header__nav-link" href="">Favorite</a>
-    </li>
-  </ul>
-  <div class="header__search">
-    <form class="header__search-wrapper">
-      <input
-        type="search"
-        placeholder="Search"
-        name="search"
-        class="header__search-input"
-      />
-      <button class="header__search-btn" type="submit">
-        <span class="header__search-border"></span>
-        <svg class="header__search-icon" width="24" height="24">
-          <use href="./images/icons.svg#icon-earch">re</use>
+<div class="backdrop-sign-in visually-hidden js-data-mod">
+  <div class="modal">
+    <button type="button" class="modal__close-btn js-btn-close-login">
+      <svg class="modal__close-bth-img" width="18" height="18">
+        <use href="./images/icons.svg#icon-close"></use>
+      </svg>
+    </button>
+    <p class="modal__title">Welcome</p>
+    <form class="modal-form">
+      <label class="modal-label">
+        <span class="modal-label__text">Email</span>
+        <input type="email" name="mail" class="modal-label__input" required />
+        <svg class="modal-label__input-icon" width="18" height="18">
+          <use href="./images/icons.svg#icon-modal-mail"></use>
         </svg>
-      </button>
-    </form>
-  </div>
-  <ul class="header__theme-list">
-    <li class="header__theme-item header__theme-light">Light</li>
-    <li>
-      <div class="toggle">
+      </label>
+      <label class="modal-label">
+        <span class="modal-label__text">Password</span>
         <input
-          type="checkbox"
-          name="toggle"
-          id="toggle-button"
-          class="toggle-button dark-mode-toggle"
+          type="password"
+          name="password"
+          class="modal-label__input"
+          required
         />
-        <label for="toggle-button" class="text"></label>
+        <svg class="modal-label__input-icon" width="18" height="18">
+          <use href="./images/icons.svg#icon-modal-name"></use>
+        </svg>
+      </label>
+      <div class="modal-policy">
+        <label class="modal-policy__label">
+          <input
+            type="checkbox"
+            name="policy"
+            class="modal-policy__check visually-hidden"
+            required
+          />
+          <span class="modal-policy__custom-check">
+            <svg class="modal-policy__icon" width="11" height="8">
+              <use href="./images/icons.svg#icon-policy"></use>
+            </svg>
+          </span>
+          <span class="modal-policy__text"> I am over 18 years old </span>
+        </label>
       </div>
-    </li>
-    <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> -->
-    <li class="header__theme-item header__theme-dark">Dark</li>
-  </ul>
-  <button
-    class="btn login-btn js-btn-login"
-    type="button"
-    data-modal-sign-in-open
-  >
-    Sign in
-  </button>
-  <button type="button" class="btn__burger-menu-open btn" data-menu-open>
-    <svg class="menu-open__icon" width="40" height="40">
-      <use href="./images/icons.svg#icon-menu"></use>
-    </svg>
-  </button>
+    </form>
+    <div class="sign-in-btns">
+      <button type="submit" class="modal-button-sign-in">Sign in</button>
+      <button type="submit" class="modal-button-sign-in">Sign up</button>
+    </div>
+  </div>
 </div>
-<!-- </section> -->
