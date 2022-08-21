@@ -12,7 +12,6 @@ import './js/modals/modalFooterTeam';
 
 import './js/services/localeStorage';
 
-
 import CocktailApiService from './js/services/CocktailApiService';
 
 // import { refs } from './js/services/refs';

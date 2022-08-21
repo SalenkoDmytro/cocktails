@@ -29,7 +29,10 @@ export const refs = {
   backdropModalTeam: document.querySelector('.js-modal-team'),
 
   lettersList: document.querySelector('.hero__list'),
-  lettersListMobile: document.querySelector('.select__list'),
   form: document.querySelector('.header__search-wrapper'),
   input: document.querySelector('.header__search-input'),
+  lettersListMobile: document.querySelector('.select__list'),
+  selectLetter: document.querySelector('#select'),
+  inputMobile: document.querySelector('.select__input'),
+  inputSpan: document.querySelector('.input-span'),
 };
