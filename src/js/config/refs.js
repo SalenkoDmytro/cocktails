@@ -3,11 +3,17 @@ export const refs = {
   closeModalBtnSignIn: document.querySelector('.js-btn-close-login'),
   modalSignIn: document.querySelector('.js-data-mod'),
 
+  openMenuBtn: document.querySelector('[data-menu-open]'),
+  closeMenuBtn: document.querySelector('[data-menu-close]'),
+  menu: document.querySelector('[data-menu]'),
+
   openModalCocktailBtn: document.querySelector('.js-open-modal-cocktail'),
   closeModalCocktailBtn: document.querySelector('[data-modal-close-cocktail]'),
   backdropCocktail: document.querySelector('[data-bg-cocktail]'),
   openModalIngredientBtn: document.querySelector('.js-open-modal-ingredient'),
-  closeModalIngredientBtn: document.querySelector('[data-modal-close-ingredient]'),
+  closeModalIngredientBtn: document.querySelector(
+    '[data-modal-close-ingredient]'
+  ),
   backdropIngredient: document.querySelector('[data-bg-ingredient]'),
   cocktail: {
     img: document.querySelector('.cocktail__img'),
@@ -16,5 +22,14 @@ export const refs = {
     cocktailList: document.querySelector('.ingredient'),
   },
   ingredientRef: document.querySelector('.ingredient__wrap'),
-};
+  // characteristicIngredient: document.querySelector('.characteristic'),
 
+  openModalTeam: document.querySelector('.js-modal-open-team'),
+  closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
+  backdropModalTeam: document.querySelector('.js-modal-team'),
+
+  lettersList: document.querySelector('.hero__list'),
+  lettersListMobile: document.querySelector('.select__list'),
+  form: document.querySelector('.header__search-wrapper'),
+  input: document.querySelector('.header__search-input'),
+};
