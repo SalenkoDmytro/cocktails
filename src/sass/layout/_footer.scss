@@ -2,17 +2,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 110px;
   background-color: var(--accent-color);
 }
 
 .footer__text {
+  margin: 0 auto;
   font-family: var(--gallery-font-family);
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0.02em;
   color: var(--white-color);
+  @include mq(fab) {
+      width: 380px;
+  
+    }
 }
 
 .footer__wrap {
@@ -21,4 +27,7 @@
 
 .footer__link {
   text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+  color: var(--white-color)
 }

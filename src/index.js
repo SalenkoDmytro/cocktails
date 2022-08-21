@@ -8,6 +8,9 @@ import './js/modals/modalIngredient';
 import './js/dark/themeToggle';
 
 import './js/modals/modalSignIn';
+import './js/modals/modalFooterTeam';
+
+import './js/services/localeStorage';
 
 import './js/services/firebaseDb';
 
