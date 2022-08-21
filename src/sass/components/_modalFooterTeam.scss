@@ -13,36 +13,37 @@
   }
   
   .modal-team {
-    overflow: scroll;
+    overflow: auto;
     border-radius: 4px;
-    position: fixed;
+    position: absolute;
     width: 100%;
 	max-width: 1200px;
-	max-height: 800px;
+	max-height: 850px;
     top: 20px;
     left: 50%;
     transform: translate(-50%) scale(1) rotate(0);
     background-color: #fff;
     transition: cubic-bezier(0.4, 0, 0.2, 1);
-    padding-top: 30px;
+    padding: 30px;
     @media screen and (min-width: 768px) {
       top: 20px;
     }
     @media screen and (min-width: 1200px) {
-      top: 20px;
-      padding: 30px 40px;
+      top: 60px;
+      padding: 10px 10px;
     }
   }
   
   .modal__team-close-btn {
     position: sticky;
-    top: 8px;
-    left: 97%;
-    width: 30px;
-    height: 30px;
+    top: 0;
+    left: 100%;
+    // width: 30px;
+    // height: 30px;
     border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+    border: 0;
+    background-color: transparent;
+    color: var(--modal-close-icon-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,18 +60,18 @@
   .team__title {
     margin-bottom: 20px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 22px;
     line-height: 1.91;
     color: var(--title-light-color);
 
   @include mq(fab) {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 32px;
   }
 
   @include mq(tab) {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 32px;
   }
 
