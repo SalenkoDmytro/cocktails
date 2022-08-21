@@ -1,6 +1,7 @@
 // mobileMenu.js
 (() => {
   const refs = {
+    body: document.querySelector('body'),
     openMenuBtn: document.querySelector('[data-menu-open]'),
     closeMenuBtn: document.querySelector('[data-menu-close]'),
     menu: document.querySelector('[data-menu]'),
