@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 // import { getStorage, ref as refStorage, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-// import { getDatabase, ref, push, onValue } from "firebase/database";
+import { getDatabase, ref, get, push, onValue } from "firebase/database";
 
 import { firebaseConfig } from '../config/firebaseConfig';
 import {
@@ -12,31 +12,51 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+
 // const storage = getStorage();
-// const db = getDatabase();
 
-// TODO Change - Add listener when modal open
-// refs.buttonLoginWithMailPassword.addEventListener("click", onLoginClick);
-// refs.buttonLoginWithGoogle.addEventListener("click", onLoginClick);
-// refs.buttonLogin.addEventListener("click", onLoginClick);
+// import DrinkingUserFactoryManager from '../services/DrinkingUserFactoryManager';
 
-// import { refs } from '../config/refs';
-// const { buttonLogin } = refs;
+// const drinkingUserFactory = new DrinkingUserFactoryManager();
+// const drinkingUserManager = drinkingUserFactory.getManager("FIREBASE", { db });
 
-// function onLoginClick(evt) {
-//     let id = evt.target.dataset.id;
+// drinkingUserManager.fetchUserById(user.uid).then((user) => {
+//   if (!user.isExistInDb()) {
+//     drinkingUserManager.pushUserById(user);
+//     // drinkingUserManager.pushCoctaileToDbByUserId("11111", user)
+//   }
+// });
 
-//     console.log(id);
-//     // if (id === "Sign in") {
-//     //     userSignIn();
-//     // } else {
-//     //     userSignOut();
-//     // }
+// const modalBtnSignIn = document.querySelector('.modal-button-sign-in');
+
+// // TODO Change - Add listener when modal open
+// modalBtnSignIn.addEventListener("click", onLoginClick);
+
+// async function onLoginClick(evt) {
+//   let sign = evt.target.dataset.sign;
+//   if (sign === "Sign-in") {
+//     userSignInWithGoogle();
+//     modalBtnSignIn.dataset.sign = "Sign-out";
+//     modalBtnSignIn.textContent = "Sign out";
+//   } else {
+//     userSignOut();
+//     modalBtnSignIn.dataset.sign = "Sign-in"
+//     modalBtnSignIn.textContent = "Sign in";
+//   }
 // }
+
+//Після авторизації фетчимо юзера.
+// authUser.uid ~ drinkingUser.Id; айдішки рівні за смислом.
+
+//Забираю 
+//Коли клікає перевіряти на ми пушимо зміни.
+
 
 function userRegistration(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
@@ -81,6 +101,7 @@ function userSignInWithGoogle() {
       const user = result.user;
       console.log(user);
       // ...
+      drinkingUserFactory.getDataFromFirebase(user.uid)
       //TODO close modal autorization  closeModalAuth();
       //TODO get data from user acount   getDataFromFirebase(user.uid);
       //TODO markup cocktaile renderFavouriteCocktaileByUser(user.uid);
@@ -99,7 +120,6 @@ function userSignInWithGoogle() {
 }
 
 onAuthStateChanged(auth, user => {
-  // refs.buttonLogin.dataset = "Sign out"
   // TODO toggleBtnContent(user);
   //TODO  isChatVisible(user);
 });
@@ -116,6 +136,13 @@ function userSignOut() {
     });
 }
 
+
 export function getUser() {
   return auth.currentUser;
 }
+
+
+
+
+
+

@@ -12,6 +12,9 @@ import './js/modals/modalFooterTeam';
 
 import './js/services/localeStorage';
 
+import './js/services/firebaseDb';
+
+
 import CocktailApiService from './js/services/CocktailApiService';
 
 // import { refs } from './js/services/refs';
