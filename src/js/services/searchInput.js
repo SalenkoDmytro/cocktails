@@ -1,15 +1,13 @@
 import CocktailApiService from './CocktailApiService';
 import renderRandomData from './renderRandomData';
+import { refs } from '../config/refs';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 500;
 
-const form = document.querySelector('.header__search-wrapper');
-const input = form.elements.search;
-
-form.addEventListener('submit', onSubmitBtnClick);
-input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
+refs.form.addEventListener('submit', onSubmitBtnClick);
+refs.input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 async function onInputChange(e) {
   if (e.target.value.trim() === '') {
@@ -39,11 +37,11 @@ async function onSubmitBtnClick(e) {
   if (e.currentTarget.elements.search.value.trim() === '') return;
   await fetchSearchValue();
   console.log('Надо зарендерить >>>', cocktailApiService.drinks);
-  form.reset();
+  refs.form.reset();
 }
 
 async function fetchSearchValue() {
-  const searchText = input.value.trim();
+  const searchText = refs.input.value.trim();
   cocktailApiService.searchQuery = searchText;
   try {
     await cocktailApiService.fetchCocktaileByName();
