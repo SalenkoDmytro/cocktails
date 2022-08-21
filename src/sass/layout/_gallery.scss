@@ -4,18 +4,13 @@
   // outline: 2px dotted limegreen;
 }
 
-.gallery__container {
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
-
 .gallery__title {
   margin-bottom: 60px;
   text-align: center;
   font-weight: 600;
   font-size: 22px;
-  line-height: 191;
-  color: var(--title-light-color);
+  line-height: 1.91;
+  color: --title-light-color;
 
   @include mq(fab) {
     font-weight: 700;
@@ -53,7 +48,6 @@
 }
 
 .gallery__img {
-  display: block;
   margin-bottom: 20px;
   width: 100%;
 }
@@ -116,14 +110,13 @@
     font-weight: 900;
     font-size: 26px;
     line-height: 1.6;
-    text-align: inherit;
-    color: var(--gallery-title-color);
-
+    color: var(--dark-bg-color);
 
     @include mq(fab) {
       font-weight: 900;
       font-size: 28px;
       line-height: 1.2;
+      color: var(--black-color);
     }
 
     @include mq(tab) {
@@ -131,6 +124,7 @@
       font-weight: 900;
       font-size: 28px;
       line-height: 1.2;
+      color: var(--black-color);
     }
 
     @include mq(desk) {
@@ -138,22 +132,24 @@
       font-weight: 900;
       font-size: 32px;
       line-height: 1.2;
+      color: var(--black-color);
     }
   }
 
   & .gallery__list-type {
     margin-bottom: 20px;
-    font-family: var(--title-font-family);
+    font-family: 'Poppins';
     font-weight: 600;
     font-size: 14px;
     line-height: 1.5;
     text-transform: uppercase;
-    color: var(--gallery-subtitle-color);
+    color: var(--black-color);
 
     @include mq(fab) {
       font-weight: 600;
       font-size: 14px;
       line-height: 1.5;
+      color: var(--medium-grey-color);
     }
 
     @include mq(tab) {
@@ -161,6 +157,7 @@
       font-weight: 900;
       font-size: 16px;
       line-height: 1.5;
+      color: var(--medium-grey-color);
     }
 
     @include mq(desk) {
@@ -168,17 +165,18 @@
       font-weight: 600;
       font-size: 16px;
       line-height: 1.5;
+      color: var(--medium-grey-color);
     }
   }
 }
 
 // --- buttons styles
 .gallery__btn-container {
-  // padding-left: 20px;
-  // padding-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .gallery__btn {
@@ -210,24 +208,12 @@
 }
 
 .gallery__btn-more {
-  padding-left: 38px;
-  padding-right: 38px;
   color: var(--white-color);
   background-color: var(--btn-bg-color);
-  &:hover,
-  &:focus {
-    background-color: var(--btn-hover-color);
-    color: var(--white-color);
-  }
 }
 
 .gallery__btn-fav {
   color: var(--btn-bg-color);
-  background-color: var( --gallery-btn-fav-color);
+  background-color: var(--white-color);
   border: 1px solid var(--btn-outline-color);
-  &:hover,
-  &:focus {
-    outline: 1px solid var(--btn-hover-color);
-    color: var(--btn-hover-color);
-  }
 }
