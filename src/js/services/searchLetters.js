@@ -1,6 +1,7 @@
 import CocktailApiService from './CocktailApiService';
 import { refs } from '../config/refs';
 import { createDroplist } from './renderMobLetters';
+import { renderCards, noResultRender } from './renderCards';
 
 const cocktailApiService = new CocktailApiService();
 
@@ -13,10 +14,9 @@ async function onLetterClick(e) {
 
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
-    if (!cocktailApiService.drinks)
-      return console.log('Сюда добавить рендер что ничего не найдено');
+    if (!cocktailApiService.drinks) return noResultRender();
 
-    console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+    renderCards(cocktailApiService.drinks);
   } catch (error) {
     console.log(error.message);
   }

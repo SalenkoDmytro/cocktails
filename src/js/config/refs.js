@@ -35,4 +35,5 @@ export const refs = {
   selectLetter: document.querySelector('#select'),
   inputMobile: document.querySelector('.select__input'),
   inputSpan: document.querySelector('.input-span'),
+  gallery: document.querySelector('.gallery__list'),
 };
