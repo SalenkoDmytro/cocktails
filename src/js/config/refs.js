@@ -21,7 +21,8 @@ export const refs = {
     cocktailList: document.querySelector('.ingredient'),
   },
   ingredientRef: document.querySelector('.ingredient__wrap'),
-
+  // characteristicIngredient: document.querySelector('.characteristic'),
+  
   openModalTeam: document.querySelector('.js-modal-open-team'),
   closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
   backdropModalTeam: document.querySelector('.js-modal-team'),

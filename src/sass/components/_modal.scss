@@ -19,7 +19,12 @@
   background: var(--modal-bg-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.14),
   0 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px 0 0 0;
+  //border-radius: 4px 0 0 0;
+  overflow: overlay;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .modal__ingredient {
@@ -35,14 +40,17 @@
 .cocktail__img {
   width: 288px;
   height: 320px;
-  border-radius: 4px;
+  //border-radius: 4px;
+}
+
+.cocktail__modal-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 28px;
+  margin-right: 28px;
 }
 
 .modal__btn {
-  position: absolute;
-  bottom: 28px;
-  right: 28px;
-
   text-align: center;
   border-color: transparent;
   border-radius: 4px;
@@ -98,8 +106,8 @@
 .ingredient {
   margin-top: 8px;
   margin-left: 32px;
-  height: 125px;
-  min-width: 450px;
+  height: 128px;
+  min-width: 472px;
   overflow: overlay;
 }
 
@@ -175,12 +183,11 @@
   font-size: 16px;
   line-height: 28px;
   color: var(--modal-text-color);
-  max-height: 110px;
-  overflow: overlay;
 }
 
 .characteristic {
   margin-top: 28px;
+  margin-bottom: 40px;
   margin-left: 28px;
 }
 
@@ -191,4 +198,18 @@
 .line {
   border-bottom: 1px solid #FD5103;
   width: 715px;
+}
+
+.backdrop ::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+
+.backdrop ::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.backdrop ::-webkit-scrollbar-thumb {
+  background: #FD5103;
+  border-radius: 4px;
 }
