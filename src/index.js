@@ -10,6 +10,8 @@ import './js/dark/themeToggle';
 import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
 
+import './js/services/localeStorage';
+
 
 import CocktailApiService from './js/services/CocktailApiService';
 
