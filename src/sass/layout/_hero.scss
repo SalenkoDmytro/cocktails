@@ -97,7 +97,7 @@
     font-size: 14px;
     line-height: 2;
     letter-spacing: 0.02em;
-    color: #202025;
+    color: var(--hero-text-color);
     opacity: 0.8;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -117,7 +117,7 @@
 
 .hero__text.mob {
     display: block;
-    color: #000000;
+    color: var(--hero-text-color);
     margin-top: 28px;
     margin-bottom: 20px;
 
@@ -126,9 +126,6 @@
         display: none;
     }
 }
-
-
-
 
 .hero-button {
     display: flex;
@@ -139,7 +136,7 @@
     border-radius: 4px;
     text-align: start;
     align-items: center;
-    background-color: var(--white-color);
+    background-color: var(--hero-bg-input-color);
     font-family: var(--primary-font-family);
     font-weight: 700;
     font-size: 16px;
