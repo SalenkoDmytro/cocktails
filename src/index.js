@@ -11,6 +11,7 @@ import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
 
 import './js/services/localeStorage';
+import './js/services/renderCards';
 
 import CocktailApiService from './js/services/CocktailApiService';
 

@@ -1,6 +1,7 @@
 import CocktailApiService from './CocktailApiService';
 import renderRandomData from './renderRandomData';
 import { refs } from '../config/refs';
+import { renderCards } from './renderCards';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
@@ -29,6 +30,7 @@ async function onInputChange(e) {
   if (!cocktailApiService.drinks)
     return console.log('Сюда добавить рендер что ничего не найдено');
 
+  console.log(renderCards(cocktailApiService.drinks));
   console.log('Надо зарендерить >>>', cocktailApiService.drinks);
 }
 
