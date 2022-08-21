@@ -1,3 +1,4 @@
+// mobileMenu.js
 (() => {
   const refs = {
     openMenuBtn: document.querySelector('[data-menu-open]'),
