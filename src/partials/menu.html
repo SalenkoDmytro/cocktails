@@ -1,0 +1,80 @@
+<div class="backdrop is-hidden" data-menu>
+  <div class="container menu__container">
+    // menu show/hide
+    <button
+      class="btn__burger-menu-close btn"
+      type="button"
+      aria-label="mobile menu button"
+      data-menu-close
+    >
+      <svg width="30" height="30">
+        <use
+          class="menu__close-icon"
+          href="./images/icons.svg#icon-close"
+        ></use>
+      </svg>
+    </button>
+
+    // theme toggle
+    <div class="toggle">
+      <input
+        type="checkbox"
+        name="toggle"
+        id="toggle-button"
+        class="toggle-button"
+      />
+      <label for="toggle-button" class="text"></label>
+    </div>
+
+    // search
+    <div class="header__search">
+      <form class="header__search-wrapper">
+        <input
+          type="search"
+          placeholder="Search"
+          name="search"
+          class="header__search-input"
+        />
+        <button class="header__search-btn" type="submit">
+          <span class="header__search-border"></span>
+          <svg class="header__search-icon" width="24" height="24">
+            <use href="./images/icons.svg#icon-earch"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    // menu list
+    <ul class="menu__list">
+      <li class="menu__nav-item">
+        <a class="menu__nav-link" href="./">Home</a>
+      </li>
+      <li>
+        <a class="menu__nav-link" href=""
+          ><svg width="16" height="14">
+            <use
+              class="menu__btn-fav-svg"
+              href="./images/icons.svg#icon-heart"
+            ></use>
+          </svg>
+          cocktails</a
+        >
+      </li>
+      <li>
+        <a class="menu__nav-link" href=""
+          ><svg width="16" height="14">
+            <use
+              class="menu__btn-fav-svg"
+              href="./images/icons.svg#icon-heart"
+            ></use>
+          </svg>
+          ingredients</a
+        >
+      </li>
+    </ul>
+
+    <!-- <li class="header__theme-item header__switcher"><span class="header__switcher-circle"></span></li> 
+            <li class="header__theme-item header__theme-dark">Dark</li>
+  </ul> -->
+  </div>
+</div>

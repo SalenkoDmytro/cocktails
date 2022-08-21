@@ -1,0 +1,66 @@
+.backdrop {
+  position: fixed;
+  z-index: 5;
+
+  top: 0;
+  right: 0;
+  display: flex;
+  // align-items: center;
+  @include mq(mob) {
+    align-items: flex-start;
+    position: fixed;
+    flex-direction: column;
+    padding: 108px 20px 20px 20px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--light-bg-color);
+    display: none;
+  }
+  @include mq(fab) {
+    padding: 20px 15px;
+  }
+  @include mq(tab) {
+    margin-left: auto;
+  }
+
+  &.is-open {
+    display: flex;
+    // overflow-y: scroll;
+  }
+
+  &.is-hidden {
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.menu__container {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  padding: 40px;
+
+  background-color: var(--light-bg-color);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// .backdrop.is-hidden .menu__container {
+//   transform: translate(-50%, -50%) scale(1);
+// }
+
+.btn__burger-menu-close:hover,
+.btn__burger-menu-close:focus {
+  fill: var(--btn-hover-color);
+}
+
+.menu__list {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 0.86;
+}
+.menu__list:not(:last-child) {
+  margin-bottom: 32px;
+}
