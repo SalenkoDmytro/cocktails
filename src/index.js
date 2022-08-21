@@ -8,6 +8,8 @@ import './js/modals/modalIngredient';
 
 import './js/modals/modalSignIn';
 
+import './js/services/firebaseDb';
+
 
 import CocktailApiService from './js/services/CocktailApiService';
 
