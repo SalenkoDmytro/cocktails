@@ -19,8 +19,8 @@ export default class CocktailApiService {
     this.drinks = response.data.drinks;
   }
 
-  async fetchCocktaileByName() {
-    const url = `${this.BASE_URL}search.php?s=${this.searchQuery}`;
+  async fetchCocktaileByName(search) {
+    const url = `${this.BASE_URL}search.php?s=${search || this.searchQuery}`;
     const response = await axios.get(url);
     this.drinks = response.data.drinks;
   }

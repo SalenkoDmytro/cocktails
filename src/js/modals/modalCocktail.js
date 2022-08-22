@@ -15,8 +15,10 @@ async function onOpenModalCocktail(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
-    await cocktailApiService.fetchRandomCocktaile();
-    const cocktail = cocktailApiService.randomDrink[0];
+
+    const findCocktailName = e.currentTarget.querySelector('li > p').textContent
+    await cocktailApiService.fetchCocktaileByName(findCocktailName);
+    const cocktail = cocktailApiService.drinks[0];
     await markupCocktail(cocktail);
 
     const dataType = e.target.getAttribute('data-type');
