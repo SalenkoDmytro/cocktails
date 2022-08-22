@@ -1,8 +1,5 @@
 import { refs } from '../config/refs';
-import * as grouptab from '../../images/group/grouptab.png';
-import * as groupxtab from '../../images/group/groupxtab.png';
-import * as groupmob from '../../images/group/groupmob.png';
-import * as groupxmob from '../../images/group/groupxmob.png';
+const path = 'https://denyskhm.github.io/goit-js-project_team3/';
 import * as icons from '../../images/icons.svg';
 
 export function createMarkup(data) {
@@ -44,16 +41,16 @@ export function noResultRender() {
     <div class="sorry__picture">
       <picture>
         <source
-          srcset="${grouptab},${groupxtab} 2x"
+          srcset="${path + 'grouptab.png'} 1x, ${path + 'groupxtab.png'} 2x"
           media="(min-width: 768px)"
         />
         <source
-          srcset="${groupmob},${groupxmob} 2x"
+          srcset="${path + 'groupmob.png'} 1x, ${path + 'groupxmob.png'} 2x"
           media="(max-width: 767px)"
         />
         <img
           class="sorry__img"
-          src="${groupmob}"
+          src="${path + 'groupmob.png'}"
           alt="group"
           loading="lazy"
         />
