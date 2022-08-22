@@ -2,20 +2,22 @@ import CocktailApiService from './CocktailApiService';
 import { refs } from '../config/refs';
 import { createDroplist } from './renderMobLetters';
 import { renderCards, noResultRender } from './renderCards';
+import smoothScroll from './smoothScroll';
 
 const cocktailApiService = new CocktailApiService();
-let checked = document.querySelector(".select__input");
+let checked = document.querySelector('.select__input');
 
 refs.lettersList.addEventListener('click', onLetterClick);
 refs.inputMobile.addEventListener('click', onMobLetterClick);
 
 async function onLetterClick(e) {
-  checked.classList.add("select__input-checked");
+  checked.classList.add('select__input-checked');
   if (!e.target.dataset.letter) return;
   cocktailApiService.searchQuery = e.target.dataset.letter;
 
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
+    smoothScroll(1);
     if (!cocktailApiService.drinks) return noResultRender();
 
     renderCards(cocktailApiService.drinks);
@@ -37,3 +39,13 @@ function onMobLetterClick() {
     refs.selectLetter.lastChild.remove();
   });
 }
+
+let fav = document.querySelector('.fav__select-input');
+let favList = document.querySelector('.fav__list');
+fav.addEventListener('click', e => {
+  if (!favList.classList.contains('visually-hidden')) {
+    favList.classList.add('visually-hidden');
+    return;
+  }
+  favList.classList.remove('visually-hidden');
+});

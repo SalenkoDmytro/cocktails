@@ -1,8 +1,15 @@
 import { refs } from '../config/refs';
+import * as icons from '../../images/icons.svg';
+import mob from '../../images/group/groupmob.png';
+import mob2 from '../../images/group/groupxmob.png';
+import tab from '../../images/group/grouptab.png';
+import tab2 from '../../images/group/groupxtab.png';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    return `<li class="gallery__list-item card-set-item" data-id="${idDrink}" data-cocktail="${true}" data-ingredient="${false}">
+
+    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
+
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
@@ -19,12 +26,12 @@ export function createMarkup(data) {
           >
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button class="gallery__btn gallery__btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
             Add to
             <svg width="16" height="14">
               <use
                 class="gallery__btn-fav-svg"
-                href="./images/icons.svg#icon-heart"
+                href="${icons}#icon-heart"
               ></use>
             </svg>
           </button>
@@ -40,20 +47,16 @@ export function noResultRender() {
     <div class="sorry__picture">
       <picture>
         <source
-          srcset="./images/group/grouptab.png, ./images/group/groupxtab.png 2x"
+          srcset="${mob} 1x, ${mob2} 2x"
           media="(min-width: 768px)"
         />
-
         <source
-          srcset="
-            ./images/group/groupmob.png  1x,
-            ./images/group/groupxmob.png 2x
-          "
+          srcset="${tab} 1x, ${tab2} 2x"
           media="(max-width: 767px)"
         />
         <img
           class="sorry__img"
-          src="./images/group/groupmob.png"
+          src="${mob}"
           alt="group"
           loading="lazy"
         />
