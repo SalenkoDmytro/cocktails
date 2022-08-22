@@ -47,7 +47,7 @@ async function onBtnFavIngredientGalleryClick(e) {
     }
     btnGalleryRef = e.target;
     const idFavorite = e.target.dataset.id;
-    await toggleIngredientGalleryInDb(idFavorite, btnGalleryRef, true)
+    await toggleCocktailModalInDb(idFavorite, btnGalleryRef, true)
 }
 
 //! *****************************************************************************************************************
