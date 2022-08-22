@@ -4,7 +4,7 @@ import * as icons from '../../images/icons.svg';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}" data-cocktail="${true}" data-ingredient="${false}">
+    return `<li class="gallery__list-item card-set-item" data-id="${idDrink}" data-cocktail="${true}" data-ingredient="${false}">
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
