@@ -312,7 +312,56 @@
 
     }
 }
+// fav
+.fav__dropdown-item{
+    font-family: var(--primary-font-family);
+        
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 1.33px;
+           
+        letter-spacing: 0.02em;
+    
+        color: #000000;
+}
+.fav__select{
+    position: relative;}
+    
+.fav__select-input{
+    cursor: pointer;
+}
 
+.fav__list{
+    position:absolute;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    width:210px;
+}
+.fav__dropdown-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+    height: 48px;
+    
+    
+}
+.fav__nav-link{
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    height: 48px;
+    width: 100%;
+    &:hover,
+    &:focus {
+        background-color: var(--accent-color);
+        color: var(--white-color);
+    }
+}
+
+
+// sorry section
 .sorry {
     margin-top: 100px;
     display: flex;
