@@ -1,10 +1,15 @@
 import { refs } from '../config/refs';
-const path = 'https://denyskhm.github.io/goit-js-project_team3/group/';
 import * as icons from '../../images/icons.svg';
+import mob from '../../images/group/groupmob.png';
+import mob2 from '../../images/group/groupxmob.png';
+import tab from '../../images/group/grouptab.png';
+import tab2 from '../../images/group/groupxtab.png';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    return `<li class="gallery__list-item card-set-item" data-id="${idDrink}" data-cocktail="${true}" data-ingredient="${false}">
+
+    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
+
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
@@ -20,7 +25,7 @@ export function createMarkup(data) {
           >
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button class="gallery__btn gallery__btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
             Add to
             <svg width="16" height="14">
               <use
@@ -41,16 +46,16 @@ export function noResultRender() {
     <div class="sorry__picture">
       <picture>
         <source
-          srcset="${path + 'grouptab.png'} 1x, ${path + 'groupxtab.png'} 2x"
+          srcset="${mob} 1x, ${mob2} 2x"
           media="(min-width: 768px)"
         />
         <source
-          srcset="${path + 'groupmob.png'} 1x, ${path + 'groupxmob.png'} 2x"
+          srcset="${tab} 1x, ${tab2} 2x"
           media="(max-width: 767px)"
         />
         <img
           class="sorry__img"
-          src="${path + 'groupmob.png'}"
+          src="${mob}"
           alt="group"
           loading="lazy"
         />
