@@ -7,6 +7,9 @@ const cocktailApiService = new CocktailApiService();
 refs.openModalIngredientBtn.addEventListener('click', onOpenModalIngredient);
 refs.closeModalIngredientBtn.addEventListener('click', closeModal);
 
+refs.addIngredient.addEventListener('click', onAddIngredient);
+refs.removeIngredient.addEventListener('click', onRemoveIngredient);
+
 async function onOpenModalIngredient(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropIngredient));
   refs.backdropIngredient.addEventListener('click', onBackdropClickWrapper(refs.backdropIngredient));
@@ -57,5 +60,18 @@ function markupIngredient(ingredient) {
           </ul>`;
 
   refs.ingredientRef.innerHTML = markup;
+}
 
+function onAddIngredient(e) {
+  if (e.target.textContent === 'Add to favorite') {
+    refs.addIngredient.classList.add('visually-hidden')
+    refs.removeIngredient.classList.remove('visually-hidden')
+  }
+}
+
+function onRemoveIngredient(e) {
+  if(e.target.textContent === 'Remove from favorite'){
+    refs.addIngredient.classList.remove('visually-hidden')
+    refs.removeIngredient.classList.add('visually-hidden')
+  }
 }
