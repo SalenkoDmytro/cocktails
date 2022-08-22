@@ -11,3 +11,17 @@
   font-style: inherit;
   border-radius: 4px;
 }
+#runaway-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 50px;
+  min-width: 200px;
+  font-size: 22px;
+  border-radius: 5px;
+  border: none;
+  color: var(--white-color);
+  box-shadow: 1px 1px 5px var(--white-color);
+  background-color: var(--accent-color);
+}
