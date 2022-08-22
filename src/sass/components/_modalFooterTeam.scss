@@ -77,12 +77,12 @@
   
     @include mq(tab) {
         --card-item: 4;
-        --card-gap: 20px;
+        --card-gap: 40px;
       }
     
       @include mq(desk) {
-        --card-item: 5;
-        --card-gap: 30px;
+        --card-item: 4;
+        --card-gap: 40px;
       }
   }
 
@@ -90,6 +90,14 @@
     border: 1px solid var(--accent-color);
     border-radius: 20px;
     box-sizing: border-box;
+    width: 300px;
+    @include mq(tab) {
+      max-width: 300px;
+    }
+  
+    @include mq(desk) {
+      max-width: 210px;
+    }
   }
   
   .team__img {
