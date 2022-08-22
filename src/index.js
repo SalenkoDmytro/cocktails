@@ -15,9 +15,8 @@ import './js/services/renderMobLetters';
 
 import './js/markup/mobileMenu';
 
-
 import './js/services/firebaseDb';
-
+import './js/services/smoothScroll';
 
 import CocktailApiService from './js/services/CocktailApiService';
 

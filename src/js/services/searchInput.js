@@ -2,6 +2,7 @@ import CocktailApiService from './CocktailApiService';
 import renderRandomData from './renderRandomData';
 import { refs } from '../config/refs';
 import { renderCards, noResultRender } from './renderCards';
+import smoothScroll from './smoothScroll';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
@@ -31,7 +32,9 @@ async function onInputChange(e) {
 async function onSubmitBtnClick(e) {
   e.preventDefault();
   if (e.currentTarget.elements.search.value.trim() === '') return;
+
   await fetchSearchValue();
+  smoothScroll(1.55);
 
   if (!cocktailApiService.drinks) return noResultRender();
 
