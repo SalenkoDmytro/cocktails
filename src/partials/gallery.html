@@ -2,7 +2,7 @@
   <!-- gallery cocktails -->
   <div class="gallery__container container">
     <h2 class="gallery__title">Cocktails</h2>
-    <ul class="gallery__list card-set js-open-modal-cocktail">
+    <ul class="gallery__list card-set js-open-modal-cocktail" data-gallery-cocktail>
 
     </ul>
   </div>
@@ -10,15 +10,15 @@
   <!-- gallery favorite ingredients -->
   <div class="gallery__container container">
     <h2 class="gallery__title">Favorite ingredients</h2>
-    <ul class="gallery__list-ingr card-set">
-      <li class="gallery__list-item card-set-item">
+    <ul class="gallery__list-ingr card-set" data-gallery-ingredient>
+      <li class="gallery__list-item card-set-item" data-id="${idDrink}">
         <p class="gallery__list-name">Campari</p>
         <p class="gallery__list-type">Liqueur</p>
         <div class="gallery__btn-container">
           <button class="gallery__btn gallery__btn-more" type="button" ">
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button class=" gallery__btn gallery__btn-fav" type="button" data-id="${idDrink}" data-favorite="ingredient">
             Remove
             <svg width="16" height="14">
               <use class="gallery__btn-fav-svg" href="./images/icons.svg#icon-heart"></use>

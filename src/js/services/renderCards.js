@@ -8,7 +8,7 @@ import tab2 from '../../images/group/groupxtab.png';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}" data-cocktail="${true}" data-ingredient="${false}">
+    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
@@ -24,7 +24,7 @@ export function createMarkup(data) {
           >
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button class="gallery__btn gallery__btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
             Add to
             <svg width="16" height="14">
               <use
