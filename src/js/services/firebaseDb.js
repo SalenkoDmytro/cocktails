@@ -15,15 +15,16 @@ const userPromise = userManager.fetchUserById("1234")
 
 //Прописати атрибути на галерею коктейлів і інгредієнтів
 const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
-const listFavIngredientGallery = document.querySelector('[data-gallery-ingredient]');
+//const listFavIngredientGallery = document.querySelector('[data-gallery-ingredient]');
 
 //Прописати атрибути на кнопки коктейлів і інгредієнтів
 const btnListCocktail = document.querySelectorAll('[data-favorite=cocktail]');
 const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]');
 
-
+console.log("before>>>");
 listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
 // listFavIngredientGallery.addEventListener("click", onBtnFavIngredientGalleryClick);
+console.log(listFavCocktailGallery);
 
 console.log(location);
 //! *****************************************************************************************************************
@@ -34,7 +35,7 @@ async function onBtnFavCocktailGalleryClick(e) {
     if (!favoriteBtn) {
         return;
     }
-    btnGalleryRef = e.target;
+    let btnGalleryRef = e.target;
     const idFavorite = e.target.dataset.id;
     await toggleCocktailModalInDb(idFavorite, btnGalleryRef)
 }
