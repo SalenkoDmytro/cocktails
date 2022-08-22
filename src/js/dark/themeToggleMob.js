@@ -1,4 +1,4 @@
-const toggleElement = document.querySelector('.dark-mode-toggle');
+const toggleElement = document.querySelector('.dark-mode-mob-toggle');
 const body = document.body;
 
 console.log('toggleElement',toggleElement);
