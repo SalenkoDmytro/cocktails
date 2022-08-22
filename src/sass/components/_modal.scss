@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop__cocktail {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,8 +9,6 @@
 
 .modal__ingredient,
 .modal__cocktail {
-  width: 822px;
-  height: 598px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -27,34 +25,67 @@
   flex-direction: column;
 }
 
+.modal__cocktail {
+  width: 320px;
+  height: 990px;
+
+  @include mq(tab-only) {
+    width: 768px;
+    height: 598px
+  }
+  @include mq(desk) {
+    width: 822px;
+    height: 598px
+  }
+}
+
 .modal__ingredient {
-  width: 715px;
-  height: 537px;
+  width: 320px;
+  height: 990px;
+
+  @include mq(tab-only) {
+    width: 768px;
+    height: 598px
+  }
+  @include mq(desk) {
+    width: 715px;
+    height: 598px
+  }
 }
 
 .modal__wrap {
-  display: flex;
-  align-items: flex-start;
+  @include mq(tab) {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 
 .cocktail__img {
-  width: 288px;
+  width: 320px;
   height: 320px;
   //border-radius: 4px;
+  @include mq(tab) {
+    width: 288px;
+    height: 320px;
+  }
 }
 
 .cocktail__modal-btn {
-  display: flex;
-  justify-content: flex-end;
   margin-bottom: 28px;
-  margin-right: 28px;
+  margin-left: 32px;
+  @include mq(tab) {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 28px;
+    margin-right: 28px;
+  }
 }
 
 .modal__btn {
   text-align: center;
   border-color: transparent;
   border-radius: 4px;
-  width: 185px;
+  min-width: 185px;
   height: 48px;
   font-family: var(--gallery-font-family);
   font-weight: 400;
@@ -65,9 +96,15 @@
   background: var(--btn-text-color);
 }
 
-.modal__btn:hover {
+.modal__btn:hover,
+.modal__btn:focus {
   background: var(--btn-bg-color);
   color: var(--white-color);
+}
+
+.modal__btn:active {
+  color: var(--btn-bg-color);
+  background: var(--btn-bg-color)
 }
 
 .ingredient__name,
@@ -107,8 +144,14 @@
   margin-top: 8px;
   margin-left: 32px;
   height: 128px;
-  min-width: 472px;
+  max-width: 320px;
   overflow: overlay;
+  @include mq(desk) {
+    min-width: 502px;
+  }
+  @include mq(tab-only) {
+    min-width: 448px;
+  }
 }
 
 .ingredient__item {
@@ -127,6 +170,10 @@
   cursor: pointer;
 }
 
+.ingredient-link:hover {
+  color: var(--accent-color);
+}
+
 .recipe__wrap {
   margin-left: 28px;
 }
@@ -143,14 +190,19 @@
 
 .recipe__text {
   margin-top: 10px;
-  max-width: 764px;
+  //min-width: 270px;
+  width: 100%;
+  max-height: 200px;
   font-family: var(--primary-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
   color: var(--modal-text-color);
-  max-height: 90px;
   overflow: overlay;
+  @include mq(tab) {
+    //max-width: 764px;
+    max-height: 90px;
+  }
 }
 
 .btn--close {
@@ -200,16 +252,16 @@
   width: 715px;
 }
 
-.backdrop ::-webkit-scrollbar {
+.backdrop__cocktail ::-webkit-scrollbar {
   width: 4px;
   border-radius: 4px;
 }
 
-.backdrop ::-webkit-scrollbar-track {
+.backdrop__cocktail ::-webkit-scrollbar-track {
   background: #e0e0e0;
 }
 
-.backdrop ::-webkit-scrollbar-thumb {
+.backdrop__cocktail ::-webkit-scrollbar-thumb {
   background: #FD5103;
   border-radius: 4px;
 }
