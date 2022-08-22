@@ -12,9 +12,9 @@ import './js/modals/modalFooterTeam';
 
 import './js/services/localeStorage';
 import './js/services/renderMobLetters';
+// import './js/services/smoothScroll';
 
 import './js/markup/mobileMenu';
-
 
 import './js/services/firebaseDb';
 
