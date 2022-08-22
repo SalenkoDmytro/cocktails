@@ -1,5 +1,4 @@
 import { refs } from '../config/refs';
-// const path = 'https://denyskhm.github.io/goit-js-project_team3/group/';
 import * as icons from '../../images/icons.svg';
 import mob from '../../images/group/groupmob.png';
 import mob2 from '../../images/group/groupxmob.png';
