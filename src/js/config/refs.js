@@ -40,4 +40,7 @@ export const refs = {
   inputMobile: document.querySelector('.select__input'),
   inputSpan: document.querySelector('.input-span'),
   gallery: document.querySelector('.gallery__list'),
+
+  fav: document.querySelector('.fav__select-input'),
+  favList: document.querySelector('.fav__list'),
 };
