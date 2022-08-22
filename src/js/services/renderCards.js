@@ -1,4 +1,9 @@
 import { refs } from '../config/refs';
+import * as grouptab from '../../images/group/grouptab.png';
+import * as groupxtab from '../../images/group/groupxtab.png';
+import * as groupmob from '../../images/group/groupmob.png';
+import * as groupxmob from '../../images/group/groupxmob.png';
+import * as icons from '../../images/icons.svg';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
@@ -23,7 +28,7 @@ export function createMarkup(data) {
             <svg width="16" height="14">
               <use
                 class="gallery__btn-fav-svg"
-                href="./images/icons.svg#icon-heart"
+                href="${icons}#icon-heart"
               ></use>
             </svg>
           </button>
@@ -39,20 +44,16 @@ export function noResultRender() {
     <div class="sorry__picture">
       <picture>
         <source
-          srcset="./images/group/grouptab.png, ./images/group/groupxtab.png 2x"
+          srcset="${grouptab},${groupxtab} 2x"
           media="(min-width: 768px)"
         />
-
         <source
-          srcset="
-            ./images/group/groupmob.png  1x,
-            ./images/group/groupxmob.png 2x
-          "
+          srcset="${groupmob},${groupxmob} 2x"
           media="(max-width: 767px)"
         />
         <img
           class="sorry__img"
-          src="./images/group/groupmob.png"
+          src="${groupmob}"
           alt="group"
           loading="lazy"
         />

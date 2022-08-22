@@ -48,3 +48,7 @@ async function fetchSearchValue() {
     console.log(error.message);
   }
 }
+// ../images/group/grouptab.png, ../images/group/groupxtab.png 2x
+
+// ../images/group/groupmob.png  1x,
+//             ../ images / group / groupxmob.png 2x
