@@ -24,7 +24,8 @@ export default class UserManager {
                     //*** cocktails
                     let cocktails = dataDb.cocktails === undefined ? [] : dataDb.cocktails;
                     user.importCocktails(cocktails);
-                    // console.log(user);
+                    let ingredients = dataDb.cocktails === undefined ? [] : dataDb.ingredients;
+                    user.importIngredients(ingredients);
                     user.setFetched(true);
                     console.log("Sucsses fetch");
                 } else {

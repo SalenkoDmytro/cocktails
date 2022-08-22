@@ -7,7 +7,9 @@ import tab2 from '../../images/group/groupxtab.png';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
+
     return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
+
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
