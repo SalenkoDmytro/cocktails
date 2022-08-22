@@ -26,8 +26,7 @@ export const refs = {
   removeCocktail: document.querySelector('[data-remove-cocktail]'),
   addIngredient: document.querySelector('[data-add-ingredient]'),
   removeIngredient: document.querySelector('[data-remove-ingredient]'),
-  nameCocktailOpenModal: document.querySelector('[data-cocktail-name]'),
-//#
+
   openModalTeam: document.querySelector('.js-modal-open-team'),
   closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
   backdropModalTeam: document.querySelector('.js-modal-team'),
@@ -40,4 +39,7 @@ export const refs = {
   inputMobile: document.querySelector('.select__input'),
   inputSpan: document.querySelector('.input-span'),
   gallery: document.querySelector('.gallery__list'),
+
+  fav: document.querySelector('.fav__select-input'),
+  favList: document.querySelector('.fav__list'),
 };

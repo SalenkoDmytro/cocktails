@@ -22,6 +22,7 @@ export function createMarkup(data) {
             class="gallery__btn gallery__btn-more"
             type="button"
             data-type="open-learn-more"
+            data-id="${idDrink}"
           >
             Learn more
           </button>

@@ -15,9 +15,10 @@ async function onOpenModalCocktail(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
-
-    const findCocktailName = e.currentTarget.querySelector('li > p').textContent
-    await cocktailApiService.fetchCocktaileByName(findCocktailName);
+    // const findCocktailName = e.currentTarget.querySelector('li > p').textContent
+    cocktailApiService.searchQuery = e.target.dataset.id;
+    // const cocktailId = cocktailApiService.searchQuery;
+    await cocktailApiService.fetchCocktailById();
     const cocktail = cocktailApiService.drinks[0];
     await markupCocktail(cocktail);
 
@@ -29,7 +30,6 @@ async function onOpenModalCocktail(e) {
       if (isAddedToFavourites) {
         toggleAddFavouriteIngredientBtn(true);
       }
-
     }
   } catch (err) {
     console.error(err);
@@ -68,7 +68,7 @@ refs.removeCocktail.addEventListener('click', onRemoveCocktail);
 
 function onAddCocktail(e) {
   if (e.target.textContent === 'Add to favorite') {
-    const cocktail = cocktailApiService.randomDrink[0];
+    const cocktail = cocktailApiService.drinks[0];
     const favourites = getFavoritesCocktails();
     localStorage.setItem(FAVOURITES_COCKTAILS_KEY, JSON.stringify([...favourites, cocktail]));
     toggleAddFavouriteIngredientBtn(true);
@@ -77,7 +77,7 @@ function onAddCocktail(e) {
 
 function onRemoveCocktail(e) {
   if (e.target.textContent === 'Remove from favorite') {
-    const cocktail = cocktailApiService.randomDrink[0];
+    const cocktail = cocktailApiService.drinks[0];
     localStorage.removeItem(cocktail.strDrink);
     toggleAddFavouriteIngredientBtn(false);
   }
@@ -87,6 +87,7 @@ function toggleAddFavouriteIngredientBtn(isActive) {
   refs.addCocktail.classList.toggle('visually-hidden', isActive);
   refs.removeCocktail.classList.toggle('visually-hidden', !isActive);
 }
+
 //
 // function getFavoritesCocktails() {
 //   return JSON.parse(localStorage.getItem(FAVOURITES_COCKTAILS_KEY) || null) || [];
