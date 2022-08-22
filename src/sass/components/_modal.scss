@@ -27,15 +27,17 @@
 
 .modal__cocktail {
   width: 320px;
-  height: 990px;
+
+  //height: 990px;
 
   @include mq(tab-only) {
     width: 768px;
-    height: 598px
+    height: 598px;
   }
   @include mq(desk) {
     width: 822px;
-    height: 598px
+    height: 598px;
+
   }
 }
 
