@@ -28,7 +28,6 @@
 .modal__cocktail {
   min-width: 320px;
   height: 600px;
-
   @include mq(tab-only) {
     width: 768px;
     height: 598px;
@@ -42,6 +41,7 @@
 
 .modal__ingredient {
   width: 320px;
+  height: 600px;
   //height: 990px;
 
   @include mq(tab-only) {
@@ -148,9 +148,12 @@
   margin-left: 32px;
   height: 128px;
   max-width: 320px;
-  overflow: overlay;
+  margin-bottom: 50px;
+
   @include mq(desk) {
-    min-width: 502px;
+    //min-width: 502px;
+    min-width: 430px;
+    overflow: overlay;
   }
   @include mq(tab-only) {
     min-width: 448px;
@@ -195,7 +198,6 @@
   margin-top: 10px;
   //min-width: 270px;
   max-width: 722px;
-  max-height: 200px;
   font-family: var(--primary-font-family);
   font-weight: 400;
   font-size: 16px;
@@ -205,6 +207,9 @@
   @include mq(tab) {
     //max-width: 764px;
     max-height: 90px;
+  }
+  @include mq(desc) {
+    max-height: 200px;
   }
 }
 
@@ -251,8 +256,11 @@
 }
 
 .line {
-  border-bottom: 1px solid #FD5103;
-  width: 715px;
+  border-bottom: 1px solid var(--accent-color);
+  min-width: 320px;
+  @include mq(desk) {
+    min-width: 715px;
+  }
 }
 
 .backdrop__cocktail ::-webkit-scrollbar {
