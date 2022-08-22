@@ -3,12 +3,12 @@ import './js/services/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
+import './js/markup/mobileMenu';
 import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
 import './js/dark/themeToggle';
 
 import './js/modals/modalSignIn';
-
 
 import CocktailApiService from './js/services/CocktailApiService';
 

@@ -95,7 +95,7 @@
   border: 1px solid #fd5103;
   border-radius: 5px;
   outline: none;
-  background-color: var(--search-input-color) ;
+  background-color: var(--search-input-color);
 }
 
 .header__theme-list {
@@ -118,7 +118,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-  color: var( --accent-theme-color);
+  color: var(--accent-theme-color);
 }
 
 .header__switcher {
@@ -149,6 +149,7 @@
 }
 
 .btn__burger-menu-open {
+  // position: absolute;
   padding-top: 10px;
   padding-bottom: 10px;
   width: 40px;
@@ -263,11 +264,8 @@
   }
 
   10% {
-    transform: scale(0, .2) translateY(8);
+    transform: scale(0, 0.2) translateY(8);
   }
-
-
-
 }
 
 .drink-white {
@@ -281,8 +279,5 @@
     left: 109.5px;
   }
 }
-
-
-
 
 // ----test----
