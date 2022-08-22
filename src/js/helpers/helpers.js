@@ -18,3 +18,9 @@ import Notiflix from 'notiflix';
 // export function letMsgTotalFindImages(total) {
 //     return Notify.success(`Hooray! We found ${total} images.`)
 // }
+
+
+export function validateDate(obj, key) {
+    let array = obj[key] === undefined ? [] : obj[key];
+    return array;
+}
