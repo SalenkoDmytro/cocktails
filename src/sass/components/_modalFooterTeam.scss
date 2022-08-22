@@ -13,24 +13,30 @@
   }
   
   .modal-team {
-    overflow: auto;
-    border-radius: 4px;
-    position: absolute;
-    width: 100%;
-	max-width: 1200px;
-	max-height: 850px;
+    width: 300px;
+	  height: 550px;
+    padding: 30px;
     top: 20px;
     left: 50%;
     transform: translate(-50%) scale(1) rotate(0);
     background-color: #fff;
     transition: cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 30px;
+    overflow: auto;
+    border-radius: 4px;
+    position: absolute;
+    padding: 10px;
     @media screen and (min-width: 768px) {
       top: 20px;
+      width: 738px;
+	    height: 500px;
     }
     @media screen and (min-width: 1200px) {
-      top: 60px;
-      padding: 10px 10px;
+      top: 30px;
+      width: 1200px;
+	    height: 800px;
+      padding-right: 20px;
+      padding-bottom: 30px;
+      padding-left: 20px;
     }
   }
   
@@ -58,7 +64,6 @@
   }
 
   .team__title {
-    margin-bottom: 20px;
     text-align: center;
     font-weight: 500;
     font-size: 22px;
