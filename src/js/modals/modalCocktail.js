@@ -16,22 +16,21 @@ async function onOpenModalCocktail(e) {
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
     // const findCocktailName = e.currentTarget.querySelector('li > p').textContent
-    const findCocktailId = e.currentTarget.dataset.id
-    console.log(findCocktailId);
-    // await cocktailApiService.fetchCocktailById(findCocktailId);
-    // const cocktail = cocktailApiService.idDrink[0];
-    // await markupCocktail(cocktail);
-    // console.log(cocktail);
+    cocktailApiService.searchQuery = e.target.dataset.id
+    // const cocktailId = cocktailApiService.searchQuery;
+    await cocktailApiService.fetchCocktailById();
+    const cocktail = cocktailApiService.drinks[0];
+    await markupCocktail(cocktail);
 
-    // const dataType = e.target.getAttribute('data-type');
-    // if (dataType === 'open-learn-more') {
-    //   refs.backdropCocktail.classList.toggle('visually-hidden');
-    //   const favourites = getFavoritesCocktails();
-    //   const isAddedToFavourites = favourites.some(({ strDrink }) => strDrink === cocktail.strDrink);
-    //   if (isAddedToFavourites) {
-    //     toggleAddFavouriteIngredientBtn(true);
-    //   }
-    // }
+    const dataType = e.target.getAttribute('data-type');
+    if (dataType === 'open-learn-more') {
+      refs.backdropCocktail.classList.toggle('visually-hidden');
+      const favourites = getFavoritesCocktails();
+      const isAddedToFavourites = favourites.some(({ strDrink }) => strDrink === cocktail.strDrink);
+      if (isAddedToFavourites) {
+        toggleAddFavouriteIngredientBtn(true);
+      }
+    }
   } catch (err) {
     console.error(err);
   }

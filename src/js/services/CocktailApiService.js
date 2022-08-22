@@ -3,7 +3,7 @@ const axios = require('axios');
 export default class CocktailApiService {
   constructor() {
     this.BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-    this.searchQuery = '';
+    this.searchQuery;
     this.page = 1;
     this.drinks = {};
     this.ingredients = {};
@@ -11,8 +11,6 @@ export default class CocktailApiService {
     this.page = 1;
     this.favouriteDrinks = [];
     this.favouriteIngredients = [];
-    this.idDrink = 0;
-    this.idIngredient = 0;
   }
 
   async fetchCocktaileByFirstLetter() {
@@ -41,18 +39,18 @@ export default class CocktailApiService {
     this.randomDrink = response.data.drinks;
   }
 
-  async fetchCocktailById(query) {
-    const url = `${this.BASE_URL}lookup.php?i=${query || this.searchQuery}`;
+  async fetchCocktailById() {
+    const url = `${this.BASE_URL}lookup.php?i=${this.searchQuery}`;
     const response = await axios.get(url);
     // return response.data.drinks;
-    this.idDrink = response.data.idDrink;
+    this.drinks = response.data.drinks;
   }
 
-  async fetchCocktailId(query) {
-    const url = `${this.BASE_URL}lookup.php?iid=${query || this.searchQuery}`;
+  async fetchCocktailId() {
+    const url = `${this.BASE_URL}lookup.php?iid=${this.searchQuery}`;
     const response = await axios.get(url);
     // return response.data.drinks;
-    this.idIngredient = response.data.idIngredient;
+    this.ingredients = response.data.drinks;
   }
 
   addFavouriteDrinksById(idDrink) {

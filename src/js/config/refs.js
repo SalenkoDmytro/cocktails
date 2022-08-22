@@ -26,8 +26,7 @@ export const refs = {
   removeCocktail: document.querySelector('[data-remove-cocktail]'),
   addIngredient: document.querySelector('[data-add-ingredient]'),
   removeIngredient: document.querySelector('[data-remove-ingredient]'),
-  nameCocktailOpenModal: document.querySelector('[data-cocktail-name]'),
-//#
+
   openModalTeam: document.querySelector('.js-modal-open-team'),
   closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
   backdropModalTeam: document.querySelector('.js-modal-team'),
