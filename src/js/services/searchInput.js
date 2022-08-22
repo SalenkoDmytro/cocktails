@@ -1,6 +1,7 @@
 import CocktailApiService from './CocktailApiService';
 import renderRandomData from './renderRandomData';
 import { refs } from '../config/refs';
+import { renderCards, noResultRender } from './renderCards';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
@@ -14,11 +15,7 @@ async function onInputChange(e) {
     try {
       cocktailApiService.resetSetting();
       const responce = await renderRandomData();
-      if (!responce) {
-        console.log('Сори ничего не нашли');
-        return;
-      }
-      console.log('Надо зарендерить >>>', responce);
+      renderCards(responce);
     } catch (error) {
       console.log(error.message);
     }
@@ -26,17 +23,19 @@ async function onInputChange(e) {
   }
 
   await fetchSearchValue();
-  if (!cocktailApiService.drinks)
-    return console.log('Сюда добавить рендер что ничего не найдено');
+  if (!cocktailApiService.drinks) return noResultRender();
 
-  console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+  renderCards(cocktailApiService.drinks);
 }
 
 async function onSubmitBtnClick(e) {
   e.preventDefault();
   if (e.currentTarget.elements.search.value.trim() === '') return;
   await fetchSearchValue();
-  console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+
+  if (!cocktailApiService.drinks) return noResultRender();
+
+  renderCards(cocktailApiService.drinks);
   refs.form.reset();
 }
 
