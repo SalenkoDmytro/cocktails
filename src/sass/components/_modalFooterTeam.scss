@@ -14,7 +14,7 @@
   
   .modal-team {
     width: calc(100% - 40px);
-	  max-height: calc(100% - 40px);
+	  height: calc(100% - 40px);
     padding: 30px;
     top: 20px;
     left: 50%;
@@ -87,14 +87,14 @@
 
   .team__list-item {
     border: 1px solid var(--accent-color);
-    border-radius: 4px;
+    border-radius: 20px;
     box-sizing: border-box;
   }
   
   .team__img {
     display: block;
     width: 100%;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
   }
 
     .workers {
