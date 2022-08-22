@@ -1,5 +1,6 @@
 import DrinkingUser from './../drinkingUser/createUser';
 import { getDatabase, ref, set, get } from "firebase/database";
+import { validateDate } from "../helpers/helpers"
 const axios = require('axios');
 
 export default class UserManager {
@@ -22,9 +23,13 @@ export default class UserManager {
                 if (snapshot.exists()) {
                     let dataDb = snapshot.val();
                     //*** cocktails
-                    let cocktails = dataDb.cocktails === undefined ? [] : dataDb.cocktails;
+                    // let cocktails = dataDb.cocktails === undefined ? [] : dataDb.cocktails;
+                    let cocktails = null;
+                    validateDate(dataDb, cocktails);
                     user.importCocktails(cocktails);
-                    let ingredients = dataDb.cocktails === undefined ? [] : dataDb.ingredients;
+                    //let ingredients = dataDb.cocktails === undefined ? [] : dataDb.ingredients;
+                    let ingredients = null;
+                    validateDate(dataDb, ingredients);
                     user.importIngredients(ingredients);
                     user.setFetched(true);
                     console.log("Sucsses fetch");
@@ -34,9 +39,11 @@ export default class UserManager {
                 return user;
             })
             .catch((error) => {
-                console.log("error");
+                throw new Error(error);
             });
     }
+
+
 
     //* Записати юзера в базу
     pushUser(user) {
@@ -55,7 +62,7 @@ export default class UserManager {
                 console.log("Susses set")
             })
             .catch((error) => {
-                console.error(error);
+                throw new Error(error);
             });
     }
 }

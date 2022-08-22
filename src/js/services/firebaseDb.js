@@ -21,10 +21,11 @@ const listFavIngredientGallery = document.querySelector('[data-gallery-ingredien
 const btnListCocktail = document.querySelectorAll('[data-favorite=cocktail]');
 const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]');
 
+
 listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
-listFavIngredientGallery.addEventListener("click", onBtnFavIngredientGalleryClick);
+// listFavIngredientGallery.addEventListener("click", onBtnFavIngredientGalleryClick);
 
-
+console.log(location);
 //! *****************************************************************************************************************
 //клік по кнопці додати до улюблених коктейлів
 async function onBtnFavCocktailGalleryClick(e) {
