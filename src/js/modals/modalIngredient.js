@@ -64,14 +64,14 @@ function markupIngredient(ingredient) {
 
 function onAddIngredient(e) {
   if (e.target.textContent === 'Add to favorite') {
-    refs.addIngredient.classList.add('visually-hidden')
-    refs.removeIngredient.classList.remove('visually-hidden')
+    refs.addIngredient.classList.add('visually-hidden');
+    refs.removeIngredient.classList.remove('visually-hidden');
   }
 }
 
 function onRemoveIngredient(e) {
-  if(e.target.textContent === 'Remove from favorite'){
-    refs.addIngredient.classList.remove('visually-hidden')
-    refs.removeIngredient.classList.add('visually-hidden')
+  if (e.target.textContent === 'Remove from favorite') {
+    refs.addIngredient.classList.remove('visually-hidden');
+    refs.removeIngredient.classList.add('visually-hidden');
   }
 }

@@ -16,7 +16,7 @@ async function onOpenModalCocktail(e) {
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
     // const findCocktailName = e.currentTarget.querySelector('li > p').textContent
-    cocktailApiService.searchQuery = e.target.dataset.id
+    cocktailApiService.searchQuery = e.target.dataset.id;
     // const cocktailId = cocktailApiService.searchQuery;
     await cocktailApiService.fetchCocktailById();
     const cocktail = cocktailApiService.drinks[0];
@@ -87,6 +87,7 @@ function toggleAddFavouriteIngredientBtn(isActive) {
   refs.addCocktail.classList.toggle('visually-hidden', isActive);
   refs.removeCocktail.classList.toggle('visually-hidden', !isActive);
 }
+
 //
 // function getFavoritesCocktails() {
 //   return JSON.parse(localStorage.getItem(FAVOURITES_COCKTAILS_KEY) || null) || [];
