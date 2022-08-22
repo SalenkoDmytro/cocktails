@@ -191,7 +191,6 @@
 }
 
 
-// select
 .app {
     margin-top: 0;
 
@@ -204,9 +203,6 @@
     }
 }
 
-.wrap {
-    width: 500px;
-}
 
 .select {
     width: 100%;
@@ -220,15 +216,14 @@
         display: block;
     }
 
-    .select__input {
-        border-bottom: none;
-    }
+
 }
 
 .select__input {
+    z-index: 1;
     width: 93px;
     height: 34px;
-    border: 1px solid #FD5103;
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
@@ -247,8 +242,24 @@
 
 
 
+
     transition: color var(--transition), background-color var(--transition);
 
+
+
+}
+
+.hero__icon {
+    fill: var(--accent-color);
+}
+
+.select__input-checked {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+
+    .hero__icon {
+        fill: var(--white-color);
+    }
 
 
 }
@@ -257,7 +268,7 @@
     width: 94px;
     margin: 0 auto;
     position: absolute;
-    border: 1px solid #FD5103;
+    border: 1px solid var(--accent-color);
     border-radius: 4px;
     top: 34px;
     left: 0;
@@ -290,14 +301,14 @@
     padding-left: 10px;
 }
 
-.hero__img{
+.hero__img {
     width: 100vw;
-    @include mq(tab) {
-            width: 100%;
-    
-        }
-}
 
+    @include mq(tab) {
+        width: 100%;
+
+    }
+}
 
 .sorry {
     margin-top: 100px;

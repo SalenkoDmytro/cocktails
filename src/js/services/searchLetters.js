@@ -4,11 +4,13 @@ import { createDroplist } from './renderMobLetters';
 import { renderCards, noResultRender } from './renderCards';
 
 const cocktailApiService = new CocktailApiService();
+let checked = document.querySelector(".select__input");
 
 refs.lettersList.addEventListener('click', onLetterClick);
 refs.inputMobile.addEventListener('click', onMobLetterClick);
 
 async function onLetterClick(e) {
+  checked.classList.add("select__input-checked");
   if (!e.target.dataset.letter) return;
   cocktailApiService.searchQuery = e.target.dataset.letter;
 
