@@ -1,22 +1,24 @@
 import CocktailApiService from './CocktailApiService';
 import { refs } from '../config/refs';
 import { createDroplist } from './renderMobLetters';
+import { renderCards, noResultRender } from './renderCards';
 
 const cocktailApiService = new CocktailApiService();
+let checked = document.querySelector(".select__input");
 
 refs.lettersList.addEventListener('click', onLetterClick);
 refs.inputMobile.addEventListener('click', onMobLetterClick);
 
 async function onLetterClick(e) {
+  checked.classList.add("select__input-checked");
   if (!e.target.dataset.letter) return;
   cocktailApiService.searchQuery = e.target.dataset.letter;
 
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
-    if (!cocktailApiService.drinks)
-      return console.log('Сюда добавить рендер что ничего не найдено');
+    if (!cocktailApiService.drinks) return noResultRender();
 
-    console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+    renderCards(cocktailApiService.drinks);
   } catch (error) {
     console.log(error.message);
   }

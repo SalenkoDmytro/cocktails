@@ -22,8 +22,12 @@ export const refs = {
     cocktailList: document.querySelector('.ingredient'),
   },
   ingredientRef: document.querySelector('.ingredient__wrap'),
-  // characteristicIngredient: document.querySelector('.characteristic'),
-
+  addCocktail: document.querySelector('[data-add-cocktail]'),
+  removeCocktail: document.querySelector('[data-remove-cocktail]'),
+  addIngredient: document.querySelector('[data-add-ingredient]'),
+  removeIngredient: document.querySelector('[data-remove-ingredient]'),
+  nameCocktailOpenModal: document.querySelector('[data-cocktail-name]'),
+//#
   openModalTeam: document.querySelector('.js-modal-open-team'),
   closeBtnModalTeam: document.querySelector('.js-modal-team-close'),
   backdropModalTeam: document.querySelector('.js-modal-team'),
@@ -35,4 +39,5 @@ export const refs = {
   selectLetter: document.querySelector('#select'),
   inputMobile: document.querySelector('.select__input'),
   inputSpan: document.querySelector('.input-span'),
+  gallery: document.querySelector('.gallery__list'),
 };
