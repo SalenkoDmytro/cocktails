@@ -104,7 +104,9 @@
   border-radius: 5px;
   outline: none;
   background-color: var(--search-input-color) ;
+  color: var(--input-text-color);
 }
+
 
 .header__theme-list {
   display: none;

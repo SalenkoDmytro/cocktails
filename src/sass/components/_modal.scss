@@ -123,7 +123,7 @@
 
 .ingredient__title,
 .cocktail__title {
-  margin-top: 28px;
+  margin-top: 8px;
   margin-left: 32px;
   font-family: var(--primary-font-family);
   font-weight: 600;
@@ -146,9 +146,9 @@
 .ingredient {
   margin-top: 8px;
   margin-left: 32px;
-  height: 128px;
+  height: 160px;
   max-width: 320px;
-  margin-bottom: 50px;
+  margin-bottom: 43px;
 
   @include mq(desk) {
     //min-width: 502px;
@@ -195,7 +195,6 @@
 }
 
 .recipe__text {
-  margin-top: 10px;
   //min-width: 270px;
   max-width: 722px;
   font-family: var(--primary-font-family);
@@ -224,7 +223,7 @@
   display: flex;
   background-color: transparent;
   border: transparent;
-  fill: var(--modal-close-icon-color);
+  fill: var(--accent-color);
 }
 
 //.......modal-2
