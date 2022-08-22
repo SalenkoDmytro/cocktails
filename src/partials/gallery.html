@@ -2,7 +2,10 @@
   <!-- gallery cocktails -->
   <div class="gallery__container container">
     <h2 class="gallery__title">Cocktails</h2>
-    <ul class="gallery__list card-set js-open-modal-cocktail">
+    <ul
+      class="gallery__list card-set js-open-modal-cocktail"
+      data-gallery-cocktail
+    >
       <li class="gallery__list-item card-set-item">
         <img
           class="gallery__img"
@@ -20,7 +23,8 @@
             Learn more
           </button>
           <button
-            class="gallery__btn gallery__btn-fav"
+            class="gallery__btn gallery__btn-fav data-favorite"
+            data-favorite="cocktail"
             type="button"
             data-id="1"
           >
@@ -53,6 +57,7 @@
           </button>
           <button
             class="gallery__btn gallery__btn-fav"
+            data-favorite="cocktail"
             type="button"
             data-id="2"
           >
@@ -85,6 +90,7 @@
           </button>
           <button
             class="gallery__btn gallery__btn-fav"
+            data-favorite="cocktail"
             type="button"
             data-id="3"
           >
@@ -104,7 +110,7 @@
   <!-- gallery favorite ingredients -->
   <div class="gallery__container container">
     <h2 class="gallery__title">Favorite ingredients</h2>
-    <ul class="gallery__list-ingr card-set">
+    <ul class="gallery__list-ingr card-set" data-gallery-ingredient>
       <li class="gallery__list-item card-set-item">
         <p class="gallery__list-name">Campari</p>
         <p class="gallery__list-type">Liqueur</p>
@@ -112,7 +118,12 @@
           <button class="gallery__btn gallery__btn-more" type="button">
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button
+            class="gallery__btn gallery__btn-fav"
+            type="button"
+            data-favorite="ingredient"
+            data-id="1"
+          >
             Remove
             <svg width="16" height="14">
               <use
@@ -131,7 +142,12 @@
           <button class="gallery__btn gallery__btn-more" type="button">
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button
+            class="gallery__btn gallery__btn-fav"
+            type="button"
+            data-favorite="ingredient"
+            data-id="2"
+          >
             Remove
             <svg width="16" height="14">
               <use
@@ -149,7 +165,12 @@
           <button class="gallery__btn gallery__btn-more" type="button">
             Learn more
           </button>
-          <button class="gallery__btn gallery__btn-fav" type="button">
+          <button
+            class="gallery__btn gallery__btn-fav"
+            type="button"
+            data-favorite="ingredient"
+            data-id="3"
+          >
             Remove
             <svg width="16" height="14">
               <use
