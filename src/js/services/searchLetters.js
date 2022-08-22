@@ -37,3 +37,14 @@ function onMobLetterClick() {
     refs.selectLetter.lastChild.remove();
   });
 }
+
+let fav = document.querySelector(".fav__select-input");
+let favList = document.querySelector('.fav__list');
+fav.addEventListener("click", e => {
+  if (!favList.classList.contains("visually-hidden")) {
+    favList.classList.add("visually-hidden");
+    return;
+  }
+  favList.classList.remove("visually-hidden");
+  
+ })
