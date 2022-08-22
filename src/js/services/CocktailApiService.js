@@ -11,6 +11,8 @@ export default class CocktailApiService {
     this.page = 1;
     this.favouriteDrinks = [];
     this.favouriteIngredients = [];
+    this.idDrink = 0;
+    this.idIngredient = 0;
   }
 
   async fetchCocktaileByFirstLetter() {
@@ -29,7 +31,7 @@ export default class CocktailApiService {
     const url = `${this.BASE_URL}search.php?i=${query || this.searchQuery}`;
     const response = await axios.get(url);
     this.ingredients = response.data.ingredients;
-    return response.data.ingredients
+    return response.data.ingredients;
   }
 
   async fetchRandomCocktaile() {
@@ -39,13 +41,27 @@ export default class CocktailApiService {
     this.randomDrink = response.data.drinks;
   }
 
+  async fetchCocktailById(query) {
+    const url = `${this.BASE_URL}lookup.php?i=${query || this.searchQuery}`;
+    const response = await axios.get(url);
+    // return response.data.drinks;
+    this.idDrink = response.data.idDrink;
+  }
+
+  async fetchCocktailId(query) {
+    const url = `${this.BASE_URL}lookup.php?iid=${query || this.searchQuery}`;
+    const response = await axios.get(url);
+    // return response.data.drinks;
+    this.idIngredient = response.data.idIngredient;
+  }
+
   addFavouriteDrinksById(idDrink) {
     this.favouriteDrinks.push(idDrink);
   }
 
   deleteFavouriteDrinks(idDrink) {
     this.favouriteDrinks = this.favouriteDrinks.filter(
-      data => data !== idDrink
+      data => data !== idDrink,
     );
   }
 
@@ -55,7 +71,7 @@ export default class CocktailApiService {
 
   deleteFavouriteIngredientsById(idIngredient) {
     this.favouriteDrinks = this.favouriteDrinks.filter(
-      data => data !== idIngredient
+      data => data !== idIngredient,
     );
   }
 

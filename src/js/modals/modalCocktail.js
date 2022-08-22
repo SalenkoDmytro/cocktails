@@ -15,22 +15,23 @@ async function onOpenModalCocktail(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropCocktail));
   refs.backdropCocktail.addEventListener('click', onBackdropClickWrapper(refs.backdropCocktail));
   try {
+    // const findCocktailName = e.currentTarget.querySelector('li > p').textContent
+    const findCocktailId = e.currentTarget.dataset.id
+    console.log(findCocktailId);
+    // await cocktailApiService.fetchCocktailById(findCocktailId);
+    // const cocktail = cocktailApiService.idDrink[0];
+    // await markupCocktail(cocktail);
+    // console.log(cocktail);
 
-    const findCocktailName = e.currentTarget.querySelector('li > p').textContent
-    await cocktailApiService.fetchCocktaileByName(findCocktailName);
-    const cocktail = cocktailApiService.drinks[0];
-    await markupCocktail(cocktail);
-
-    const dataType = e.target.getAttribute('data-type');
-    if (dataType === 'open-learn-more') {
-      refs.backdropCocktail.classList.toggle('visually-hidden');
-      const favourites = getFavoritesCocktails();
-      const isAddedToFavourites = favourites.some(({ strDrink }) => strDrink === cocktail.strDrink);
-      if (isAddedToFavourites) {
-        toggleAddFavouriteIngredientBtn(true);
-      }
-
-    }
+    // const dataType = e.target.getAttribute('data-type');
+    // if (dataType === 'open-learn-more') {
+    //   refs.backdropCocktail.classList.toggle('visually-hidden');
+    //   const favourites = getFavoritesCocktails();
+    //   const isAddedToFavourites = favourites.some(({ strDrink }) => strDrink === cocktail.strDrink);
+    //   if (isAddedToFavourites) {
+    //     toggleAddFavouriteIngredientBtn(true);
+    //   }
+    // }
   } catch (err) {
     console.error(err);
   }
@@ -68,7 +69,7 @@ refs.removeCocktail.addEventListener('click', onRemoveCocktail);
 
 function onAddCocktail(e) {
   if (e.target.textContent === 'Add to favorite') {
-    const cocktail = cocktailApiService.randomDrink[0];
+    const cocktail = cocktailApiService.drinks[0];
     const favourites = getFavoritesCocktails();
     localStorage.setItem(FAVOURITES_COCKTAILS_KEY, JSON.stringify([...favourites, cocktail]));
     toggleAddFavouriteIngredientBtn(true);
@@ -77,7 +78,7 @@ function onAddCocktail(e) {
 
 function onRemoveCocktail(e) {
   if (e.target.textContent === 'Remove from favorite') {
-    const cocktail = cocktailApiService.randomDrink[0];
+    const cocktail = cocktailApiService.drinks[0];
     localStorage.removeItem(cocktail.strDrink);
     toggleAddFavouriteIngredientBtn(false);
   }
