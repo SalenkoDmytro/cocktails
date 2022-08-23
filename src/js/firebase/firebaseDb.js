@@ -67,7 +67,6 @@ const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]
 
 // listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
 // listFavIngredientGallery.addEventListener("click", onBtnFavIngredientGalleryClick);
-
 console.log(location);
 //! *****************************************************************************************************************
 //клік по кнопці додати до улюблених коктейлів
