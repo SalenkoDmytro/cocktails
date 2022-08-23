@@ -17,7 +17,6 @@ refs.favCockBtn.addEventListener('click', () => {
        refs.runawayBtn.style.display = 'none';
        refs.sectionHero.style.display = 'none';
        refs.galleryTitle.textContent = 'Favorite cocktails';
-       refs.galleryTitle.style.marginTop = '85px';
        refs.favList.classList.add('visually-hidden');
    
    });
@@ -27,7 +26,6 @@ refs.favCockBtn.addEventListener('click', () => {
  
        refs.sectionHero.style.display = 'none';
        refs.galleryTitle.textContent = 'Favorite ingridiens';
-       refs.galleryTitle.style.marginTop = '85px';
        refs.favList.classList.add('visually-hidden');
    
    });
