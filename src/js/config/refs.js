@@ -7,6 +7,7 @@ export const refs = {
   closeMenuBtn: document.querySelector('[data-menu-close]'),
   menu: document.querySelector('[data-menu]'),
 
+  runawayBtn: document.querySelector('#runaway-btn'),
   openModalCocktailBtn: document.querySelector('.js-open-modal-cocktail'),
   closeModalCocktailBtn: document.querySelector('[data-modal-close-cocktail]'),
   backdropCocktail: document.querySelector('[data-bg-cocktail]'),
@@ -40,6 +41,12 @@ export const refs = {
   inputSpan: document.querySelector('.input-span'),
   gallery: document.querySelector('.gallery__list'),
 
+  header: document.querySelector('.header'),
   fav: document.querySelector('.fav__select-input'),
   favList: document.querySelector('.fav__list'),
+  favCockBtn: document.querySelector('.js-btn-fav-cock'),
+  favIngrBtn: document.querySelector('.js-btn-fav-ingr'),
+
+  sectionHero: document.querySelector('.section-hero'),
+  galleryTitle: document.querySelector('.gallery__title'),
 };
