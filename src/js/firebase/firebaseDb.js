@@ -204,6 +204,7 @@ function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
             btnToggleFavCocktailModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
+
         }
 
         if (!user.getId()) {
@@ -289,7 +290,13 @@ function delIngredientByUser(user, ingredientId) {
 // TODO зміна стилів в галереї по кліку додати до улюблених
 // !!!   рядок btn.classList.add("is-checked"); - не змінювати
 
-
+function btnToggleFavGallery(btn, isChecked) {
+    if (isChecked) {
+        btn.classList.add("is-checked");
+    } else {
+        btn.classList.remove("is-checked");
+    }
+}
 
 // TODO зміна стилів по кліку в модальному вікні додати до улюблених
 // !!!   рядок btn.classList.add("is-checked"); - не змінювати
