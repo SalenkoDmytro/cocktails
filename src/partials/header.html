@@ -132,9 +132,18 @@
     >
       Log in
     </button>
-    <button type="button" class="btn__burger-menu-open btn" data-menu-open>
-      <svg class="menu-open__icon" width="40" height="40">
-        <use href="./images/icons.svg#icon-menu"></use>
+    <button
+      type="button"
+      class="btn btn__burger-menu-toggle"
+      data-menu-toggle
+      aria-expanded="false"
+    >
+      <svg class="menu__toggle-icon" width="40" height="40">
+        <use class="menu__open-icon" href="./images/icons.svg#icon-menu"></use>
+        <use
+          class="menu__close-icon"
+          href="./images/icons.svg#icon-close"
+        ></use>
       </svg>
     </button>
   </div>
