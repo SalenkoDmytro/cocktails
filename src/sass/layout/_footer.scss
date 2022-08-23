@@ -1,6 +1,6 @@
 .footer {
-  // position: absolute; 
-  // bottom: 0; 
+  // position: absolute;
+  // bottom: 0;
   // width: 100%;
   position: relative;
   display: flex;
@@ -21,7 +21,7 @@
   color: var(--white-color);
   @include mq(fab) {
       width: 380px;
-  
+
     }
 }
 
@@ -57,7 +57,11 @@
 }
 
 .back-to-top.active {
+  margin-bottom: 40px;
+  margin-right: 20px;
   bottom: 75px;
   transition: all 0.3s;
   opacity: 1;
+  fill: var(--accent-color);
 }
+

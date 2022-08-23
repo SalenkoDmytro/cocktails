@@ -9,7 +9,7 @@
     }
 
     @include mq(desk) {
-        
+
         padding-bottom: 192px;
     }
 }
@@ -293,14 +293,7 @@
     color: var(--accent-color);
     margin: 0 auto;
 
-
-
-
-
     transition: color var(--transition), background-color var(--transition);
-
-
-
 }
 
 .hero__icon {
@@ -329,7 +322,20 @@
     right: 0;
     max-height: 84px;
     overflow-y: auto;
+}
 
+.select ::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+
+.select ::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.select ::-webkit-scrollbar-thumb {
+  background: #FD5103;
+  border-radius: 4px;
 }
 
 .select__list {
