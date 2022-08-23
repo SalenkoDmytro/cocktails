@@ -14,5 +14,3 @@ function toggleModalTeam() {
   refs.backdropModalTeam.classList.toggle('visually-hidden');
   console.log(('qwe'));
 }
-
-
