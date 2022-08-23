@@ -20,6 +20,7 @@ async function onOpenModalCocktail(e) {
     // const cocktailId = cocktailApiService.searchQuery;
     await cocktailApiService.fetchCocktailById();
     const cocktail = cocktailApiService.drinks[0];
+
     await markupCocktail(cocktail);
 
     const dataType = e.target.getAttribute('data-type');

@@ -29,7 +29,7 @@ export function createMarkup(data) {
           <button class="gallery__btn gallery__btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
             Add to
             <svg width="16" height="14">
-              <use
+              <use 
                 class="gallery__btn-fav-svg"
                 href="${icons}#icon-heart"
               ></use>

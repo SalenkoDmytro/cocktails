@@ -1,5 +1,5 @@
 import './sass/index.scss';
-import './js/services/firebaseAuthorization';
+import './js/firebase/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
@@ -19,7 +19,7 @@ import './js/services/runawayBtn';
 
 import './js/markup/mobileMenu';
 
-import './js/services/firebaseDb';
+import './js/firebase/firebaseDb';
 
 import CocktailApiService from './js/services/CocktailApiService';
 

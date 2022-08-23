@@ -237,3 +237,7 @@
     color: var(--btn-hover-color);
   }
 }
+
+.gallery__btn-fav.is-checked {
+  color: yellow;
+}
