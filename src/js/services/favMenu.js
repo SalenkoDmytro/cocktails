@@ -3,9 +3,31 @@ import { refs } from '../config/refs';
 
 refs.fav.addEventListener('click', e => {
     console.log('qwe');
-  if (!favList.classList.contains('visually-hidden')) {
-    favList.classList.add('visually-hidden');
+  if (refs.favList.classList.contains('visually-hidden')) {
+    refs.favList.classList.add('visually-hidden');
     return;
   }
-  favList.classList.remove('visually-hidden');
+  refs.favList.classList.remove('visually-hidden');
 });
+
+refs.favCockBtn.addEventListener('click', () => {
+
+  //   refs.header.style.backgroundColor = '#D9D9D9';
+       refs.openModalCocktailBtn.style.display = 'none';
+       refs.runawayBtn.style.display = 'none';
+       refs.sectionHero.style.display = 'none';
+       refs.galleryTitle.textContent = 'Favorite cocktails';
+       refs.galleryTitle.style.marginTop = '85px';
+       refs.favList.classList.add('visually-hidden');
+   
+   });
+ 
+ 
+   refs.favIngrBtn.addEventListener('click', () => {
+ 
+       refs.sectionHero.style.display = 'none';
+       refs.galleryTitle.textContent = 'Favorite ingridiens';
+       refs.galleryTitle.style.marginTop = '85px';
+       refs.favList.classList.add('visually-hidden');
+   
+   });

@@ -55,7 +55,7 @@
 }
 
 .header__search {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     display: none;
   }
   margin-left: 150px;
@@ -239,6 +239,9 @@
 }
 
 .login-btn {
+  display: none;
+  @include mq(desk) {
+  display: block;
   font-family: var(--title-font-family);
   padding: 5px 15px;
   background-color: var(--accent-color);
@@ -247,6 +250,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.33;
+  }
 }
 
 .header__logo {
@@ -339,6 +343,8 @@
 }
 
 .fav__nav-link{
+  background-color: inherit;
+  border: 0;
   display: flex;
   align-items: center;
   padding-left: 12px;
