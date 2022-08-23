@@ -80,10 +80,14 @@
         <div class="fav__select-input">Favorite</div>
         <ul class="fav__list visually-hidden">
           <li class="fav__dropdown-item">
-            <a class="fav__nav-link" href="/src/favCockt.html">Favorite cocktails</a>
+            <a class="fav__nav-link" href="/src/favCockt.html"
+              >Favorite cocktails</a
+            >
           </li>
           <li class="fav__dropdown-item">
-            <a class="fav__nav-link" href="/src/favIngrid.html">Favorite ingredients</a>
+            <a class="fav__nav-link" href="/src/favIngrid.html"
+              >Favorite ingredients</a
+            >
           </li>
         </ul>
       </li>
@@ -127,9 +131,18 @@
     >
       Log in
     </button>
-    <button type="button" class="btn__burger-menu-open btn" data-menu-open>
-      <svg class="menu-open__icon" width="40" height="40">
-        <use href="./images/icons.svg#icon-menu"></use>
+    <button
+      type="button"
+      class="btn btn__burger-menu-toggle"
+      data-menu-toggle
+      aria-expanded="false"
+    >
+      <svg class="menu__toggle-icon" width="40" height="40">
+        <use class="menu__open-icon" href="./images/icons.svg#icon-menu"></use>
+        <use
+          class="menu__close-icon"
+          href="./images/icons.svg#icon-close"
+        ></use>
       </svg>
     </button>
   </div>
