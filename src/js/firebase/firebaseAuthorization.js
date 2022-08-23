@@ -18,7 +18,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import {
   addListenerAfterLogIn,
@@ -51,7 +50,7 @@ function userSignInWithGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-
+      localStorage.setItem("user", JSON.stringify(user));
       console.log("🚀 ~ userSignInWithGoogle ~ user.uid", user.uid)
       // ...
       //TODO close modal autorization  closeModalAuth();
@@ -96,6 +95,7 @@ export function userSignOut() {
   signOut(auth)
     .then(() => {
       console.log("Sign-out successful");
+      localStorage.removeItem("user");
 
       // Sign-out successful.
       //TODO notify about SEE YOU LATER;
