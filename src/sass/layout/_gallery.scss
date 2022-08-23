@@ -281,12 +281,10 @@
   }
 }
 
-.gallery__btn-fav.is-checked {
-  background-color: red;
-}
-
 .gallery__btn-fav .gallery__btn-fav-svg {
-  fill: red;
+  fill: white;
+  stroke: var(--btn-bg-color);
+  stroke-width: 2px;
 }
 
 .gallery__btn-fav.is-checked .gallery__btn-fav-svg {

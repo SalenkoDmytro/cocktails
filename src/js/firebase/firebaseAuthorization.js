@@ -52,7 +52,6 @@ function userSignInWithGoogle() {
       // The signed-in user info.
       const user = result.user;
 
-
       console.log("🚀 ~ userSignInWithGoogle ~ user.uid", user.uid)
       // ...
       //TODO close modal autorization  closeModalAuth();
@@ -105,6 +104,10 @@ export function userSignOut() {
       // An error happened.
       //TODO notify Something went wrong. Please try again;
     });
+}
+
+export function getUser() {
+  return auth?.currentUser?.uid;
 }
 
 

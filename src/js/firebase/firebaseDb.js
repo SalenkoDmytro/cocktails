@@ -1,22 +1,35 @@
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, remove } from "firebase/database";
 import { firebaseConfig } from '../config/firebaseConfig';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
+const auth = getAuth();
+
 
 import UserManager from '../drinkingUser/managerUser'
 
-// import { getUser, onAuthStateChanged, getAuth, auth } from "../firebase/firebaseAuthorization";
-
-import { getAuth } from "firebase/auth";
+// import { auth } from "./firebaseAuthorization";
 
 const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
 
-
-
 const userManager = new UserManager(db);
-const userPromise = userManager.fetchUserById("12345")
+
+
+//!Промісифікація функції авторизації.
+
+const userPromise = new Promise((res, reg) => {
+    onAuthStateChanged(auth, user => {
+        if (user) {
+            res(userManager.fetchUserById(user.uid));
+        } else {
+        }
+    });
+})
+
+
+
 
 
 
@@ -38,7 +51,7 @@ export function delListenerAuthLogOut() {
     listFavCocktailGallery.removeEventListener("click", onBtnFavAfterLogOutCocktailGalleryClick);
 }
 
-function onBtnFavAfterLogOutCocktailGalleryClick(e) {
+export function onBtnFavAfterLogOutCocktailGalleryClick(e) {
     e.preventDefault();
     const favoriteBtn = e.target.hasAttribute("data-favorite")
     if (!favoriteBtn) {
@@ -47,12 +60,10 @@ function onBtnFavAfterLogOutCocktailGalleryClick(e) {
     console.log("Потрібно залогінитись");
 }
 
-
 export function delBtnFavoriteClassChecked() {
     const isCheckedArrayBtns = document.querySelectorAll(".is-checked")
     isCheckedArrayBtns.forEach(el => el.classList.remove('is-checked'))
 }
-
 
 
 // const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
@@ -76,22 +87,18 @@ console.log(location);
 function onBtnFavCocktailGalleryClick(e) {
     e.preventDefault();
 
-    const favoriteBtn = e.target.hasAttribute("data-favorite")
-    favoriteBtn.textContent = "ara"
-    if (e.target.nodeName === "svg") {
-        const svg = e.target.closest(".gallery__btn-fav").classList.toggle("is-checked");
-    }
-
-    if (e.target.nodeName === "BUTTON") {
-        const svg = e.target.querySelector(".gallery__btn-fav-svg").classList.toggle("is-checked");
-    }
+    const favoriteBtn = e.target.closest(".gallery__btn-fav")
+    console.log("🚀 ~ onBtnFavCocktailGalleryClick ~ favoriteBtn", favoriteBtn)
 
     if (!favoriteBtn) {
         return;
     }
 
-    let btnGalleryRef = e.target;
-    const idFavorite = e.target.dataset.id;
+    // const text = favoriteBtn.classList.contains("is-checked") ? "Add" : "False";
+    // favoriteBtn.textContent = text;
+
+    let btnGalleryRef = favoriteBtn;
+    const idFavorite = favoriteBtn.dataset.id;
     toggleCocktailModalInDb(idFavorite, btnGalleryRef)
 }
 
@@ -192,7 +199,7 @@ function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
 }
 
 // toggle коктейль в Модальному вікні бази даних
-function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
+export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
             addCocktailByUser(user, cocktailId)

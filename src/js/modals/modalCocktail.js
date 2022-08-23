@@ -5,7 +5,7 @@ import {
   onEscKeyPressWrapper,
 } from '../utils/onModalClose';
 import { getFavoritesCocktails } from '../utils/getFavouritesCocktailes';
-
+import { toggleCocktailModalInDb } from '../firebase/firebaseDb'
 const { img, cocktailList, instructions, cocktailName } = refs.cocktail;
 const cocktailApiService = new CocktailApiService();
 
@@ -65,9 +65,8 @@ function markupCocktail(cocktail) {
     const ingredient = cocktail[ingredientKey];
     const measure = cocktail[measureKey];
     if (ingredient) {
-      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> ${
-        measure || ''
-      }</span> <a
+      ingredients += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> ${measure || ''
+        }</span> <a
             class='link ingredient-link' data-type='open-ingredient'>${ingredient}</a>
           </li>`;
     }
@@ -80,7 +79,19 @@ function markupCocktail(cocktail) {
 refs.addCocktail.addEventListener('click', onAddCocktail);
 refs.removeCocktail.addEventListener('click', onRemoveCocktail);
 
+//********************додаданий код для DB */
+const addCocktailDb = document.querySelector("[data-id]");
+addCocktailDb.addEventListener('click', onAddCocktailDB);
+
+function onAddCocktailDB(e) {
+  let cocktailId = e.target.dataset.id
+  toggleCocktailModalInDb(cocktailId, e.target);
+}
+//************************************* */
+
+
 function onAddCocktail(e) {
+
   if (e.target.textContent === 'Add to favorite') {
     const cocktail = cocktailApiService.drinks[0];
     const favourites = getFavoritesCocktails();
