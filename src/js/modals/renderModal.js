@@ -46,6 +46,7 @@ export function renderModalIngredient(data) {
     strABV: degree,
     strAlcohol: question,
   } = data;
+  console.log(data);
   refs.backdropCocktail.innerHTML = '';
   const markup = `  <div class='modal__ingredient'>
     <div class='modal__wrap'>

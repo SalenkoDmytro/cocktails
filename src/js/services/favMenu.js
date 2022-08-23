@@ -1,8 +1,9 @@
 import { refs } from '../config/refs';
-
+import { renderCards } from './renderCards';
+import { renderFavIngredients } from '../favourites/renderFavorites';
 
 refs.fav.addEventListener('click', e => {
-    console.log('qwe');
+  console.log('qwe');
   if (refs.favList.classList.contains('visually-hidden')) {
     refs.favList.classList.add('visually-hidden');
     return;
@@ -10,22 +11,25 @@ refs.fav.addEventListener('click', e => {
   refs.favList.classList.remove('visually-hidden');
 });
 
-refs.favCockBtn.addEventListener('click', () => {
+refs.favCockBtn.addEventListener('click', onFavoriteCocktailClick);
 
-  //   refs.header.style.backgroundColor = '#D9D9D9';
-       refs.openModalCocktailBtn.style.display = 'none';
-       refs.runawayBtn.style.display = 'none';
-       refs.sectionHero.style.display = 'none';
-       refs.galleryTitle.textContent = 'Favorite cocktails';
-       refs.favList.classList.add('visually-hidden');
-   
-   });
- 
- 
-   refs.favIngrBtn.addEventListener('click', () => {
- 
-       refs.sectionHero.style.display = 'none';
-       refs.galleryTitle.textContent = 'Favorite ingridiens';
-       refs.favList.classList.add('visually-hidden');
-   
-   });
+refs.favIngrBtn.addEventListener('click', onFavoriteIngredientClick);
+
+async function onFavoriteCocktailClick() {
+  //Вставить массив ниже  и удалить эту строку
+  renderCards();
+  //Вставить массив выше  и удалить эту строку
+  refs.runawayBtn.style.display = 'none';
+  refs.sectionHero.style.display = 'none';
+  refs.galleryTitle.textContent = 'Favorite cocktails';
+  refs.favList.classList.add('visually-hidden');
+}
+
+async function onFavoriteIngredientClick() {
+  //Вставить массив ниже  и удалить эту строку
+  renderFavIngredients();
+  //Вставить массив выше  и удалить эту строку
+  refs.sectionHero.style.display = 'none';
+  refs.galleryTitle.textContent = 'Favorite ingridiens';
+  refs.favList.classList.add('visually-hidden');
+}
