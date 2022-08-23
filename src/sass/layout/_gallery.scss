@@ -97,6 +97,10 @@
   border: 1px solid var(--accent-color);
   border-radius: 4px;
   box-sizing: border-box;
+  &:hover,
+  &:focus {
+    box-shadow: -10px 10px 20px #acabab, 10px -10px 20px #FFFFFF;
+  }
 }
 
 // --- gallery styles for ingredients
