@@ -2,6 +2,7 @@
   // position: absolute; 
   // bottom: 0; 
   // width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,4 +34,30 @@
   background-color: transparent;
   border: 0;
   color: var(--white-color)
+}
+
+// scroll up
+
+.back-to-top {
+  position: fixed;
+  // background: #3E64FF;
+  border-radius: 50%;
+  right: -13px;
+  bottom: -25px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0;
+  @include mq(tab) {
+    right: -1px;
+  }
+  @include mq(desc) {
+    right: 10px;
+  }
+}
+
+.back-to-top.active {
+  bottom: 75px;
+  transition: all 0.3s;
+  opacity: 1;
 }
