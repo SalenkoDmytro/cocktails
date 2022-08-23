@@ -1,11 +1,11 @@
 import './sass/index.scss';
-import './js/firebase/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
 import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
 import './js/dark/themeToggle';
+import './js/dark/themeToggleMob';
 
 import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
@@ -18,14 +18,14 @@ import './js/services/smoothScroll';
 import './js/services/runawayBtn';
 
 import './js/markup/mobileMenu';
+import './js/firebase/firebaseAuthorization'
 
-import './js/firebase/firebaseDb';
 
 import CocktailApiService from './js/services/CocktailApiService';
 
-// import { refs } from './js/services/refs';
-// import { appendImagesContainerEl } from './js/markup/markup'
+import Page from './js/drinkingUser/page';
 
-import headerTmp from './partials/gallery.hbs';
 
-const array = ['a', 'b', 'c', 'd'];
+// const page = new Page();
+// page.init();
+

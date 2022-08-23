@@ -1,6 +1,5 @@
 import DrinkingUser from './../drinkingUser/createUser';
 import { getDatabase, ref, set, get } from "firebase/database";
-import { validateDate } from "../helpers/helpers"
 const axios = require('axios');
 
 export default class UserManager {

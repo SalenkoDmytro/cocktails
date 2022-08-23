@@ -239,5 +239,13 @@
 }
 
 .gallery__btn-fav.is-checked {
-  color: yellow;
+  background-color: red;
+}
+
+.gallery__btn-fav .gallery__btn-fav-svg {
+  fill: red;
+}
+
+.gallery__btn-fav.is-checked .gallery__btn-fav-svg {
+  fill: #fd5103;
 }

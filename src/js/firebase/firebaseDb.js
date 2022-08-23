@@ -19,6 +19,9 @@ const userManager = new UserManager(db);
 const userPromise = userManager.fetchUserById("12345")
 
 
+
+
+
 export function addListenerAfterLogIn() {
     listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
 }
@@ -65,18 +68,28 @@ const btnListCocktail = document.querySelectorAll('[data-favorite=cocktail]');
 const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]');
 
 
-// listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
+listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
 // listFavIngredientGallery.addEventListener("click", onBtnFavIngredientGalleryClick);
 console.log(location);
 //! *****************************************************************************************************************
 //клік по кнопці додати до улюблених коктейлів
-async function onBtnFavCocktailGalleryClick(e) {
+function onBtnFavCocktailGalleryClick(e) {
     e.preventDefault();
+
     const favoriteBtn = e.target.hasAttribute("data-favorite")
-    console.log("🚀 ~ onBtnFavCocktailGalleryClick ~ e.target", e.target)
+    favoriteBtn.textContent = "ara"
+    if (e.target.nodeName === "svg") {
+        const svg = e.target.closest(".gallery__btn-fav").classList.toggle("is-checked");
+    }
+
+    if (e.target.nodeName === "BUTTON") {
+        const svg = e.target.querySelector(".gallery__btn-fav-svg").classList.toggle("is-checked");
+    }
+
     if (!favoriteBtn) {
         return;
     }
+
     let btnGalleryRef = e.target;
     const idFavorite = e.target.dataset.id;
     await toggleCocktailModalInDb(idFavorite, btnGalleryRef)
@@ -86,9 +99,24 @@ async function onBtnFavCocktailGalleryClick(e) {
 async function onBtnFavIngredientGalleryClick(e) {
     e.preventDefault();
     const favoriteBtn = e.target.hasAttribute("data-favorite")
+    console.log("favoriteBtn", favoriteBtn)
+
     if (!favoriteBtn) {
         return;
     }
+
+    favoriteBtn.textContent = "Remove";
+
+    if (e.target.nodeName === "svg") {
+        e.target.closest(".gallery__btn-fav").textContent = "Remove"
+        e.target.closest(".gallery__btn-fav").classList.toggle("is-checked");
+    }
+
+    if (e.target.nodeName === "BUTTON") {
+        const svg = e.target.querySelector(".gallery__btn-fav-svg").classList.toggle("is-checked");
+    }
+
+
     btnGalleryRef = e.target;
     const idFavorite = e.target.dataset.id;
     await toggleCocktailModalInDb(idFavorite, btnGalleryRef, true)
@@ -144,7 +172,7 @@ export function displayFavCocktailOnPage(gallery = false) {
 function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
-            addCocktailByUser(user, cocktailId)
+            addCocktailByUser(user, cocktailId);
             btnToggleFavGallery(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
@@ -261,16 +289,6 @@ function delIngredientByUser(user, ingredientId) {
 // TODO зміна стилів в галереї по кліку додати до улюблених
 // !!!   рядок btn.classList.add("is-checked"); - не змінювати
 
-function btnToggleFavGallery(btn, isChecked) {
-    if (isChecked) {
-        btn.classList.add("is-checked");
-        btn.style.backgroundColor = "red";
-
-    } else {
-        btn.classList.remove("is-checked");
-        btn.style.backgroundColor = "inherit";
-    }
-}
 
 
 // TODO зміна стилів по кліку в модальному вікні додати до улюблених
@@ -288,11 +306,9 @@ function btnToggleFavCocktailModal(btn, isChecked) {
 function btnToggleFavIngredientModal(btn, isChecked) {
     if (isChecked) {
         btn.classList.add("is-checked");
-        btn.style.backgroundColor = "green";
 
     } else {
         btn.classList.remove("is-checked");
-        btn.style.backgroundColor = "inherit";
     }
 }
 //! ***********************************************************************************************************************

@@ -34,10 +34,10 @@ import {
 const modalBtnSignIn = document.querySelector('[data-modal-sign-in-open]');
 modalBtnSignIn.addEventListener("click", onLoginClick);
 
-async function onLoginClick(evt) {
+function onLoginClick(evt) {
   let sign = evt.target.dataset.sign;
   if (sign === "sign-out") {
-    await userSignInWithGoogle();
+    userSignInWithGoogle();
   } else {
     userSignOut();
   }
@@ -51,7 +51,9 @@ function userSignInWithGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      return user.uid;
+
+
+      console.log("🚀 ~ userSignInWithGoogle ~ user.uid", user.uid)
       // ...
       //TODO close modal autorization  closeModalAuth();
       //TODO get data from user acount   getDataFromFirebase(user.uid);
@@ -89,6 +91,7 @@ onAuthStateChanged(auth, user => {
   // TODO toggleBtnContent(user);
 });
 
+
 export function userSignOut() {
   signOut(auth)
     .then(() => {
@@ -104,9 +107,6 @@ export function userSignOut() {
 }
 
 
-export async function getUser() {
-  return auth.currentUser;
-}
 
 
 

@@ -1,46 +1,78 @@
 .section-hero {
-    padding-top: 60px;
+    
     padding-bottom: 40px;
 
     @include mq(tab) {
-        padding-top: 68px;
+        padding-top: 70px;
         padding-bottom: 60px;
     }
 
     @include mq(desk) {
-        padding-top: 37px;
+        padding-top: 38.5px;
         padding-bottom: 60px;
     }
 }
-.mob-open {
-    padding-bottom: 120px;
-}
+// .mob-open {
+//     padding-bottom: 120px;
+// }
 
 
 
 .hero-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 0;
     display: flex;
     flex-direction: column;
     // align-items: center;
 
 
-    @include mq(tab) {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+    
+ @include mq(mob) {
+     width: 100%;
+    
 
+ }
+
+ @include mq(fab) {
+    width: 480px;
+
+ }
+
+ @include mq(tab) {
+    
+    width: 768px;
+    flex-direction: row;
+        justify-content: space-between;
+
+ }
+
+ @include mq(desk) {
+    
+
+     width: 1280px;
+ }
 }
+
+
 .hero-container .section-content{
-    
-    
+    padding-top: 60px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: start;
     align-content: flex-start;
+    padding-left: 20px;
     @include mq(tab) {
             padding-top: 60px;
+            padding-left: 20px;
         }
+    @include mq(desk) {
+        padding-left: 16px;
+    
+        
+    }
 }
 .hero__title {
     font-family: var(--primary-font-family);
@@ -236,7 +268,9 @@
     cursor: pointer;
     text-align: start;
     align-items: center;
-    
+
+    background-color: var(--white-color);
+
     font-family: var(--primary-font-family);
     font-weight: 700;
     font-size: 16px;
