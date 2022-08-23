@@ -4,13 +4,13 @@
 
     @include mq(tab) {
         padding-top: 70px;
-        padding-bottom: 60px;
+        padding-bottom: 194px;
         position: relative;
     }
 
     @include mq(desk) {
         padding-top: 38.5px;
-        padding-bottom: 60px;
+        padding-bottom: 192px;
     }
 }
 // .mob-open {
@@ -230,9 +230,15 @@
     @include mq(tab) {
         position: absolute;
     
-            top:0;
+            top:60px;
             right: 0;
         }
+         @include mq(desk) {
+             
+    
+             top: 38.5px;
+             right: 0;
+         }
 }
 
 
