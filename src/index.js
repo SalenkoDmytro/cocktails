@@ -11,14 +11,16 @@ import './js/dark/themeToggleMob';
 import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
 
+import './js/services/favMenu';
+
 import './js/services/localeStorage';
 import './js/services/renderMobLetters';
+import './js/services/smoothScroll';
+import './js/services/runawayBtn';
 
 import './js/markup/mobileMenu';
 
-
 import './js/services/firebaseDb';
-
 
 import CocktailApiService from './js/services/CocktailApiService';
 
