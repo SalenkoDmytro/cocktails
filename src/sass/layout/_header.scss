@@ -9,7 +9,7 @@
   @include mq(tab) {
       padding-bottom: 97px;
     }
-  
+
 }
 .header__container {
   display: flex;
@@ -338,7 +338,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: var(--fav-dropdown-item);
   height: 48px;
 }
 
@@ -350,6 +349,7 @@
   padding-left: 12px;
   height: 48px;
   width: 100%;
+  color: var(--fav-dropdown-item);
   &:hover,
   &:focus {
       background-color: var(--accent-color);
