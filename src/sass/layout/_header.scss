@@ -5,7 +5,12 @@
 //   width: 100%;
 //   margin: 0 auto;
 // }
-
+.header{
+  @include mq(tab) {
+      padding-bottom: 97px;
+    }
+  
+}
 .header__container {
   display: flex;
   align-items: flex-end;

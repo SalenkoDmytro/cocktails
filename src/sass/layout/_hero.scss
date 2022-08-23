@@ -1,15 +1,16 @@
 .section-hero {
-    padding-top: 60px;
+    
     padding-bottom: 40px;
 
     @include mq(tab) {
-        padding-top: 68px;
-        padding-bottom: 60px;
+        padding-top: 70px;
+        padding-bottom: 194px;
+        
     }
 
     @include mq(desk) {
-        padding-top: 37px;
-        padding-bottom: 60px;
+        padding-top: 0;
+        padding-bottom: 192px;
     }
 }
 // .mob-open {
@@ -34,16 +35,12 @@
 
  }
 
- @include mq(fab) {
-    width: 480px;
-
- }
-
  @include mq(tab) {
     
     width: 768px;
-    flex-direction: row;
-        justify-content: space-between;
+    align-items: flex-start;
+    // flex-direction: row;
+    // justify-content: space-between;
 
  }
 
@@ -63,13 +60,17 @@
     justify-content: flex-start;
     text-align: start;
     align-content: flex-start;
+    align-items: center;
+    
     padding-left: 20px;
     @include mq(tab) {
             padding-top: 60px;
             padding-left: 20px;
+            align-items:flex-start;
         }
     @include mq(desk) {
         padding-left: 16px;
+        padding-top: 0;
     
         
     }
@@ -221,10 +222,24 @@
 }
 
 .picture-section {
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    padding-left: 20px;
+    @include mq(tab) {
+        position: absolute;
+    
+            top: 131px;
+            right: 0;
+        }
+         @include mq(desk) {
+             
+    
+             top: 100px;
+             right: 0;
+         }
 }
 
 
@@ -341,9 +356,9 @@
 }
 
 .hero__img {
-    width: 100vw;
+    width: 100%;
 
-    @include mq(tab) {
+    @include mq(fab) {
         width: 100%;
 
     }
