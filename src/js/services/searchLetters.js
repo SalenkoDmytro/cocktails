@@ -6,7 +6,7 @@ import smoothScroll from './smoothScroll';
 
 const cocktailApiService = new CocktailApiService();
 let checked = document.querySelector('.select__input');
-let mobOpen = document.querySelector(".section-hero");
+let mobOpen = document.querySelector(".gallery__title");
 
 refs.lettersList.addEventListener('click', onLetterClick);
 refs.inputMobile.addEventListener('click', onMobLetterClick);
