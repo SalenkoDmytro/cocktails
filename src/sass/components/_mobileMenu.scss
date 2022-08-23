@@ -55,8 +55,9 @@
   margin-left: auto;
   background-color: transparent;
   border-radius: 50%;
+  background-color: transparent;
   fill: var(--menu-mob-color);
-  // background-color: transparent;
+  
   @include mq(desk) {
     display: none;
   }
@@ -132,6 +133,7 @@
 
 // search
 .menu__search {
+  
   margin-bottom: 40px;
   position: relative;
 
@@ -148,8 +150,8 @@
 }
 
 .menu__search-input {
+  max-width: 90%;
   padding: 8px 8px 8px 48px;
-  width: 288px;
   height: 40px;
   border: 1px solid #fd5103;
   border-radius: 5px;

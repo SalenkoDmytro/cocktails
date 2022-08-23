@@ -23,7 +23,9 @@ refs.favCockBtn.addEventListener('click', () => {
  
  
    refs.favIngrBtn.addEventListener('click', () => {
- 
+    
+       refs.openModalCocktailBtn.style.display = 'none';
+       refs.runawayBtn.style.display = 'none';
        refs.sectionHero.style.display = 'none';
        refs.galleryTitle.textContent = 'Favorite ingridiens';
        refs.favList.classList.add('visually-hidden');

@@ -12,6 +12,8 @@ import './js/modals/modals';
 import './js/modals/renderModal';
 
 import './js/services/favMenu';
+import './js/services/scrollUpBtn'; 
+
 
 import './js/services/localeStorage';
 import './js/services/renderMobLetters';
