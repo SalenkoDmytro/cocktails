@@ -1,10 +1,17 @@
 import CocktailApiService from './CocktailApiService';
+import { renderCards } from './renderCards';
 const cocktailApiService = new CocktailApiService();
+renderStartMarkup();
 
-export default async function renderRandomData(quantity = 9) {
+async function renderStartMarkup() {
+  const responce = await renderRandomData();
+  renderCards(responce);
+}
+
+export default async function renderRandomData() {
   const array = [];
 
-  for (let i = 0; i < quantity; i += 1) {
+  for (let i = 0; i < 9; i += 1) {
     await cocktailApiService.fetchRandomCocktaile();
     array.push(...cocktailApiService.randomDrink);
   }

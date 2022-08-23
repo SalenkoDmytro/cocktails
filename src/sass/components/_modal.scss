@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop__cocktail {
   position: fixed;
   top: 0;
   left: 0;
@@ -9,8 +9,6 @@
 
 .modal__ingredient,
 .modal__cocktail {
-  width: 822px;
-  height: 598px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,35 +17,79 @@
   background: var(--modal-bg-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.14),
   0 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 4px 0 0 0;
+  //border-radius: 4px 0 0 0;
+  overflow: overlay;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.modal__cocktail {
+  min-width: 320px;
+  height: 600px;
+  @include mq(tab-only) {
+    width: 768px;
+    height: 598px;
+  }
+  @include mq(desk) {
+    width: 822px;
+    height: 598px;
+
+  }
 }
 
 .modal__ingredient {
-  width: 715px;
-  height: 537px;
+  width: 320px;
+  height: 600px;
+  //height: 990px;
+
+  @include mq(tab-only) {
+    width: 768px;
+    height: 598px
+  }
+  @include mq(desk) {
+    width: 715px;
+    height: 598px
+  }
 }
 
 .modal__wrap {
-  display: flex;
-  align-items: flex-start;
+  @include mq(tab) {
+    display: flex;
+    align-items: flex-start;
+  }
 }
 
 .cocktail__img {
-  width: 288px;
+  width: 320px;
   height: 320px;
-  border-radius: 4px;
+  //border-radius: 4px;
+  @include mq(tab) {
+    width: 288px;
+    height: 320px;
+  }
+}
+
+.cocktail__modal-btn {
+  margin-bottom: 28px;
+  margin-left: 32px;
+  @include mq(tab) {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 28px;
+    margin-right: 28px;
+  }
 }
 
 .modal__btn {
-  position: absolute;
-  bottom: 28px;
-  right: 28px;
-
   text-align: center;
   border-color: transparent;
   border-radius: 4px;
-  width: 185px;
+  //max-width: 185px;
+  padding: 0 24px 0 24px;
   height: 48px;
+  margin-top: 20px;
   font-family: var(--gallery-font-family);
   font-weight: 400;
   font-size: 20px;
@@ -57,9 +99,15 @@
   background: var(--btn-text-color);
 }
 
-.modal__btn:hover {
+.modal__btn:hover,
+.modal__btn:focus {
   background: var(--btn-bg-color);
   color: var(--white-color);
+}
+
+.modal__btn:active {
+  color: var(--btn-bg-color);
+  background: var(--btn-bg-color)
 }
 
 .ingredient__name,
@@ -98,9 +146,18 @@
 .ingredient {
   margin-top: 8px;
   margin-left: 32px;
-  height: 125px;
-  min-width: 450px;
-  overflow: overlay;
+  height: 128px;
+  max-width: 320px;
+  margin-bottom: 50px;
+
+  @include mq(desk) {
+    //min-width: 502px;
+    min-width: 430px;
+    overflow: overlay;
+  }
+  @include mq(tab-only) {
+    min-width: 448px;
+  }
 }
 
 .ingredient__item {
@@ -119,6 +176,10 @@
   cursor: pointer;
 }
 
+.ingredient-link:hover {
+  color: var(--accent-color);
+}
+
 .recipe__wrap {
   margin-left: 28px;
 }
@@ -135,14 +196,21 @@
 
 .recipe__text {
   margin-top: 10px;
-  max-width: 764px;
+  //min-width: 270px;
+  max-width: 722px;
   font-family: var(--primary-font-family);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
   color: var(--modal-text-color);
-  max-height: 90px;
   overflow: overlay;
+  @include mq(tab) {
+    //max-width: 764px;
+    max-height: 90px;
+  }
+  @include mq(desc) {
+    max-height: 200px;
+  }
 }
 
 .btn--close {
@@ -175,12 +243,11 @@
   font-size: 16px;
   line-height: 28px;
   color: var(--modal-text-color);
-  max-height: 110px;
-  overflow: overlay;
 }
 
 .characteristic {
   margin-top: 28px;
+  margin-bottom: 40px;
   margin-left: 28px;
 }
 
@@ -189,6 +256,23 @@
 }
 
 .line {
-  border-bottom: 1px solid #FD5103;
-  width: 715px;
+  border-bottom: 1px solid var(--accent-color);
+  min-width: 320px;
+  @include mq(desk) {
+    min-width: 715px;
+  }
+}
+
+.backdrop__cocktail ::-webkit-scrollbar {
+  width: 4px;
+  border-radius: 4px;
+}
+
+.backdrop__cocktail ::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+.backdrop__cocktail ::-webkit-scrollbar-thumb {
+  background: #FD5103;
+  border-radius: 4px;
 }

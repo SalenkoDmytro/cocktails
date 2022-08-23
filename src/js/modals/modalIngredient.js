@@ -7,6 +7,9 @@ const cocktailApiService = new CocktailApiService();
 refs.openModalIngredientBtn.addEventListener('click', onOpenModalIngredient);
 refs.closeModalIngredientBtn.addEventListener('click', closeModal);
 
+refs.addIngredient.addEventListener('click', onAddIngredient);
+refs.removeIngredient.addEventListener('click', onRemoveIngredient);
+
 async function onOpenModalIngredient(e) {
   window.addEventListener('keydown', onEscKeyPressWrapper(refs.backdropIngredient));
   refs.backdropIngredient.addEventListener('click', onBackdropClickWrapper(refs.backdropIngredient));
@@ -36,11 +39,39 @@ function toggleModal(element) {
 }
 
 function markupIngredient(ingredient) {
-  const { strIngredient: name, strType: type, strDescription: description } = ingredient;
+  const {
+    strIngredient: name,
+    strType: type,
+    strDescription: description,
+    strABV: degree,
+    strAlcohol: question,
+  } = ingredient;
   const markup = `<h2 class='ingredient__name'>${name}</h2>
         <h3 class='ingredient__title view'>${type || ''}</h3>
         <div class='line'></div>
-        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>`;
+        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'}</p>
+        <ul class='characteristic'>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${name || '-'}</li>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${question || ''}
+            </li>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcohol content:</span>
+              ${degree ? degree + '%' : '-'}
+            </li>
+          </ul>`;
 
   refs.ingredientRef.innerHTML = markup;
+}
+
+function onAddIngredient(e) {
+  if (e.target.textContent === 'Add to favorite') {
+    refs.addIngredient.classList.add('visually-hidden');
+    refs.removeIngredient.classList.remove('visually-hidden');
+  }
+}
+
+function onRemoveIngredient(e) {
+  if (e.target.textContent === 'Remove from favorite') {
+    refs.addIngredient.classList.remove('visually-hidden');
+    refs.removeIngredient.classList.add('visually-hidden');
+  }
 }

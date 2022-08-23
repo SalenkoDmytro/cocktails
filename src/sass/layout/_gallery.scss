@@ -4,9 +4,13 @@
   // outline: 2px dotted limegreen;
 }
 
+.gallery-section {
+  margin-bottom: 55px;
+}
+
 .gallery__container {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  // padding-top: 60px;
+  // padding-bottom: 60px;
 }
 
 .gallery__title {
@@ -39,9 +43,9 @@
 .gallery__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  // justify-content: space-between;
+  // padding-left: 20px;
+  // padding-right: 20px;
 
   @include mq(tab) {
     --card-item: 2;
@@ -58,6 +62,7 @@
   display: block;
   margin-bottom: 20px;
   width: 100%;
+  border-radius: 3px 3px 0px 0px;
 }
 
 .gallery__list-name {

@@ -1,4 +1,4 @@
-.backdrop {
+.backdrop__mobile {
   position: fixed;
   z-index: 15;
   top: 0;
@@ -33,25 +33,23 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100%;
+  width: 93%;
   height: 100%;
   padding: 40px;
   //   margin-left: 30%;
   margin-right: 0;
 
-  background-color: var(--light-bg-color);
+  background-color: var(--mob-menu-bg-color);
+
   transition: swing-in-right-bck 600ms ease-in-out both;
 }
 
 .btn__burger-menu-close {
-  // position: relative;
+  position: absolute;
   display: flex;
-  margin-left: auto;
   align-items: center;
-  width: 40px;
-  height: 40px;
-  // top: 40px;
-  // right: 30%;
+  top: 40px;
+  right: 30%;
   //   width: 30px;
   //   height: 30px;
   border-radius: 50%;
@@ -69,6 +67,7 @@
   font-weight: 400;
   font-size: 28px;
   line-height: 0.86;
+  color: var(--hero-text-color) ;
 }
 .menu__list:not(:last-child) {
   margin-bottom: 32px;

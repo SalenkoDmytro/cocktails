@@ -1,26 +1,22 @@
 import CocktailApiService from './CocktailApiService';
 import renderRandomData from './renderRandomData';
+import { refs } from '../config/refs';
+import { renderCards, noResultRender } from './renderCards';
+import smoothScroll from './smoothScroll';
 
 const cocktailApiService = new CocktailApiService();
 const debounce = require('lodash.debounce');
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 500;
 
-const form = document.querySelector('.header__search-wrapper');
-const input = form.elements.search;
-
-form.addEventListener('submit', onSubmitBtnClick);
-input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
+refs.form.addEventListener('submit', onSubmitBtnClick);
+refs.input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 async function onInputChange(e) {
   if (e.target.value.trim() === '') {
     try {
       cocktailApiService.resetSetting();
       const responce = await renderRandomData();
-      if (!responce) {
-        console.log('Сори ничего не нашли');
-        return;
-      }
-      console.log('Надо зарендерить >>>', responce);
+      renderCards(responce);
     } catch (error) {
       console.log(error.message);
     }
@@ -28,22 +24,26 @@ async function onInputChange(e) {
   }
 
   await fetchSearchValue();
-  if (!cocktailApiService.drinks)
-    return console.log('Сюда добавить рендер что ничего не найдено');
+  if (!cocktailApiService.drinks) return noResultRender();
 
-  console.log('Надо зарендерить >>>', cocktailApiService.drinks);
+  renderCards(cocktailApiService.drinks);
 }
 
 async function onSubmitBtnClick(e) {
   e.preventDefault();
   if (e.currentTarget.elements.search.value.trim() === '') return;
+
   await fetchSearchValue();
-  console.log('Надо зарендерить >>>', cocktailApiService.drinks);
-  form.reset();
+  smoothScroll(1.55);
+
+  if (!cocktailApiService.drinks) return noResultRender();
+
+  renderCards(cocktailApiService.drinks);
+  refs.form.reset();
 }
 
 async function fetchSearchValue() {
-  const searchText = input.value.trim();
+  const searchText = refs.input.value.trim();
   cocktailApiService.searchQuery = searchText;
   try {
     await cocktailApiService.fetchCocktaileByName();

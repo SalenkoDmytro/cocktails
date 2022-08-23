@@ -1,4 +1,4 @@
-// @import '~node_modules/modern-normalize/modern-normalize.css';
+@import '~node_modules/modern-normalize/modern-normalize.css';
 
 @import './utils/reset';
 @import './utils/variables';
@@ -21,6 +21,10 @@
 @import './components/modalIngridients';
 @import './components/modalSignIn';
 @import './components/modalTeam';
+@import './components/modalFooterTeam';
+@import './components/favIngridients';
+@import './components/favCocktails';
+
 
 @import './layout/header';
 @import './layout/hero';
