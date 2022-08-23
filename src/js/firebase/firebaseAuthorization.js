@@ -73,13 +73,14 @@ function userSignInWithGoogle() {
 
 onAuthStateChanged(auth, user => {
   if (user) {
-    // LogIn(modalBtnSignIn);
+    // // LogIn(modalBtnSignIn);
     modalBtnSignIn.dataset.sign = "sign-in";
     modalBtnSignIn.textContent = "Log out";
     addListenerAfterLogIn();
     delListenerAuthLogOut();
+    console.log(user);
   } else {
-    // LogOut(modalBtnSignIn);
+    // // LogOut(modalBtnSignIn);
     delBtnFavoriteClassChecked();
     delListenerAfterLogOut();
     addListenerAuthLogOut();

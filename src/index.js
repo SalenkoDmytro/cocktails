@@ -19,6 +19,7 @@ import './js/services/runawayBtn';
 
 import './js/markup/mobileMenu';
 import './js/firebase/firebaseAuthorization'
+import './js/firebase/firebaseDb'
 
 
 import CocktailApiService from './js/services/CocktailApiService';

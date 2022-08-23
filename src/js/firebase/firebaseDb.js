@@ -92,7 +92,7 @@ function onBtnFavCocktailGalleryClick(e) {
 
     let btnGalleryRef = e.target;
     const idFavorite = e.target.dataset.id;
-    await toggleCocktailModalInDb(idFavorite, btnGalleryRef)
+    toggleCocktailModalInDb(idFavorite, btnGalleryRef)
 }
 
 //клік по кнопці додати до улюблених інгредієнтів
