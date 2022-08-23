@@ -1,14 +1,14 @@
 .section-hero {
-    padding-top: 60px;
+    
     padding-bottom: 40px;
 
     @include mq(tab) {
-        padding-top: 68px;
+        padding-top: 70px;
         padding-bottom: 60px;
     }
 
     @include mq(desk) {
-        padding-top: 37px;
+        padding-top: 38.5px;
         padding-bottom: 60px;
     }
 }
