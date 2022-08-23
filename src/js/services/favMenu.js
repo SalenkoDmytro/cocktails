@@ -25,6 +25,7 @@ async function onFavoriteCocktailClick() {
   refs.favList.classList.add('visually-hidden');
 }
 
+
 async function onFavoriteIngredientClick() {
   //Вставить массив ниже  и удалить эту строку
   renderFavIngredients();

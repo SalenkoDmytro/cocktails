@@ -13,6 +13,7 @@ import './js/modals/renderModal';
 
 import './js/services/favMenu';
 import './js/favourites/renderFavorites';
+import './js/services/scrollUpBtn'; 
 
 import './js/services/localeStorage';
 import './js/services/renderMobLetters';
