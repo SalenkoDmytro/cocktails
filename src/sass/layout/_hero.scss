@@ -5,11 +5,11 @@
     @include mq(tab) {
         padding-top: 70px;
         padding-bottom: 194px;
-        position: relative;
+        
     }
 
     @include mq(desk) {
-        padding-top: 38.5px;
+        padding-top: 0;
         padding-bottom: 192px;
     }
 }
@@ -70,6 +70,7 @@
         }
     @include mq(desk) {
         padding-left: 16px;
+        padding-top: 0;
     
         
     }
@@ -230,13 +231,13 @@
     @include mq(tab) {
         position: absolute;
     
-            top:60px;
+            top: 131px;
             right: 0;
         }
          @include mq(desk) {
              
     
-             top: 38.5px;
+             top: 100px;
              right: 0;
          }
 }
