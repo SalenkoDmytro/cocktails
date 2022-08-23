@@ -53,8 +53,9 @@
   height: 40px;
   padding: 0;
   margin-left: auto;
-  border: 0;
+  background-color: transparent;
   border-radius: 50%;
+  fill: var(--menu-mob-color);
   // background-color: transparent;
   @include mq(desk) {
     display: none;
@@ -210,6 +211,7 @@
   font-weight: 400;
   font-size: 28px;
   line-height: 0.86;
+  color: var(--menu-mob-color);
   &::before {
     content: '♥';
     color: transparent;
