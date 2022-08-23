@@ -280,6 +280,13 @@
     color: var(--btn-hover-color);
   }
 }
-.mob-open {
-  color: transparent;
+
+.gallery__btn-fav .gallery__btn-fav-svg {
+  fill: white;
+  stroke: var(--btn-bg-color);
+  stroke-width: 2px;
+}
+
+.gallery__btn-fav.is-checked .gallery__btn-fav-svg {
+  fill: #fd5103;
 }

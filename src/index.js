@@ -1,5 +1,4 @@
 import './sass/index.scss';
-import './js/services/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
@@ -20,14 +19,15 @@ import './js/services/smoothScroll';
 import './js/services/runawayBtn';
 
 import './js/markup/mobileMenu';
+import './js/firebase/firebaseAuthorization'
+import './js/firebase/firebaseDb'
 
-import './js/services/firebaseDb';
 
 import CocktailApiService from './js/services/CocktailApiService';
 
-// import { refs } from './js/services/refs';
-// import { appendImagesContainerEl } from './js/markup/markup'
+import Page from './js/drinkingUser/page';
 
-import headerTmp from './partials/gallery.hbs';
 
-const array = ['a', 'b', 'c', 'd'];
+// const page = new Page();
+// page.init();
+
