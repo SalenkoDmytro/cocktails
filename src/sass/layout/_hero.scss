@@ -3,13 +3,13 @@
     padding-bottom: 40px;
 
     @include mq(tab) {
-        padding-top: 70px;
+        padding-top: 0;
         padding-bottom: 194px;
 
     }
 
     @include mq(desk) {
-        padding-top: 0;
+        
         padding-bottom: 192px;
     }
 }
