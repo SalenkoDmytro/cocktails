@@ -20,7 +20,7 @@ export default class CocktailApiService {
   }
 
   async fetchCocktaileByName(search) {
-    const url = `${this.BASE_URL}search.php?s=${search || this.searchQuery}`;
+    const url = `${this.BASE_URL}search.php?s=${search.trim() || this.searchQuery}`;
     const response = await axios.get(url);
     this.drinks = response.data.drinks;
   }
