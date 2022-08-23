@@ -96,6 +96,8 @@
 }
 
 .gallery__list-item {
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--accent-color);
   border-radius: 4px;
   box-sizing: border-box;
@@ -277,4 +279,7 @@
     outline: 1px solid var(--btn-hover-color);
     color: var(--btn-hover-color);
   }
+}
+.mob-open {
+  color: transparent;
 }

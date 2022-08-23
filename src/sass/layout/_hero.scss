@@ -1,46 +1,79 @@
 .section-hero {
-    padding-top: 60px;
+    
     padding-bottom: 40px;
 
     @include mq(tab) {
-        padding-top: 68px;
-        padding-bottom: 60px;
+        padding-top: 70px;
+        padding-bottom: 194px;
+        
     }
 
     @include mq(desk) {
-        padding-top: 37px;
-        padding-bottom: 60px;
+        padding-top: 0;
+        padding-bottom: 192px;
     }
 }
-.mob-open {
-    padding-bottom: 120px;
-}
+// .mob-open {
+//     padding-bottom: 120px;
+// }
 
 
 
 .hero-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: 0;
     display: flex;
     flex-direction: column;
     // align-items: center;
 
 
-    @include mq(tab) {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+    
+ @include mq(mob) {
+     width: 100%;
+    
 
+ }
+
+ @include mq(tab) {
+    
+    width: 768px;
+    align-items: flex-start;
+    // flex-direction: row;
+    // justify-content: space-between;
+
+ }
+
+ @include mq(desk) {
+    
+
+     width: 1280px;
+ }
 }
+
+
 .hero-container .section-content{
-    
-    
+    padding-top: 60px;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: start;
     align-content: flex-start;
+    align-items: center;
+    
+    padding-left: 20px;
     @include mq(tab) {
             padding-top: 60px;
+            padding-left: 20px;
+            align-items:flex-start;
         }
+    @include mq(desk) {
+        padding-left: 16px;
+        padding-top: 0;
+    
+        
+    }
 }
 .hero__title {
     font-family: var(--primary-font-family);
@@ -189,10 +222,24 @@
 }
 
 .picture-section {
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    padding-left: 20px;
+    @include mq(tab) {
+        position: absolute;
+    
+            top: 131px;
+            right: 0;
+        }
+         @include mq(desk) {
+             
+    
+             top: 100px;
+             right: 0;
+         }
 }
 
 
@@ -236,7 +283,9 @@
     cursor: pointer;
     text-align: start;
     align-items: center;
-    
+
+    background-color: var(--white-color);
+
     font-family: var(--primary-font-family);
     font-weight: 700;
     font-size: 16px;
@@ -307,9 +356,9 @@
 }
 
 .hero__img {
-    width: 100vw;
+    width: 100%;
 
-    @include mq(tab) {
+    @include mq(fab) {
         width: 100%;
 
     }

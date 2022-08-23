@@ -3,12 +3,14 @@ import './js/services/firebaseAuthorization';
 import './js/services/searchInput';
 import './js/services/renderRandomData';
 import './js/services/searchLetters';
-import './js/modals/modalCocktail';
+// import './js/modals/modalCocktail';
 import './js/modals/modalIngredient';
 import './js/dark/themeToggle';
 
 import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
+import './js/modals/modals';
+import './js/modals/renderModalCocktail';
 
 import './js/services/favMenu';
 
