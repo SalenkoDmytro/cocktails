@@ -5,6 +5,7 @@
     @include mq(tab) {
         padding-top: 70px;
         padding-bottom: 60px;
+        position: relative;
     }
 
     @include mq(desk) {
@@ -34,16 +35,12 @@
 
  }
 
- @include mq(fab) {
-    width: 480px;
-
- }
-
  @include mq(tab) {
     
     width: 768px;
-    flex-direction: row;
-        justify-content: space-between;
+    align-items: flex-start;
+    // flex-direction: row;
+    // justify-content: space-between;
 
  }
 
@@ -63,10 +60,13 @@
     justify-content: flex-start;
     text-align: start;
     align-content: flex-start;
+    align-items: center;
+    
     padding-left: 20px;
     @include mq(tab) {
             padding-top: 60px;
             padding-left: 20px;
+            align-items:flex-start;
         }
     @include mq(desk) {
         padding-left: 16px;
@@ -221,10 +221,18 @@
 }
 
 .picture-section {
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    padding-left: 20px;
+    @include mq(tab) {
+        position: absolute;
+    
+            top:0;
+            right: 0;
+        }
 }
 
 
@@ -341,9 +349,9 @@
 }
 
 .hero__img {
-    width: 100vw;
+    width: 100%;
 
-    @include mq(tab) {
+    @include mq(fab) {
         width: 100%;
 
     }
