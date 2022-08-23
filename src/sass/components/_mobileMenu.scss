@@ -54,10 +54,11 @@
   height: 40px;
   padding: 0;
   margin-left: auto;
-  border: 0;
+  background-color: transparent;
   border-radius: 50%;
   background-color: transparent;
   fill: var(--menu-mob-color);
+
   @include mq(desk) {
     display: none;
   }
@@ -263,7 +264,9 @@
   font-size: 28px;
   line-height: 0.86;
   color: var(--menu-mob-color);
+
   transition: all var(--menu-transition);
+
   &::before {
     content: '♥';
     color: transparent;

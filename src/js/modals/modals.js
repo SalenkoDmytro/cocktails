@@ -1,10 +1,6 @@
 import CocktailApiService from '../services/CocktailApiService';
 import { refs } from '../config/refs';
-import {
-  onBackdropClickWrapper,
-  onEscKeyPressWrapper,
-} from '../utils/onModalClose';
-import { renderModalCocktail } from './renderModalCocktail';
+import { renderModalCocktail, renderModalIngredient } from './renderModal';
 
 const cocktailApiService = new CocktailApiService();
 
@@ -18,36 +14,53 @@ async function onOpenModalCocktail(e) {
   await cocktailApiService.fetchCocktailById();
 
   renderModalCocktail(cocktailApiService.drinks[0]);
-  const closeBtn = document.querySelector('[data-modal-close-cocktail]');
-  addListeners(closeBtn);
+  addListeners();
 }
 
-function onCloseBtnClick(e) {
-  if (e.target.dataset.modal !== 'close-cocktail') return;
-  refs.backdropCocktail.classList.add('visually-hidden');
+async function onClick(e) {
+  if (e.target.dataset.type === 'open-ingredient') return onClickOpenIngr(e);
+  if (e.target.dataset.modal === 'close-cocktail') return onModalClose();
+  if (e.target.dataset.modal === 'close-ingredient') {
+    return renderModalCocktail(cocktailApiService.drinks[0]);
+  }
+  if (e.target.classList.contains('backdrop__cocktail')) {
+    if (document.querySelector('.modal__ingredient')) {
+      return renderModalCocktail(cocktailApiService.drinks[0]);
+    }
+    onModalClose();
+  }
+}
+
+export function onModalClose() {
   removeListeners();
+  refs.backdropCocktail.classList.add('visually-hidden');
 }
 
 function addListeners() {
-  refs.backdropCocktail.addEventListener('click', onCloseBtnClick);
-  document.addEventListener(
-    'keydown',
-    onEscKeyPressWrapper(refs.backdropCocktail)
-  );
-  refs.backdropCocktail.addEventListener(
-    'click',
-    onBackdropClickWrapper(refs.backdropCocktail)
-  );
+  refs.backdropCocktail.addEventListener('click', onClick);
+  document.addEventListener('keydown', onEscKeyPress);
 }
 
 function removeListeners() {
-  refs.backdropCocktail.removeEventListener('click', onCloseBtnClick);
-  document.removeEventListener(
-    'keydown',
-    onEscKeyPressWrapper(refs.backdropCocktail)
-  );
-  refs.backdropCocktail.removeEventListener(
-    'click',
-    onBackdropClickWrapper(refs.backdropCocktail)
-  );
+  refs.backdropCocktail.removeEventListener('click', onClick);
+  document.removeEventListener('keydown', onEscKeyPress);
+}
+
+function onEscKeyPress(event) {
+  if (document.querySelector('.modal__ingredient')) {
+    return renderModalCocktail(cocktailApiService.drinks[0]);
+  }
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = event.code === ESC_KEY_CODE;
+  if (isEscKey) {
+    onModalClose();
+  }
+}
+
+async function onClickOpenIngr(e) {
+  cocktailApiService.searchQuery = e.target.dataset.name;
+  await cocktailApiService.fetchIngredientsByName();
+  if (cocktailApiService.ingredients[0].strIngredient === e.target.dataset.name)
+    return renderModalIngredient(cocktailApiService.ingredients[0]);
+  console.log('Сюда добавить модалку с пьяной кнопкой');
 }
