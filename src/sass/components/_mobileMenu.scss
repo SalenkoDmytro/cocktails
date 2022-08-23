@@ -133,6 +133,10 @@
 .menu__search {
   margin-bottom: 40px;
   position: relative;
+
+  @include mq(tab-only) {
+    display: none;
+  }
 }
 
 .menu__search-icon {
@@ -174,11 +178,38 @@
 }
 
 // menu list
+.menu__header {
+  @include mq(tab-only) {
+    display: flex;
+  }
+}
+// logo
+.menu__logo {
+  display: none;
+  @include mq(tab-only) {
+    display: flex;
+    margin-right: 40px;
+    font-family: var(--title-font-family);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: 00.02em;
+    color: var(--accent-color);
+  }
+}
+
+.menu__nav-list {
+  @include mq(tab-only) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+  }
+}
 .menu__nav-item {
   font-weight: 400;
   font-size: 28px;
   line-height: 0.86;
-
   &::before {
     content: '♥';
     color: transparent;
