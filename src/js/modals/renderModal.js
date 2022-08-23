@@ -14,8 +14,8 @@ export function renderModalCocktail(data) {
           <p class='cocktail__text'>Per cocktail</p>
 
           <ul class='ingredient js-open-modal-ingredient'>${renderIngredients(
-            data
-          )}</ul>
+    data
+  )}</ul>
         </div>
         <button type='button' class='btn--close' data-modal="close-cocktail">
           <svg width='32' height='32' data-modal="close-cocktail">
@@ -30,13 +30,13 @@ export function renderModalCocktail(data) {
       </div>
     </div>
     <div class='cocktail__modal-btn'>
-      <button type='button' class='modal__btn' data-add-cocktail data-id="${idDrink}">Add to favorite</button>
-      <button type='button' class='modal__btn visually-hidden' data-remove-cocktail data-id="${idDrink}>Remove from favorite</button>
+      <button type='button' class='modal__btn js-btn-fav' data-add-cocktail data-id="${idDrink}">Add to favorite</button>
     </div>
   </div>
 `;
   refs.backdropCocktail.insertAdjacentHTML('beforeend', markup);
 }
+{/* <button type='button' class='modal__btn visually-hidden js-btn-fav' data-remove-cocktail data-id="${idDrink}>Remove from favorite</button> */ }
 
 export function renderModalIngredient(data) {
   const {
@@ -53,16 +53,13 @@ export function renderModalIngredient(data) {
           <h2 class='ingredient__name'>${name}</h2>
         <h3 class='ingredient__title view'>${type || ''}</h3>
         <div class='line'></div>
-        <p class='description__text'><span class='accent__text'>${name} </span>${
-    description?.replace(name, '') || 'No description'
-  }</p>
+        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'
+    }</p>
         <ul class='characteristic'>
-            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${
-              name || '-'
-            }</li>
-            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${
-              question || ''
-            }
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${name || '-'
+    }</li>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${question || ''
+    }
             </li>
             <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcohol content:</span>
               ${degree ? degree + '%' : '-'}
@@ -76,26 +73,24 @@ export function renderModalIngredient(data) {
       </button>
     </div>
   <div class='cocktail__modal-btn'>
-    <button type='button' class='modal__btn' data-add-ingredient data-id="${
-      data.idIngredient
+    <button type='button' class='modal__btn js-btn-fav' data-add-ingredient data-id="${data.idIngredient
     }">Add to favorite</button>
-    <button type='button' class='modal__btn visually-hidden' data-remove-ingredient>Remove from favorite</button>
   </div>
   </div>
 `;
   refs.backdropCocktail.insertAdjacentHTML('beforeend', markup);
 }
 
+//<button type='button' class='modal__btn visually-hidden' data-remove-ingredient>Remove from favorite</button>
+
 function renderIngredients(data) {
   let markup = '';
   for (let i = 0; i < 15; i += 1) {
     if (data['strIngredient' + i]) {
-      markup += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${
-        data['strMeasure' + i] || ''
-      }</span> <a
-            class='link ingredient-link' data-type='open-ingredient' data-name="${
-              data['strIngredient' + i]
-            }">${data['strIngredient' + i]}</a>
+      markup += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${data['strMeasure' + i] || ''
+        }</span> <a
+            class='link ingredient-link' data-type='open-ingredient' data-name="${data['strIngredient' + i]
+        }">${data['strIngredient' + i]}</a>
           </li>`;
     }
   }
