@@ -30,8 +30,11 @@ import {
 } from "./firebaseDb";
 
 // TODO Change - Add listener when modal open
-const modalBtnSignIn = document.querySelector('[data-modal-sign-in-open]');
-modalBtnSignIn.addEventListener("click", onLoginClick);
+const modalBtnSignIn = document.querySelectorAll('[data-modal-sign-in-open]');
+
+modalBtnSignIn.forEach(el => el.addEventListener("click", onLoginClick));
+
+//modalBtnSignIn.addEventListener("click", onLoginClick);
 
 function onLoginClick(evt) {
   let sign = evt.target.dataset.sign;
@@ -72,8 +75,10 @@ function userSignInWithGoogle() {
 onAuthStateChanged(auth, user => {
   if (user) {
     // // LogIn(modalBtnSignIn);
-    modalBtnSignIn.dataset.sign = "sign-in";
-    modalBtnSignIn.textContent = "Log out";
+    modalBtnSignIn.forEach(el => el.dataset.sign = "sign-in");
+    modalBtnSignIn.forEach(el => el.textContent = "Log out");
+    //modalBtnSignIn.dataset.sign = "sign-in";
+    //modalBtnSignIn.textContent = "Log out";
     addListenerAfterLogIn();
     delListenerAuthLogOut();
     localStorage.setItem("user", JSON.stringify(user));
@@ -84,8 +89,10 @@ onAuthStateChanged(auth, user => {
     delBtnFavoriteClassChecked();
     delListenerAfterLogOut();
     addListenerAuthLogOut();
-    modalBtnSignIn.dataset.sign = "sign-out"
-    modalBtnSignIn.textContent = "Log in";
+    modalBtnSignIn.forEach(el => el.dataset.sign = "sign-out");
+    modalBtnSignIn.forEach(el => el.textContent = "Log in");
+    // modalBtnSignIn.dataset.sign = "sign-out"
+    // modalBtnSignIn.textContent = "Log in";
   }
 
 
