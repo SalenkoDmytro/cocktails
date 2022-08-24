@@ -5,7 +5,9 @@ import { renderRunawayBtn } from './runawayBtn';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import CocktailApiService from './CocktailApiService';
+
 
 const cocktailApiService = new CocktailApiService();
 const app = initializeApp(firebaseConfig);
@@ -20,9 +22,16 @@ refs.fav.addEventListener('click', e => {
   refs.favList.classList.remove('visually-hidden');
 });
 
-refs.favCockBtn.addEventListener('click', onFavoriteCocktailClick);
 
-refs.favIngrBtn.addEventListener('click', onFavoriteIngredientClick);
+
+// refs.cardFavBtn.addEventListener('click', needLogIn);
+
+refs.favCockBtn.addEventListener('click', needLoginFavCock);
+
+refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
+
+
+
 
 async function onFavoriteCocktailClick() {
   //Вставить массив ниже  и удалить эту строку
@@ -92,4 +101,24 @@ function markUpIngredients() {
       renderFavIngredients(result);
     }
   );
+}
+
+export function needLoginFavCock() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.favList.classList.add('visually-hidden');
+    } else {
+        onFavoriteCocktailClick();
+    } 
+}
+
+export function needLogInFavIngrid() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.favList.classList.add('visually-hidden');
+    } else {
+        onFavoriteIngredientClick();
+    } 
 }

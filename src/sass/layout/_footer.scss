@@ -62,5 +62,8 @@
   transition: all 0.3s;
   opacity: 1;
   fill: var(--accent-color);
+  @include mq(desc) {
+    margin-right: 20px;
+  }
 }
 
