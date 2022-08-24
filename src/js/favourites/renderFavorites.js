@@ -8,7 +8,8 @@ export function renderFavIngredients(array = []) {
 }
 
 function createFavIngMarkup(data) {
-  return data.map(({ idIngredient, strIngredient, strType }) => {
+  return data.map(({ data: { ingredients } }) => {
+    const { idIngredient, strIngredient, strType } = ingredients[0];
     return `<li class="fav-ing__list-item card-set-item">
         <p class="fav-ing__list-name">${strIngredient}</p>
         <p class="fav-ing__list-type">${strType}</p>
