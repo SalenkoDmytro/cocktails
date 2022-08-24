@@ -75,6 +75,5 @@ export default class DrinkingUser {
         for (let i in data) {
             this.addFavoriteIngredientById(data[i])
         }
-        return this;
     }
 }

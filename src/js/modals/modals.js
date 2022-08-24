@@ -6,6 +6,9 @@ const cocktailApiService = new CocktailApiService();
 
 refs.gallery.addEventListener('click', onOpenModalCocktail);
 
+import { addModalCocktailClick, delModalCocktailClick, addModalIngredientClick, delModalIngredientClick, displayFavCocktailOnPage } from '../firebase/firebaseDb'
+
+
 async function onOpenModalCocktail(e) {
   if (e.target.dataset.type !== 'open-learn-more') return;
   refs.backdropCocktail.classList.remove('visually-hidden');
@@ -14,22 +17,40 @@ async function onOpenModalCocktail(e) {
   await cocktailApiService.fetchCocktailById();
 
   renderModalCocktail(cocktailApiService.drinks[0]);
+  addModalCocktailClick();
   addListeners();
 }
 
 async function onClick(e) {
-  if (e.target.dataset.type === 'open-ingredient') return onClickOpenIngr(e);
-  if (e.target.dataset.modal === 'close-cocktail') return onModalClose();
+  if (e.target.dataset.type === 'open-ingredient') {
+    delModalCocktailClick()
+    onClickOpenIngr(e);
+    addModalIngredientClick();
+    return
+  }
+  if (e.target.dataset.modal === 'close-cocktail') {
+    delModalCocktailClick()
+    onModalClose()
+    return
+  };
   if (e.target.dataset.modal === 'close-ingredient') {
-    return renderModalCocktail(cocktailApiService.drinks[0]);
+    renderModalCocktail(cocktailApiService.drinks[0]);
+    delModalIngredientClick();
+    addModalCocktailClick();
+    return
   }
   if (e.target.classList.contains('backdrop__cocktail')) {
     if (document.querySelector('.modal__ingredient')) {
-      return renderModalCocktail(cocktailApiService.drinks[0]);
+      renderModalCocktail(cocktailApiService.drinks[0]);
+      addModalCocktailClick();
+      return
     }
+    delModalCocktailClick();
     onModalClose();
   }
 }
+
+
 
 export function onModalClose() {
   removeListeners();
@@ -48,11 +69,16 @@ function removeListeners() {
 
 function onEscKeyPress(event) {
   if (document.querySelector('.modal__ingredient')) {
-    return renderModalCocktail(cocktailApiService.drinks[0]);
+    delModalIngredientClick();
+    renderModalCocktail(cocktailApiService.drinks[0]);
+    addModalCocktailClick();
+    return
   }
   const ESC_KEY_CODE = 'Escape';
   const isEscKey = event.code === ESC_KEY_CODE;
   if (isEscKey) {
+    delModalCocktailClick();
+    delModalIngredientClick();
     onModalClose();
   }
 }
@@ -61,6 +87,7 @@ async function onClickOpenIngr(e) {
   cocktailApiService.searchQuery = e.target.dataset.name;
   await cocktailApiService.fetchIngredientsByName();
   if (cocktailApiService.ingredients[0].strIngredient === e.target.dataset.name)
-    return renderModalIngredient(cocktailApiService.ingredients[0]);
+    delModalCocktailClick();
+  return renderModalIngredient(cocktailApiService.ingredients[0]);
   console.log('Сюда добавить модалку с пьяной кнопкой');
 }

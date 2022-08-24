@@ -13,7 +13,7 @@ import './js/modals/renderModal';
 
 import './js/services/favMenu';
 import './js/favourites/renderFavorites';
-import './js/services/scrollUpBtn'; 
+import './js/services/scrollUpBtn';
 
 import './js/services/localeStorage';
 import './js/services/renderMobLetters';
@@ -26,7 +26,3 @@ import './js/firebase/firebaseDb';
 
 import CocktailApiService from './js/services/CocktailApiService';
 
-import Page from './js/drinkingUser/page';
-
-// const page = new Page();
-// page.init();
