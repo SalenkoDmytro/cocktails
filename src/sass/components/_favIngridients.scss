@@ -94,26 +94,11 @@
     border: 1px solid var(--accent-color);
     border-radius: 4px;
     box-sizing: border-box;
+    padding: 20px;
   }
 
-  // --- fav-ing styles for ingredients
-  .fav-ing__list-ingr {
-    display: flex;
-
-    @include mq(tab) {
-      --card-item: 2;
-      --card-gap: 20px;
-    }
-
-    @include mq(desk) {
-      --card-item: 3;
-      --card-gap: 20px;
-    }
-
-    & .fav-ing__list-item {
-      padding: 20px;
-    }
-    & .fav-ing__list-name {
+  
+    .fav-ing__list-name {
       margin-bottom: 20px;
       font-weight: 900;
       font-size: 26px;
@@ -142,7 +127,7 @@
       }
     }
 
-    & .fav-ing__list-type {
+    .fav-ing__list-type {
       margin-bottom: 20px;
       font-family: var(--title-font-family);
       font-weight: 600;
@@ -171,13 +156,13 @@
         line-height: 1.5;
       }
     }
-  }
+  
 
   // --- buttons styles
   .fav-ing__btn-container {
     // padding-left: 20px;
     // padding-right: 20px;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     display: flex;
     justify-content: space-between;
   }
@@ -210,8 +195,8 @@
   }
 
   .fav-ing__btn-more {
-    padding-left: 38px;
-    padding-right: 38px;
+    // padding-left: 38px;
+    // padding-right: 38px;
     color: var(--white-color);
     background-color: var(--btn-bg-color);
 
