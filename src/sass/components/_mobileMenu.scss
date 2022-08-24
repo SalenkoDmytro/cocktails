@@ -196,7 +196,7 @@
 
 // search
 .menu__search {
-  
+
   margin-bottom: 40px;
   position: relative;
   @include mq(tab) {
@@ -222,7 +222,7 @@
   @include mq(fab) {
     width: 50%;
   }
- 
+
 }
 
 .menu__search-btn {
@@ -247,6 +247,7 @@
 }
 
 .menu__nav-link {
+  color: var(--menu-mob-colorg);
   background-color: transparent;
   border: 0;
 }
