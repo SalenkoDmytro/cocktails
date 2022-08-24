@@ -40,7 +40,6 @@
 
 .back-to-top {
   position: fixed;
-  // background: #3E64FF;
   border-radius: 50%;
   right: -13px;
   bottom: -25px;
@@ -57,11 +56,14 @@
 }
 
 .back-to-top.active {
-  margin-bottom: 40px;
-  margin-right: 20px;
-  bottom: 75px;
+  // margin-bottom: 40px;
+  // margin-right: 20px;
+  bottom: 100px;
   transition: all 0.3s;
   opacity: 1;
   fill: var(--accent-color);
+  @include mq(desc) {
+    margin-right: 20px;
+  }
 }
 

@@ -5,6 +5,7 @@ import { renderRunawayBtn } from './runawayBtn';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 
@@ -20,9 +21,13 @@ refs.fav.addEventListener('click', e => {
 });
 
 
-refs.favCockBtn.addEventListener('click', onFavoriteCocktailClick);
+// refs.cardFavBtn.addEventListener('click', needLogIn);
 
-refs.favIngrBtn.addEventListener('click', onFavoriteIngredientClick);
+refs.favCockBtn.addEventListener('click', needLoginFavCock);
+
+refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
+
+
 
 async function onFavoriteCocktailClick() {
 
@@ -71,4 +76,24 @@ function markUpIngredients() {
     if (!dataDb) return;
     renderFavIngredients(dataDb);
   });
+}
+
+export function needLoginFavCock() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.favList.classList.add('visually-hidden');
+    } else {
+        onFavoriteCocktailClick();
+    } 
+}
+
+export function needLogInFavIngrid() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.favList.classList.add('visually-hidden');
+    } else {
+        onFavoriteIngredientClick();
+    } 
 }
