@@ -9,7 +9,6 @@ import tab2 from '../../images/group/groupxtab.png';
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-
     return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
 
         <img
@@ -80,8 +79,9 @@ export function cardsQuantity(markup) {
   return render.join('');
 }
 
-export function renderCards(data) {
+export function renderCards(data = []) {
   refs.gallery.innerHTML = '';
   const render = cardsQuantity(createMarkup(data));
   refs.gallery.insertAdjacentHTML('beforeend', render);
 }
+

@@ -4,7 +4,7 @@ import { renderModalCocktail, renderModalIngredient } from './renderModal';
 
 const cocktailApiService = new CocktailApiService();
 
-refs.openModalCocktailBtn.addEventListener('click', onOpenModalCocktail);
+refs.gallery.addEventListener('click', onOpenModalCocktail);
 
 import { addModalCocktailClick, delModalCocktailClick, addModalIngredientClick, delModalIngredientClick, displayFavCocktailOnPage } from '../firebase/firebaseDb'
 

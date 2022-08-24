@@ -1,5 +1,5 @@
 import notifyConfigs from '../config/notify';
-import Notiflix from 'notiflix';
+import Notiflix, { Notify } from 'notiflix';
 // import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 

@@ -49,4 +49,6 @@ export const refs = {
 
   sectionHero: document.querySelector('.section-hero'),
   galleryTitle: document.querySelector('.gallery__title'),
+
+  toTopBtn: document.querySelector('.back-to-top'),
 };

@@ -51,7 +51,6 @@ function markUpCocktail() {
         console.log("🚀 ~ getDataFromFirebase ~ cocktail", dataDb)
     });
 }
-markUpCocktail()
 
 
 
