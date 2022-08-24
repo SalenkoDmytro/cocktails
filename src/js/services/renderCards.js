@@ -5,6 +5,8 @@ import mob2 from '../../images/group/groupxmob.png';
 import tab from '../../images/group/grouptab.png';
 import tab2 from '../../images/group/groupxtab.png';
 
+
+
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
 

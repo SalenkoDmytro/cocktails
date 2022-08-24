@@ -6,7 +6,7 @@ const cocktailApiService = new CocktailApiService();
 
 refs.openModalCocktailBtn.addEventListener('click', onOpenModalCocktail);
 
-import { addModalCocktailClick, delModalCocktailClick, addModalIngredientClick, delModalIngredientClick } from '../firebase/firebaseDb'
+import { addModalCocktailClick, delModalCocktailClick, addModalIngredientClick, delModalIngredientClick, displayFavCocktailOnPage } from '../firebase/firebaseDb'
 
 
 async function onOpenModalCocktail(e) {

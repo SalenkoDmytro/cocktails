@@ -25,9 +25,4 @@ import './js/firebase/firebaseDb'
 
 import CocktailApiService from './js/services/CocktailApiService';
 
-import Page from './js/drinkingUser/page';
-
-
-// const page = new Page();
-// page.init();
 

@@ -50,7 +50,7 @@ function userSignInWithGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      localStorage.setItem("user", JSON.stringify(user));
+      // localStorage.setItem("user", JSON.stringify(user));
       console.log("🚀 ~ userSignInWithGoogle ~ user.uid", user.uid)
       // ...
       //TODO close modal autorization  closeModalAuth();
@@ -76,9 +76,11 @@ onAuthStateChanged(auth, user => {
     modalBtnSignIn.textContent = "Log out";
     addListenerAfterLogIn();
     delListenerAuthLogOut();
-    console.log(user);
+    localStorage.setItem("user", JSON.stringify(user));
+
   } else {
     // // LogOut(modalBtnSignIn);
+    localStorage.removeItem("user");
     delBtnFavoriteClassChecked();
     delListenerAfterLogOut();
     addListenerAuthLogOut();
@@ -95,7 +97,7 @@ export function userSignOut() {
   signOut(auth)
     .then(() => {
       console.log("Sign-out successful");
-      localStorage.removeItem("user");
+      // localStorage.removeItem("user");
 
       // Sign-out successful.
       //TODO notify about SEE YOU LATER;
