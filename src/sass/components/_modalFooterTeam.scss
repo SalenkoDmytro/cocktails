@@ -28,8 +28,8 @@
 
 .modal-team {
   position: absolute;
-  width: 320px;
-  height: 400px;
+  width: calc(100% - 20px);
+  height: 600px;
   bottom: 110px;
   left: 50%;
   transform: translate(-50%) scale(1) rotate(0);
@@ -38,22 +38,23 @@
   transition: cubic-bezier(0.4, 0, 0.2, 1);
   overflow: auto;
   @include mq(fab) {
-    width: 480px;
+    width: calc(100% - 20px);
   }
   @include mq(tab) {
-    width: 768px;
+    width: calc(100% - 20px);
     height: 500px;
   }
   @include mq(desk) {
-    width: 1280px;
+    width: calc(100% - 30px);
     height: 600px;
+    overflow: hidden;
   }
 }
 
 .modal__team-close-btn {
-  position: absolute;
+  position: sticky;
   top: 15px;
-  right: 15px;
+  left: 90%;
   border-radius: 50%;
   border: 0;
   background-color: transparent;
@@ -64,6 +65,9 @@
   outline: none;
   cursor: pointer;
   transition: var(--transition);
+  @include mq(desk) {
+    left: 95%;
+  }
 }
 
 .team__wrap {
