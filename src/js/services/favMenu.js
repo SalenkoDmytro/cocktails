@@ -77,16 +77,19 @@ function markUpIngredients() {
     ref(db, `users/` + `id:${auth.uid}` + '/ingredients'),
     async snapshot => {
       const dataDb = snapshot.val();
-      if (!dataDb) return;
+      if (!dataDb) {
+        refs.gallery.innerHTML = '';
+        return;
+      }
+
       const allData = dataDb.map(async el => {
         const responce = await axios.get(
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${el}`
         );
         return responce;
       });
-      console.log(allData);
       const result = await Promise.all(allData);
-      renderFavIngredients(result.flat(1));
+      renderFavIngredients(result);
     }
   );
 }
