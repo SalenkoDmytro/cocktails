@@ -2,12 +2,14 @@ import { refs } from '../config/refs';
 import { cardsQuantity } from '../services/renderCards';
 
 export function renderFavIngredients(array = []) {
+  console.log(array);
   refs.gallery.innerHTML = '';
   const render = cardsQuantity(createFavIngMarkup(array));
   refs.gallery.insertAdjacentHTML('beforeend', render);
 }
 
 function createFavIngMarkup(data) {
+  console.log(data);
   return data.map(({ idIngredient, strIngredient, strType }) => {
     return `<li class="fav-ing__list-item card-set-item">
         <p class="fav-ing__list-name">${strIngredient}</p>

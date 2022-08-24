@@ -3,7 +3,7 @@ const axios = require('axios');
 export default class CocktailApiService {
   constructor() {
     this.BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1/';
-    this.searchQuery;
+    this.searchQuery = '';
     this.page = 1;
     this.drinks = {};
     this.ingredients = {};
@@ -20,7 +20,9 @@ export default class CocktailApiService {
   }
 
   async fetchCocktaileByName(search) {
-    const url = `${this.BASE_URL}search.php?s=${search.trim() || this.searchQuery}`;
+    const url = `${this.BASE_URL}search.php?s=${
+      search.trim() || this.searchQuery
+    }`;
     const response = await axios.get(url);
     this.drinks = response.data.drinks;
   }
@@ -59,7 +61,7 @@ export default class CocktailApiService {
 
   deleteFavouriteDrinks(idDrink) {
     this.favouriteDrinks = this.favouriteDrinks.filter(
-      data => data !== idDrink,
+      data => data !== idDrink
     );
   }
 
@@ -69,7 +71,7 @@ export default class CocktailApiService {
 
   deleteFavouriteIngredientsById(idIngredient) {
     this.favouriteDrinks = this.favouriteDrinks.filter(
-      data => data !== idIngredient,
+      data => data !== idIngredient
     );
   }
 

@@ -2,14 +2,15 @@ import { refs } from '../config/refs';
 import { renderCards } from './renderCards';
 import { renderFavIngredients } from '../favourites/renderFavorites';
 import { renderRunawayBtn } from './runawayBtn';
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
+import CocktailApiService from './CocktailApiService';
 
-
-
+const cocktailApiService = new CocktailApiService();
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
+const axios = require('axios');
 
 refs.fav.addEventListener('click', e => {
   if (refs.favList.classList.contains('visually-hidden')) {
@@ -19,15 +20,13 @@ refs.fav.addEventListener('click', e => {
   refs.favList.classList.remove('visually-hidden');
 });
 
-
 refs.favCockBtn.addEventListener('click', onFavoriteCocktailClick);
 
 refs.favIngrBtn.addEventListener('click', onFavoriteIngredientClick);
 
 async function onFavoriteCocktailClick() {
-
   //Вставить массив ниже  и удалить эту строку
-  await markUpCocktails()
+  markUpCocktails();
   // renderCards();
   //Вставить массив выше  и удалить эту строку
   renderRunawayBtn();
@@ -38,7 +37,7 @@ async function onFavoriteCocktailClick() {
 
 async function onFavoriteIngredientClick() {
   //Вставить массив ниже  и удалить эту строку
-  await markUpIngredients()
+  markUpIngredients();
   // renderFavIngredients();
   //Вставить массив выше  и удалить эту строку
   renderRunawayBtn();
@@ -47,28 +46,47 @@ async function onFavoriteIngredientClick() {
   refs.favList.classList.add('visually-hidden');
 }
 
-
-function markUpCocktails() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+async function markUpCocktails() {
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (!auth) {
     return;
   }
-  onValue(ref(db, `users/` + `id:${auth.uid}` + '/cocktails'), snapshot => {
-    const dataDb = snapshot.val();
-    if (!dataDb) return;
-    renderCards(dataDb);
-  });
+  onValue(
+    ref(db, `users/` + `id:${auth.uid}` + '/cocktails'),
+    async snapshot => {
+      const dataDb = snapshot.val();
+      if (!dataDb) return;
+      const allData = dataDb.map(async el => {
+        cocktailApiService.searchQuery = el;
+        await cocktailApiService.fetchCocktailById();
+        return cocktailApiService.drinks;
+      });
+
+      const result = await Promise.all(allData);
+      renderCards(result.flat(1));
+    }
+  );
 }
 
-
 function markUpIngredients() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (!auth) {
     return;
   }
-  onValue(ref(db, `users/` + `id:${auth.uid}` + '/ingredients'), snapshot => {
-    const dataDb = snapshot.val();
-    if (!dataDb) return;
-    renderFavIngredients(dataDb);
-  });
+  onValue(
+    ref(db, `users/` + `id:${auth.uid}` + '/ingredients'),
+    async snapshot => {
+      const dataDb = snapshot.val();
+      if (!dataDb) return;
+      const allData = dataDb.map(async el => {
+        const responce = await axios.get(
+          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${el}`
+        );
+        return responce;
+      });
+      console.log(allData);
+      const result = await Promise.all(allData);
+      renderFavIngredients(result.flat(1));
+    }
+  );
 }
