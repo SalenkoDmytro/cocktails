@@ -1,15 +1,10 @@
 // mobileMenu.js
-(() => {
-  const refs = {
-    body: document.querySelector('body'),
-    menuBtn: document.querySelector('[data-menu-toggle]'),
-    menu: document.querySelector('[data-menu]'),
-  };
+import { refs } from '../config/refs';
 
   refs.menuBtn.addEventListener('click', toggleMenu);
 
   function toggleMenu() {
-    refs.menu.classList.toggle('is-hidden');
+    refs.mobMenu.classList.toggle('visually-hidden');
     refs.menuBtn.classList.toggle('is-active');
   }
-})();
+

@@ -15,6 +15,9 @@
   font-size: 22px;
   line-height: 1.91;
   color: var(--title-light-color);
+  @include mq(noDesk) {
+    margin-top: 60px;
+  }
 
   @include mq(fab) {
     font-weight: 700;

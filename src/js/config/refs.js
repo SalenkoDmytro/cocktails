@@ -1,4 +1,6 @@
 export const refs = {
+  body: document.querySelector('body'),
+
   buttonLogin: document.querySelector('.js-btn-login'),
   closeModalBtnSignIn: document.querySelector('.js-btn-close-login'),
   modalSignIn: document.querySelector('.js-data-mod'),
@@ -52,4 +54,9 @@ export const refs = {
   galleryTitle: document.querySelector('.gallery__title'),
 
   toTopBtn: document.querySelector('.back-to-top'),
+
+  mobMenu: document.querySelector('.backdrop__mobile'),
+  menuFavCock: document.querySelector('.js-menu-btn-fav-cock'),
+  manuFavIngrid: document.querySelector('.js-menu-btn-fav-ingr'),
+  menuBtn: document.querySelector('[data-menu-toggle]'),
 };

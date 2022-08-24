@@ -6,7 +6,7 @@
 //   margin: 0 auto;
 // }
 .header{
-  @include mq(tab) {
+  @include mq(desk) {
       padding-bottom: 97px;
     }
 

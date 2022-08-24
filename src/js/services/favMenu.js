@@ -24,12 +24,8 @@ refs.fav.addEventListener('click', e => {
 
 
 
-// refs.cardFavBtn.addEventListener('click', needLogIn);
-
 refs.favCockBtn.addEventListener('click', needLoginFavCock);
-
 refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
-
 
 
 
@@ -106,7 +102,7 @@ function markUpIngredients() {
 export function needLoginFavCock() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
     if (auth === null) {
-        Notify.failure('Error. Please login to get your favorites');
+        Notify.failure('Error. Please login to get your favorite cocktails');
         refs.favList.classList.add('visually-hidden');
     } else {
         onFavoriteCocktailClick();
@@ -116,9 +112,38 @@ export function needLoginFavCock() {
 export function needLogInFavIngrid() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
     if (auth === null) {
-        Notify.failure('Error. Please login to get your favorites');
+        Notify.failure('Error. Please login to get your favorite ingridients');
         refs.favList.classList.add('visually-hidden');
     } else {
+        onFavoriteIngredientClick();
+    } 
+}
+
+refs.menuFavCock.addEventListener('click', needLoginMenuFavCock);
+refs.manuFavIngrid.addEventListener('click', needLogInMenuFavIngrid);
+
+export function needLoginMenuFavCock() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.mobMenu.classList.add('visually-hidden');
+        refs.menuBtn.classList.toggle('is-active');
+    } else {
+      refs.mobMenu.classList.add('visually-hidden');
+        refs.menuBtn.classList.toggle('is-active');
+        onFavoriteCocktailClick();
+    } 
+}
+
+export function needLogInMenuFavIngrid() {
+  const auth = JSON.parse(localStorage.getItem("user") || null);
+    if (auth === null) {
+        Notify.failure('Error. Please login to get your favorites');
+        refs.mobMenu.classList.add('visually-hidden');
+        refs.menuBtn.classList.toggle('is-active');
+    } else {
+      refs.mobMenu.classList.add('visually-hidden');
+        refs.menuBtn.classList.toggle('is-active');
         onFavoriteIngredientClick();
     } 
 }
