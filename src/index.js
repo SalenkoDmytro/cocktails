@@ -6,6 +6,7 @@ import './js/services/searchLetters';
 // import './js/modals/modalIngredient';
 import './js/dark/themeToggle';
 
+import './js/modals/modalAnnoy';
 import './js/modals/modalSignIn';
 import './js/modals/modalFooterTeam';
 import './js/modals/modals';
