@@ -24,8 +24,8 @@ export async function renderModalCocktail(data) {
           <h3 class='cocktail__title'>Ingredients</h3>
           <p class='cocktail__text'>Per cocktail</p>
           <ul class='ingredient js-open-modal-ingredient'>${renderIngredients(
-            data
-          )}</ul>
+    data
+  )}</ul>
         </div>
         <button type='button' class='btn--close' data-modal="close-cocktail">
           <svg width='32' height='32' data-modal="close-cocktail">
@@ -70,20 +70,17 @@ export async function renderModalIngredient(data) {
   const markup = `  <div class='modal__ingredient'>
     <div class='modal__wrap'>
       <div class='ingredient__wrap'>
-      <img class="ing-pict" src='https://www.thecocktaildb.com/images/ingredients/${name}-Small.png' alt=${name}>
-          <h2 class='ingredient__name'>${name}</h2>
-        <h3 class='ingredient__title view'>${type || ''}</h3>
+      <div class="ing-card-wrap-modal"><div><h2 class='ingredient__name'>${name}</h2>
+       <h3 class='ingredient__title view'>${type || ''}</h3></div>
+      <img class="ing-card" src='https://www.thecocktaildb.com/images/ingredients/${name}-Small.png' alt=${name}></div>
         <div class='line'></div>
-        <p class='description__text'><span class='accent__text'>${name} </span>${
-    description?.replace(name, '') || 'No description'
-  }</p>
+        <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'
+    }</p>
         <ul class='characteristic'>
-            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${
-              name || '-'
-            }</li>
-            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${
-              question || ''
-            }
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Type:</span> ${name || '-'
+    }</li>
+            <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcoholic:</span> ${question || ''
+    }
             </li>
             <li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span> Alcohol content:</span>
               ${degree ? degree + '%' : '-'}
@@ -97,9 +94,8 @@ export async function renderModalIngredient(data) {
       </button>
     </div>
   <div class='cocktail__modal-btn'>
-    <button type='button' class='modal__btn js-btn-fav ${isClass}' data-add-ingredient data-id="${
-    data.idIngredient
-  }">${text}</button>
+    <button type='button' class='modal__btn js-btn-fav ${isClass}' data-add-ingredient data-id="${data.idIngredient
+    }">${text}</button>
   </div>
   </div>
 `;
@@ -112,12 +108,10 @@ function renderIngredients(data) {
   let markup = '';
   for (let i = 0; i < 15; i += 1) {
     if (data['strIngredient' + i]) {
-      markup += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${
-        data['strMeasure' + i] || ''
-      }</span> <a
-            class='link ingredient-link' data-type='open-ingredient' data-name="${
-              data['strIngredient' + i]
-            }">${data['strIngredient' + i]}</a>
+      markup += `<li class='ingredient__item'><span class='ingredient__accent'>&#9733</span><span>${data['strMeasure' + i] || ''
+        }</span> <a
+            class='link ingredient-link' data-type='open-ingredient' data-name="${data['strIngredient' + i]
+        }">${data['strIngredient' + i]}</a>
           </li>`;
     }
   }
