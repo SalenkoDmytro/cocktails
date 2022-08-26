@@ -88,9 +88,12 @@ function markUpIngredients() {
       }
 
       const allData = dataDb.map(async el => {
-        const responce = await axios.get(
-          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${el}`
-        );
+        cocktailApiService.searchQuery = el;
+        await cocktailApiService.fetchIngredientById();
+        return cocktailApiService.ingredients;
+        // const responce = await axios.get(
+        //   `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${el}`
+        // );
         return responce;
       });
       const result = await Promise.all(allData);
@@ -101,22 +104,22 @@ function markUpIngredients() {
 
 export function needLoginFavCock() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (auth === null) {
-        Notify.failure('Error. Please login to get your favorite cocktails');
-        refs.favList.classList.add('visually-hidden');
-    } else {
-        onFavoriteCocktailClick();
-    } 
+  if (auth === null) {
+    Notify.failure('Error. Please login to get your favorite cocktails');
+    refs.favList.classList.add('visually-hidden');
+  } else {
+    onFavoriteCocktailClick();
+  }
 }
 
 export function needLogInFavIngrid() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (auth === null) {
-        Notify.failure('Error. Please login to get your favorite ingridients');
-        refs.favList.classList.add('visually-hidden');
-    } else {
-        onFavoriteIngredientClick();
-    } 
+  if (auth === null) {
+    Notify.failure('Error. Please login to get your favorite ingridients');
+    refs.favList.classList.add('visually-hidden');
+  } else {
+    onFavoriteIngredientClick();
+  }
 }
 
 refs.menuFavCock.addEventListener('click', needLoginMenuFavCock);
@@ -124,26 +127,26 @@ refs.manuFavIngrid.addEventListener('click', needLogInMenuFavIngrid);
 
 export function needLoginMenuFavCock() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (auth === null) {
-        Notify.failure('Error. Please login to get your favorites');
-        refs.mobMenu.classList.add('visually-hidden');
-        refs.menuBtn.classList.toggle('is-active');
-    } else {
-      refs.mobMenu.classList.add('visually-hidden');
-        refs.menuBtn.classList.toggle('is-active');
-        onFavoriteCocktailClick();
-    } 
+  if (auth === null) {
+    Notify.failure('Error. Please login to get your favorites');
+    refs.mobMenu.classList.add('visually-hidden');
+    refs.menuBtn.classList.toggle('is-active');
+  } else {
+    refs.mobMenu.classList.add('visually-hidden');
+    refs.menuBtn.classList.toggle('is-active');
+    onFavoriteCocktailClick();
+  }
 }
 
 export function needLogInMenuFavIngrid() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (auth === null) {
-        Notify.failure('Error. Please login to get your favorites');
-        refs.mobMenu.classList.add('visually-hidden');
-        refs.menuBtn.classList.toggle('is-active');
-    } else {
-      refs.mobMenu.classList.add('visually-hidden');
-        refs.menuBtn.classList.toggle('is-active');
-        onFavoriteIngredientClick();
-    } 
+  if (auth === null) {
+    Notify.failure('Error. Please login to get your favorites');
+    refs.mobMenu.classList.add('visually-hidden');
+    refs.menuBtn.classList.toggle('is-active');
+  } else {
+    refs.mobMenu.classList.add('visually-hidden');
+    refs.menuBtn.classList.toggle('is-active');
+    onFavoriteIngredientClick();
+  }
 }

@@ -20,9 +20,8 @@ export default class CocktailApiService {
   }
 
   async fetchCocktaileByName(search) {
-    const url = `${this.BASE_URL}search.php?s=${
-      search.trim() || this.searchQuery
-    }`;
+    const url = `${this.BASE_URL}search.php?s=${search.trim() || this.searchQuery
+      }`;
     const response = await axios.get(url);
     this.drinks = response.data.drinks;
   }
@@ -48,11 +47,11 @@ export default class CocktailApiService {
     this.drinks = response.data.drinks;
   }
 
-  async fetchCocktailId() {
+  async fetchIngredientById() {
     const url = `${this.BASE_URL}lookup.php?iid=${this.searchQuery}`;
     const response = await axios.get(url);
-    // return response.data.drinks;
-    this.ingredients = response.data.drinks;
+    // return response.data.ingredients;
+    this.ingredients = response.data.ingredients;
   }
 
   addFavouriteDrinksById(idDrink) {

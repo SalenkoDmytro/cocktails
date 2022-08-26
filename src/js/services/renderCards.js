@@ -4,13 +4,16 @@ import mob from '../../images/group/groupmob.png';
 import mob2 from '../../images/group/groupxmob.png';
 import tab from '../../images/group/grouptab.png';
 import tab2 from '../../images/group/groupxtab.png';
-
-
+import { refreshFavCocktailOnPage } from "./../firebase/firebaseDb"
 
 export function createMarkup(data) {
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
+    // isFavoriteCocktailsById(idDrink);
+    // const isCheck = JSON.parse(localStorage.getItem("favoriteCocktail") || null);
+    // localStorage.removeItem("favoriteCocktail");
+    // const text = isCheck ? "Remove" : "Add to";
+    // const isClass = isCheck ? "is-checked" : " ";
     return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
-
         <img
           class="gallery__img"
           src="${strDrinkThumb}"
@@ -29,7 +32,7 @@ export function createMarkup(data) {
           </button>
           <button class="gallery__btn gallery__btn-fav js-btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
             <span class="js-btn-gallery-text">Add to</span>
-            <svg width="16" height="14" data-favorite class="gallery__btn-fav-svg ">
+            <svg width="16" height="14" data-favorite class="gallery__btn-fav-svg">
               <use
                 class="gallery__btn-fav-svg"
                 href="${icons}#icon-heart"
@@ -83,5 +86,6 @@ export function renderCards(data = []) {
   refs.gallery.innerHTML = '';
   const render = cardsQuantity(createMarkup(data));
   refs.gallery.insertAdjacentHTML('beforeend', render);
+  refreshFavCocktailOnPage();
 }
 
