@@ -180,7 +180,7 @@ export function refreshFavCocktailOnPage() {
     if (!btnListCocktail.length) return;
     userPromise.then((user) => {
         btnListCocktail.forEach(element => {
-            favId = element.dataset.id;
+            let favId = element.dataset.id;
             const favorite = element.dataset.favorite;
             if (user.hasFavoriteCocktailById(favId)) {
                 btnToggleFavGallery(element, true)
