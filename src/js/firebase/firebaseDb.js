@@ -347,14 +347,14 @@ function delIngredientByUser(user, ingredientId) {
 
 export async function isFavoriteCocktailsById(idDrink) {
     const auth = JSON.parse(localStorage.getItem("user") || null);
-    let isCheck = 0;
+    let isCheck = false;
     if (!auth) {
         return;
     }
     const dbRef = ref(getDatabase());
     await get(child(dbRef, `users/` + `id:${auth.uid}` + `/cocktails/`)).then((snapshot) => {
         if (snapshot.exists()) {
-            data = snapshot.val();
+            let data = snapshot.val();
             isCheck = data.includes(idDrink);
             if (isCheck) {
                 localStorage.setItem("favoriteCocktail", idDrink);
@@ -369,14 +369,14 @@ export async function isFavoriteCocktailsById(idDrink) {
 
 export async function isFavoriteIngredients(idIngredient) {
     const auth = JSON.parse(localStorage.getItem("user") || null);
-    let isCheck = 0;
+    let isCheck = false;
     if (!auth) {
         return;
     }
     const dbRef = ref(getDatabase());
     await get(child(dbRef, `users/` + `id:${auth.uid}` + `/ingredients/`)).then((snapshot) => {
         if (snapshot.exists()) {
-            data = snapshot.val();
+            let data = snapshot.val();
             isCheck = data.includes(idIngredient);
             if (isCheck) {
                 localStorage.setItem("favoriteIngredient", idIngredient);
