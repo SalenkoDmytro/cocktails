@@ -2,6 +2,8 @@ import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, get, remove, onValue, child } from "firebase/database";
 import { firebaseConfig } from '../config/firebaseConfig';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { notifyConfigs } from './../config/notify'
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
@@ -35,11 +37,11 @@ export function delListenerAuthLogOut() {
 
 export function onBtnFavAfterLogOutCocktailGalleryClick(e) {
     e.preventDefault();
-    const favoriteBtn = e.target.hasAttribute("data-favorite")
+    const favoriteBtn = e.target.closest(".js-btn-fav");
     if (!favoriteBtn) {
         return;
     }
-    console.log("Потрібно залогінитись");
+    Notify.info('Please login for adding to favorites', notifyConfigs);
 }
 
 export function delBtnFavoriteClassChecked() {
@@ -55,6 +57,8 @@ const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]
 const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
 async function onBtnFavCocktailGalleryClick(e) {
     const auth = JSON.parse(localStorage.getItem("user") || null);
+    const favoriteBtn = e.target.closest(".js-btn-fav")
+    let btnGalleryRef = favoriteBtn;
 
     e.preventDefault();
 
@@ -62,17 +66,19 @@ async function onBtnFavCocktailGalleryClick(e) {
         return;
     }
 
-    const favoriteBtn = e.target.closest(".js-btn-fav")
-
     if (!favoriteBtn) {
         return;
     }
 
+    const idFavorite = favoriteBtn.dataset.id;
+    if (!idFavorite) {
+        Notify.failure('Something wrong. Try again!', notifyConfigs);
+        return;
+    };
+
     const text = favoriteBtn.classList.contains("is-checked") ? "Add to" : "Remove ";
     favoriteBtn.children[0].textContent = text;
 
-    let btnGalleryRef = favoriteBtn;
-    const idFavorite = favoriteBtn.dataset.id;
     if (favoriteBtn.dataset.favorite === "cocktail") {
         await toggleCocktailGalleryInDb(idFavorite, btnGalleryRef)
     } else if (favoriteBtn.dataset.favorite === "ingredient") {
@@ -97,19 +103,23 @@ async function onBtnFavCocktailModalClick(e) {
 
     e.preventDefault();
 
-
-    if (!auth) {
-        return;
-    }
-
     const favoriteBtn = e.target.classList.contains('modal__btn')
 
     if (!favoriteBtn) {
         return;
     }
 
+    if (!auth) {
+        Notify.info('Please login for adding to favorites', notifyConfigs);
+        return;
+    }
+
     let btnModalRef = e.target;
     const cocktailId = btnModalRef.dataset.id;
+    if (!cocktailId) {
+        Notify.failure('Something wrong. Try again!', notifyConfigs);
+        return;
+    };
 
     const text = btnModalRef.classList.contains("is-checked") ? "Add to favorite" : "Remove from favorite";
     e.target.textContent = text;
@@ -127,28 +137,32 @@ export function delModalIngredientClick() {
     refs.backdropCocktail.removeEventListener("click", onBtnFavIngredientModalClick);
 }
 
-function onBtnFavIngredientModalClick(e) {
+async function onBtnFavIngredientModalClick(e) {
     const auth = JSON.parse(localStorage.getItem("user") || null);
+    const favoriteBtn = e.target.classList.contains('modal__btn')
 
     e.preventDefault();
 
-
-    if (!auth) {
+    if (!favoriteBtn) {
         return;
     }
 
-    const favoriteBtn = e.target.classList.contains('modal__btn')
-
-    if (!favoriteBtn) {
+    if (!auth) {
+        Notify.info('Please login for adding to favorites', notifyConfigs);
         return;
     }
 
     let btnModalRef = e.target;
     const ingredientId = btnModalRef.dataset.id;
 
+    if (!ingredientId) {
+        Notify.failure('Something wrong. Try again!', notifyConfigs);
+        return;
+    };
+
     const text = btnModalRef.classList.contains("is-checked") ? "Add to favorite" : "Remove from favorite";
     e.target.textContent = text;
-    toggleIngredientModalInDb(ingredientId, btnModalRef)
+    await toggleIngredientModalInDb(ingredientId, btnModalRef)
 }
 
 
@@ -196,6 +210,32 @@ export function refreshFavCocktailOnPage() {
     })
 }
 
+export function refreshFavIngredientsOnPage() {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+
+    if (!auth) {
+        return;
+    }
+
+    const btnListCocktail = document.querySelectorAll('.gallery__list-item .js-btn-fav');
+    if (!btnListCocktail.length) return;
+    userPromise.then((user) => {
+        btnListCocktail.forEach(element => {
+            let favId = element.dataset.id;
+            const favorite = element.dataset.favorite;
+            if (user.hasFavoriteIngredientById(favId)) {
+                btnToggleFavGallery(element, true)
+                element.children[0].textContent = "Remove";
+            } else {
+                btnToggleFavGallery(element, false)
+                element.children[0].textContent = "Add to";
+            }
+        })
+    }
+    ).catch(error => {
+        throw new Error(error.message)
+    })
+}
 // function displayFavIngredientOnPage() {
 //     userPromise.then((user) => {
 //         btnListIngredients.forEach(element => {
@@ -229,22 +269,22 @@ function setFavoritesIngredientsToLS(obj) {
 }
 
 function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
-    let arr;
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
             addCocktailByUser(user, cocktailId);
             btnToggleFavGallery(btnGalleryRef, true);
+            Notify.info('The cocktail has been added to favorites', notifyConfigs);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            // console.log("Дописати нотіфікашку");
         } else {
             deleteCocktailByUser(user, cocktailId)
             btnToggleFavGallery(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            // console.log("Дописати нотіфікашку");
         }
 
         if (!user.getId()) {
-            alert("авторизуйтесь");
+            // alert("авторизуйтесь");
         } else {
             userManager.pushUser(user);
         }
@@ -258,7 +298,8 @@ export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
             addCocktailByUser(user, cocktailId)
             btnToggleFavModal(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            Notify.info('The cocktail has been added to favorites', notifyConfigs);
+            // console.log("Дописати нотіфікашку");
         } else {
             deleteCocktailByUser(user, cocktailId)
             btnToggleFavModal(btnGalleryRef, false);
@@ -295,15 +336,16 @@ function toggleIngredientGalleryInDb(ingredientId, btnGalleryRef) {
             addIngredientByUser(user, ingredientId)
             btnToggleFavGallery(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            Notify.info('The ingredient has been added to favorites', notifyConfigs);
+            // console.log("Дописати нотіфікашку");
         } else {
             delIngredientByUser(user, ingredientId)
             btnToggleFavGallery(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            // console.log("Дописати нотіфікашку");
         }
         if (!user.getId()) {
-            alert("авторизуйтесь");
+            // alert("авторизуйтесь");
         } else {
             userManager.pushUser(user);
         }
@@ -316,16 +358,18 @@ function toggleIngredientModalInDb(ingredientId, btnGalleryRef) {
         if (!user.hasFavoriteIngredientById(ingredientId)) {
             addIngredientByUser(user, ingredientId)
             btnToggleFavModal(btnGalleryRef, true);
+            Notify.info('The ingredient has been added to favorites', notifyConfigs);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            // console.log("Дописати нотіфікашку");
         } else {
             delIngredientByUser(user, ingredientId)
-            btnToggleFavIngredientModal(btnGalleryRef, false);
+            btnToggleFavModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
-            console.log("Дописати нотіфікашку");
+            // console.log("Дописати нотіфікашку");
         }
+        refreshFavIngredientsOnPage();
         if (!user.getId()) {
-            alert("авторизуйтесь");
+            // alert("авторизуйтесь");
         } else {
             userManager.pushUser(user);
         }
