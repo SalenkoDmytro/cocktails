@@ -177,7 +177,7 @@ export function refreshFavCocktailOnPage() {
     }
 
     const btnListCocktail = document.querySelectorAll('.gallery__list-item .js-btn-fav');
-    console.log(btnListCocktail.length);
+    if (!btnListCocktail.length) return;
     userPromise.then((user) => {
         btnListCocktail.forEach(element => {
             favId = element.dataset.id;
