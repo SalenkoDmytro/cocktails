@@ -46,6 +46,7 @@ async function fetchSearchValue() {
   const searchText = refs.input.value.trim();
   cocktailApiService.searchQuery = searchText;
   try {
+    console.log(await cocktailApiService.fetchCocktaileByName());
     await cocktailApiService.fetchCocktaileByName();
   } catch (error) {
     console.log(error.message);
