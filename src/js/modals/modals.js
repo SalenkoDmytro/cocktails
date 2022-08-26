@@ -9,6 +9,7 @@ refs.gallery.addEventListener('click', onOpenModalCocktail);
 import { addModalCocktailClick, delModalCocktailClick, addModalIngredientClick, delModalIngredientClick, displayFavCocktailOnPage } from '../firebase/firebaseDb'
 
 
+
 async function onOpenModalCocktail(e) {
   if (e.target.dataset.type !== 'open-learn-more') return;
   refs.backdropCocktail.classList.remove('visually-hidden');
@@ -23,7 +24,7 @@ async function onOpenModalCocktail(e) {
 
 async function onClick(e) {
   if (e.target.dataset.type === 'open-ingredient') {
-    delModalCocktailClick()
+    delModalCocktailClick();
     onClickOpenIngr(e);
     addModalIngredientClick();
     return

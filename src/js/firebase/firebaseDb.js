@@ -14,6 +14,50 @@ import DrinkingUser from '../drinkingUser/createUser';
 export const userManager = new UserManager(db);
 
 
+export async function isFavoriteCocktailsById(idDrink) {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+    let isCheck = 0;
+    if (!auth) {
+        return;
+    }
+    const dbRef = ref(getDatabase());
+    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/cocktails/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            data = snapshot.val();
+            isCheck = data.includes(idDrink);
+            if (isCheck) {
+                localStorage.setItem("favoriteCocktail", idDrink);
+            }
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+export async function isFavoriteIngredients(idIngredient) {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+    let isCheck = 0;
+    if (!auth) {
+        return;
+    }
+    const dbRef = ref(getDatabase());
+    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/ingredients/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            data = snapshot.val();
+            isCheck = data.includes(idIngredient);
+            if (isCheck) {
+                localStorage.setItem("favoriteIngredient", idIngredient);
+            }
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
 
 export function getDataFromFirebase() {
     const auth = JSON.parse(localStorage.getItem("user") || null);
@@ -36,25 +80,7 @@ export function getDataFromFirebase() {
 }
 
 
-// const cocktail = ref(db, `users/` + `id:${auth.uid}` + '/cocktails');
-// const ingredient = ref(db, `users/` + `id:${auth.uid}` + '/ingredients');
-
-function markUpCocktail() {
-    const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (!auth) {
-        return;
-    }
-    onValue(ref(db, `users/` + `id:${auth.uid}` + '/cocktails'), snapshot => {
-        const dataDb = snapshot.val();
-        if (!dataDb) return;
-        dataDb.cocktails;
-        console.log("🚀 ~ getDataFromFirebase ~ cocktail", dataDb)
-    });
-}
-
-
-
-//Додаємо і зніміємо подію в залежності від авторизації
+//Додаємо і знімаємо події
 export function addListenerAfterLogIn() {
     listFavCocktailGallery.addEventListener("click", onBtnFavCocktailGalleryClick);
 }
@@ -62,7 +88,6 @@ export function addListenerAfterLogIn() {
 export function delListenerAfterLogOut() {
     listFavCocktailGallery.removeEventListener("click", onBtnFavCocktailGalleryClick);
 }
-
 
 export function addListenerAuthLogOut() {
     listFavCocktailGallery.addEventListener("click", onBtnFavAfterLogOutCocktailGalleryClick);
@@ -93,7 +118,7 @@ const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]
 //TODO *************************************************************************************
 //!клік по кнопці додати до улюблених коктейлів в галереї
 const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
-function onBtnFavCocktailGalleryClick(e) {
+async function onBtnFavCocktailGalleryClick(e) {
     e.preventDefault();
 
 
@@ -103,13 +128,17 @@ function onBtnFavCocktailGalleryClick(e) {
         return;
     }
 
-
     const text = favoriteBtn.classList.contains("is-checked") ? "Add to" : "Remove ";
     favoriteBtn.children[0].textContent = text;
 
     let btnGalleryRef = favoriteBtn;
     const idFavorite = favoriteBtn.dataset.id;
-    toggleCocktailGalleryInDb(idFavorite, btnGalleryRef)
+    if (favoriteBtn.dataset.favorite === "cocktail") {
+        await toggleCocktailGalleryInDb(idFavorite, btnGalleryRef)
+    } else if (favoriteBtn.dataset.favorite === "ingredient") {
+        await toggleIngredientGalleryInDb(idFavorite, btnGalleryRef);
+    }
+
 }
 //********************************* */
 
@@ -123,7 +152,7 @@ export function delModalCocktailClick() {
     refs.backdropCocktail.removeEventListener("click", onBtnFavCocktailModalClick);
 }
 
-function onBtnFavCocktailModalClick(e) {
+async function onBtnFavCocktailModalClick(e) {
     const auth = JSON.parse(localStorage.getItem("user") || null);
 
     e.preventDefault();
@@ -144,7 +173,8 @@ function onBtnFavCocktailModalClick(e) {
 
     const text = btnModalRef.classList.contains("is-checked") ? "Add to favorite" : "Remove from favorite";
     e.target.textContent = text;
-    toggleCocktailModalInDb(cocktailId, btnModalRef)
+    await toggleCocktailModalInDb(cocktailId, btnModalRef)
+
 }
 //********************************* */
 
@@ -184,6 +214,7 @@ function onBtnFavIngredientModalClick(e) {
 
 
 
+
 //!Промісифікація функції авторизації.
 
 const userPromise = new Promise((res, reg) => {
@@ -196,55 +227,30 @@ const userPromise = new Promise((res, reg) => {
     });
 })
 
-
-// //клік по кнопці додати до улюблених інгредієнтів
-// async function onBtnFavIngredientGalleryClick(e) {
-//     e.preventDefault();
-//     const favoriteBtn = e.target.hasAttribute("data-favorite")
-//     console.log("favoriteBtn", favoriteBtn)
-
-//     if (!favoriteBtn) {
-//         return;
-//     }
-
-//     favoriteBtn.textContent = "Remove";
-
-//     if (e.target.nodeName === "svg") {
-//         e.target.closest(".gallery__btn-fav").textContent = "Remove"
-//         e.target.closest(".gallery__btn-fav").classList.toggle("is-checked");
-//     }
-
-//     if (e.target.nodeName === "BUTTON") {
-//         const svg = e.target.querySelector(".gallery__btn-fav-svg").classList.toggle("is-checked");
-//     }
-
-
-//     btnGalleryRef = e.target;
-//     const idFavorite = e.target.dataset.id;
-//     await toggleCocktailModalInDb(idFavorite, btnGalleryRef, true)
-// }
-
 //! *****************************************************************************************************************
 // //відмалювати улюблені в галереї
-export function displayFavCocktailOnPage(gallery = false) {
-    const btnListCocktail = document.querySelectorAll('.js-btn-fav');
+
+
+export function refreshFavCocktailOnPage() {
+    const btnListCocktail = document.querySelectorAll('.gallery__list-item .js-btn-fav');
+    console.log(btnListCocktail.length);
     userPromise.then((user) => {
         btnListCocktail.forEach(element => {
             favId = element.dataset.id;
             const favorite = element.dataset.favorite;
             if (user.hasFavoriteCocktailById(favId)) {
-                if (!gallery) {
-                    btnToggleFavGallery(element, true)
-                } else if (gallery) {
-                    btnToggleFavCocktailModal(element, true)
-                }
-                console.log("Вкажи параметр відмалювання");
+                btnToggleFavGallery(element, true)
+                element.children[0].textContent = "Remove";
+            } else {
+                btnToggleFavGallery(element, false)
+                element.children[0].textContent = "Add to";
             }
         })
     }
-    )
+    ).catch(error => {
+        throw new Error(error.message)
+    })
 }
-
 
 // function displayFavIngredientOnPage(gallery = false) {
 //     userPromise.then((user) => {
@@ -266,8 +272,6 @@ export function displayFavCocktailOnPage(gallery = false) {
 // }
 // // Якщо у функцію нічого не передаємо - то відмалює зі стилями галереї
 // // Якщо вказати true то відмалює зі стилями модального вікна
-displayFavCocktailOnPage();
-// displayFavIngredientOnPage(true);
 
 
 //! *****************************************************************************************************************
@@ -318,9 +322,8 @@ export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
             btnToggleFavCocktailModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
-
         }
-
+        refreshFavCocktailOnPage();
         if (!user.getId()) {
             alert("авторизуйтесь");
         } else {
@@ -407,8 +410,10 @@ function delIngredientByUser(user, ingredientId) {
 function btnToggleFavGallery(btn, isChecked) {
     if (isChecked) {
         btn.classList.add("is-checked");
+        // btn.children[0].textContent = "Remove";
     } else {
         btn.classList.remove("is-checked");
+        // btn.children[0].textContent = "Add to";
     }
 }
 
@@ -434,32 +439,5 @@ function btnToggleFavIngredientModal(btn, isChecked) {
     }
 }
 //! ***********************************************************************************************************************
-
-
-
-// function getFavoritesCocktails() {
-//     setFavoritesToLS()
-//     return JSON.parse(localStorage.getItem("favoriteCocktail") || null);
-// }
-
-// function getFavoritesCocktails() {
-//     setFavoritesToLS()
-//     return JSON.parse(localStorage.getItem("favoriteCocktail") || null);
-// }
-
-// function getFavoritesIngredients() {
-//     setFavoritesToLS()
-//     return JSON.parse(localStorage.getItem("favoriteIngredient") || null);
-// }
-
-// function isFavoriteCocktail(id) {
-//     const favorite = getFavoritesCocktails();
-//     return favorite?.includes(id)
-// }
-
-// function isFavoriteIngredient(id) {
-//     const favorite = getFavoritesIngredients();
-//     return favorite?.include(id);
-// }
 
 

@@ -1,8 +1,16 @@
 import { refs } from '../config/refs';
 import * as icon from './../../images/icons.svg';
+import { isFavoriteCocktailsById, isFavoriteIngredients } from "./../firebase/firebaseDb"
 
-export function renderModalCocktail(data) {
+export async function renderModalCocktail(data) {
   const { strDrinkThumb, strDrink, strInstructions, idDrink } = data;
+  await isFavoriteCocktailsById(idDrink);
+  const isCheck = JSON.parse(localStorage.getItem("favoriteCocktail") || null);
+  localStorage.removeItem("favoriteCocktail");
+
+  const text = isCheck ? "Remove from favorite" : "Add to favorite";
+  const isClass = isCheck ? "is-checked" : " ";
+
   refs.backdropCocktail.innerHTML = '';
   const markup = `  <div class='modal__cocktail'>
     <div class='cocktail__wrap'>
@@ -12,7 +20,6 @@ export function renderModalCocktail(data) {
           <h2 class='cocktail__name'>${strDrink}</h2>
           <h3 class='cocktail__title'>Ingredients</h3>
           <p class='cocktail__text'>Per cocktail</p>
-
           <ul class='ingredient js-open-modal-ingredient'>${renderIngredients(
     data
   )}</ul>
@@ -30,15 +37,14 @@ export function renderModalCocktail(data) {
       </div>
     </div>
     <div class='cocktail__modal-btn'>
-      <button type='button' class='modal__btn js-btn-fav' data-add-cocktail data-id="${idDrink}">Add to favorite</button>
+      <button type='button' class='modal__btn js-btn-fav ${isClass}' data-add-cocktail data-id="${idDrink}">${text}</button>
     </div>
-  </div>
-`;
+  </div>`;
   refs.backdropCocktail.insertAdjacentHTML('beforeend', markup);
 }
 {/* <button type='button' class='modal__btn visually-hidden js-btn-fav' data-remove-cocktail data-id="${idDrink}>Remove from favorite</button> */ }
 
-export function renderModalIngredient(data) {
+export async function renderModalIngredient(data) {
   const {
     strIngredient: name,
     strType: type,
@@ -46,7 +52,13 @@ export function renderModalIngredient(data) {
     strABV: degree,
     strAlcohol: question,
   } = data;
-  console.log(data);
+  await isFavoriteIngredients(data.idIngredient);
+  const isCheck = JSON.parse(localStorage.getItem("favoriteIngredient") || null);
+  localStorage.removeItem("favoriteIngredient");
+
+  const text = isCheck ? "Remove from favorite" : "Add to favorite";
+  const isClass = isCheck ? "is-checked" : " ";
+
   refs.backdropCocktail.innerHTML = '';
   const markup = `  <div class='modal__ingredient'>
     <div class='modal__wrap'>
@@ -74,8 +86,8 @@ export function renderModalIngredient(data) {
       </button>
     </div>
   <div class='cocktail__modal-btn'>
-    <button type='button' class='modal__btn js-btn-fav' data-add-ingredient data-id="${data.idIngredient
-    }">Add to favorite</button>
+    <button type='button' class='modal__btn js-btn-fav ${isClass}' data-add-ingredient data-id="${data.idIngredient
+    }">${text}</button>
   </div>
   </div>
 `;
