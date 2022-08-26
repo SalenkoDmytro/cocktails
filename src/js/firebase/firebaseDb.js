@@ -236,24 +236,6 @@ export function refreshFavIngredientsOnPage() {
         throw new Error(error.message)
     })
 }
-// function displayFavIngredientOnPage() {
-//     userPromise.then((user) => {
-//         btnListIngredients.forEach(element => {
-//             favId = element.dataset.id;
-//             const favorite = element.dataset.favorite;
-//             if (user.hasFavoriteIngredientById(favId)) {
-//                 if (!gallery) {
-//                     btnToggleFavGallery(element, true)
-//                 } else if (gallery) {
-//                     btnToggleFavIngredientModal(element, true)
-//                 }
-//                 console.log("Вкажи параметр функції відображення");
-//             }
-
-//         })
-//     }
-//     )
-// }
 
 
 //! *****************************************************************************************************************
@@ -288,6 +270,8 @@ function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
         } else {
             userManager.pushUser(user);
         }
+    }).catch(error => {
+        throw new Error(error.message)
     })
 }
 
@@ -312,6 +296,8 @@ export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
         } else {
             userManager.pushUser(user);
         }
+    }).catch(error => {
+        throw new Error(error.message)
     })
 }
 
@@ -349,6 +335,8 @@ function toggleIngredientGalleryInDb(ingredientId, btnGalleryRef) {
         } else {
             userManager.pushUser(user);
         }
+    }).catch(error => {
+        throw new Error(error.message)
     })
 }
 
@@ -373,6 +361,8 @@ function toggleIngredientModalInDb(ingredientId, btnGalleryRef) {
         } else {
             userManager.pushUser(user);
         }
+    }).catch(error => {
+        throw new Error(error.message)
     })
 }
 
