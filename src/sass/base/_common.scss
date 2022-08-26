@@ -2,11 +2,21 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  min-height: 100%;
   margin: 0;
   font-style: normal;
   font-weight: 500;
   background-color: var(--body-background-color);
   box-sizing: border-box;
+}
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
 }
 
 h1,

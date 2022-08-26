@@ -27,7 +27,7 @@ export default class UserManager {
                     let ingredients = dataDb.cocktails === undefined ? [] : dataDb.ingredients;
                     user.importIngredients(ingredients);
                     user.setFetched(true);
-                    console.log("Sucsses fetch");
+                    // console.log("Sucsses fetch");
                 } else {
                     console.log("No data available");
                 }
@@ -54,7 +54,7 @@ export default class UserManager {
         dataDb.ingredients = user.getFavoritesIngredients();
         return set(ref(this.db, this.path + `id:${id}`), dataDb)
             .then((response) => {
-                console.log("Susses set")
+                // console.log("Susses set")
             })
             .catch((error) => {
                 throw new Error(error);

@@ -12,6 +12,9 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { notifyConfigs } from './../config/notify'
+import { Report } from 'notiflix/build/notiflix-report-aio';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -53,9 +56,13 @@ function userSignInWithGoogle() {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-      // localStorage.setItem("user", JSON.stringify(user));
-      console.log("🚀 ~ userSignInWithGoogle ~ user.uid", user.uid)
-      // ...
+      localStorage.setItem("user", JSON.stringify(user));
+      Report.success(
+        user.displayName,
+        `Nice to meet you. Are you ready to select drinks?`,
+        'GO!!!',
+      );
+
       //TODO close modal autorization  closeModalAuth();
       //TODO get data from user acount   getDataFromFirebase(user.uid);
       //TODO markup cocktaile renderFavouriteCocktaileByUser(user.uid);
@@ -74,6 +81,7 @@ function userSignInWithGoogle() {
 
 onAuthStateChanged(auth, user => {
   if (user) {
+    // Notify.success(`Nice to meet you ${user.displayName}. What cocktail do you want?`);
     // // LogIn(modalBtnSignIn);
     modalBtnSignIn.forEach(el => el.dataset.sign = "sign-in");
     modalBtnSignIn.forEach(el => el.textContent = "Log out");
@@ -84,6 +92,10 @@ onAuthStateChanged(auth, user => {
     localStorage.setItem("user", JSON.stringify(user));
 
   } else {
+    let user = JSON.parse(localStorage.getItem("user") || null);
+    if (user) {
+      Notify.success(`Good bye, ${user.displayName}! Hope to see you soon!`, notifyConfigs);
+    }
     // // LogOut(modalBtnSignIn);
     localStorage.removeItem("user");
     delBtnFavoriteClassChecked();
@@ -103,7 +115,9 @@ onAuthStateChanged(auth, user => {
 export function userSignOut() {
   signOut(auth)
     .then(() => {
-      console.log("Sign-out successful");
+
+
+      // console.log("Sign-out successful");
       // localStorage.removeItem("user");
 
       // Sign-out successful.

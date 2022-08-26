@@ -6,6 +6,7 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { notifyConfigs } from './../config/notify'
 import CocktailApiService from './CocktailApiService';
 
 
@@ -105,7 +106,7 @@ function markUpIngredients() {
 export function needLoginFavCock() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
   if (auth === null) {
-    Notify.failure('Error. Please login to get your favorite cocktails');
+    Notify.info('Please login to get your favorite cocktails', notifyConfigs);
     refs.favList.classList.add('visually-hidden');
   } else {
     onFavoriteCocktailClick();
@@ -115,7 +116,7 @@ export function needLoginFavCock() {
 export function needLogInFavIngrid() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
   if (auth === null) {
-    Notify.failure('Error. Please login to get your favorite ingridients');
+    Notify.info('Please login to get your favorite ingridients', notifyConfigs);
     refs.favList.classList.add('visually-hidden');
   } else {
     onFavoriteIngredientClick();
@@ -128,7 +129,7 @@ refs.manuFavIngrid.addEventListener('click', needLogInMenuFavIngrid);
 export function needLoginMenuFavCock() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
   if (auth === null) {
-    Notify.failure('Error. Please login to get your favorites');
+    Notify.info('Please login to get your favorites', notifyConfigs);
     refs.mobMenu.classList.add('visually-hidden');
     refs.menuBtn.classList.toggle('is-active');
   } else {
@@ -141,7 +142,7 @@ export function needLoginMenuFavCock() {
 export function needLogInMenuFavIngrid() {
   const auth = JSON.parse(localStorage.getItem("user") || null);
   if (auth === null) {
-    Notify.failure('Error. Please login to get your favorites');
+    Notify.info('Please login to get your favorites', notifyConfigs);
     refs.mobMenu.classList.add('visually-hidden');
     refs.menuBtn.classList.toggle('is-active');
   } else {
