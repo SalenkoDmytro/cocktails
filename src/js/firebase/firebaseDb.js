@@ -54,8 +54,13 @@ const btnListIngredients = document.querySelectorAll('[data-favorite=ingredient]
 //!клік по кнопці додати до улюблених коктейлів в галереї
 const listFavCocktailGallery = document.querySelector('[data-gallery-cocktail]');
 async function onBtnFavCocktailGalleryClick(e) {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+
     e.preventDefault();
 
+    if (!auth) {
+        return;
+    }
 
     const favoriteBtn = e.target.closest(".js-btn-fav")
 
@@ -165,6 +170,12 @@ const userPromise = new Promise((res, reg) => {
 //! *****************************************************************************************************************
 //відмалювати улюблені в галереї
 export function refreshFavCocktailOnPage() {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+
+    if (!auth) {
+        return;
+    }
+
     const btnListCocktail = document.querySelectorAll('.gallery__list-item .js-btn-fav');
     console.log(btnListCocktail.length);
     userPromise.then((user) => {
