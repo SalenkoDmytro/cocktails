@@ -28,7 +28,6 @@ async function onOpenModalCocktail(e) {
 
 export async function onClick(e) {
   if (e.target.dataset.type === 'open-ingredient') {
-    console.log('estb');
     delModalCocktailClick();
     onClickOpenIngr(e);
     addModalIngredientClick();
@@ -102,9 +101,5 @@ async function onClickOpenIngr(e) {
   } catch (error) {
     console.log(error.message);
   }
-  if (
-    cocktailApiService.ingredients[0].strIngredient === e.target.dataset.name
-  ) {
-    return renderModalIngredient(cocktailApiService.ingredients[0]);
-  }
+  return renderModalIngredient(cocktailApiService.ingredients[0]);
 }

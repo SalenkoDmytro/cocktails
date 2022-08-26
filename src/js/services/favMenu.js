@@ -5,7 +5,9 @@ import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { notifyConfigs } from './../config/notify'
+import { notifyConfigs } from './../config/notify';
+import { addListeners, removeListeners } from '../modals/modals';
+import { renderModalIngredient } from '../modals/renderModal';
 import CocktailApiService from './CocktailApiService';
 
 const cocktailApiService = new CocktailApiService();
@@ -29,13 +31,29 @@ async function onFavoriteCocktailClick() {
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite cocktails';
   refs.favList.classList.add('visually-hidden');
+  refs.gallery.removeEventListener('click', onLearnMoreIngrClick);
 }
 
 async function onFavoriteIngredientClick() {
   markUpIngredients();
+  refs.gallery.addEventListener('click', onLearnMoreIngrClick);
   refs.sectionHero.style.display = 'none';
-  refs.galleryTitle.textContent = 'Favorite ingridiens';
+  refs.galleryTitle.textContent = 'Favorite ingredients';
   refs.favList.classList.add('visually-hidden');
+}
+
+async function onLearnMoreIngrClick(e) {
+  if (e.target.dataset.type !== 'open-ingredient') return;
+  try {
+    cocktailApiService.searchQuery = e.target.dataset.id;
+    await cocktailApiService.fetchIngredientById();
+    refs.backdropCocktail.classList.remove('visually-hidden');
+  } catch (error) {
+    console.log(error.message);
+  }
+  addListeners();
+  renderModalIngredient(cocktailApiService.ingredients[0]);
+  return;
 }
 
 async function markUpCocktails() {
@@ -78,10 +96,6 @@ function markUpIngredients() {
         cocktailApiService.searchQuery = el;
         await cocktailApiService.fetchIngredientById();
         return cocktailApiService.ingredients;
-        // const responce = await axios.get(
-        //   `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=${el}`
-        // );
-        return responce;
       });
       const result = await Promise.all(allData);
       renderFavIngredients(result);
