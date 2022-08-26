@@ -41,6 +41,8 @@ export function createMarkup(data = []) {
 }
 
 export function noResultRender() {
+  refs.galleryTitle.textContent = '';
+
   refs.gallery.innerHTML = '';
   const markup = ` <div class="container sorry ">
     <h2 class="sorry__title">Sorry, we didn't find any cocktail for you</h2>

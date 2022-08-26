@@ -6,7 +6,7 @@ import smoothScroll from './smoothScroll';
 
 const cocktailApiService = new CocktailApiService();
 let checked = document.querySelector('.select__input');
-let mobOpen = document.querySelector(".gallery__title");
+let mobOpen = document.querySelector('.gallery__title');
 
 refs.lettersList.addEventListener('click', onLetterClick);
 refs.inputMobile.addEventListener('click', onMobLetterClick);
@@ -18,19 +18,19 @@ async function onLetterClick(e) {
 
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
-    smoothScroll(1);
     if (!cocktailApiService.drinks) return noResultRender();
 
     renderCards(cocktailApiService.drinks);
+    refs.galleryTitle.textContent = 'Cocktails';
   } catch (error) {
     console.log(error.message);
   }
 }
 
 function onMobLetterClick() {
-  mobOpen.classList.add("mob-open");
+  mobOpen.classList.add('mob-open');
   if (refs.selectLetter.children.length > 1) {
-    mobOpen.classList.remove("mob-open");
+    mobOpen.classList.remove('mob-open');
     refs.selectLetter.lastChild.remove();
     return;
   }
@@ -40,7 +40,7 @@ function onMobLetterClick() {
     onLetterClick(e);
     refs.inputSpan.textContent = e.target.dataset.letter.toUpperCase();
     refs.selectLetter.lastChild.remove();
-    mobOpen.classList.remove("mob-open");
+    mobOpen.classList.remove('mob-open');
   });
 }
 

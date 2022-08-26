@@ -4,8 +4,10 @@ import {
   isFavoriteCocktailsById,
   isFavoriteIngredients,
 } from './../firebase/firebaseDb';
+import { stopScrollWhenModalIsOpen } from './modals';
 
 export async function renderModalCocktail(data) {
+  stopScrollWhenModalIsOpen();
   const { strDrinkThumb, strDrink, strInstructions, idDrink } = data;
   await isFavoriteCocktailsById(idDrink);
   const isCheck = JSON.parse(localStorage.getItem('favoriteCocktail') || null);
@@ -45,11 +47,9 @@ export async function renderModalCocktail(data) {
   </div>`;
   refs.backdropCocktail.insertAdjacentHTML('beforeend', markup);
 }
-{
-  /* <button type='button' class='modal__btn visually-hidden js-btn-fav' data-remove-cocktail data-id="${idDrink}>Remove from favorite</button> */
-}
 
 export async function renderModalIngredient(data) {
+  stopScrollWhenModalIsOpen();
   const {
     strIngredient: name,
     strType: type,
@@ -101,8 +101,6 @@ export async function renderModalIngredient(data) {
 `;
   refs.backdropCocktail.insertAdjacentHTML('beforeend', markup);
 }
-
-//<button type='button' class='modal__btn visually-hidden' data-remove-ingredient>Remove from favorite</button>
 
 function renderIngredients(data) {
   let markup = '';

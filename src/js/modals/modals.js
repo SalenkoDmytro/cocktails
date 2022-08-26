@@ -24,11 +24,12 @@ async function onOpenModalCocktail(e) {
   renderModalCocktail(cocktailApiService.drinks[0]);
   addModalCocktailClick();
   addListeners();
+  const body = document.body;
+  console.log(body.style);
 }
 
 export async function onClick(e) {
   if (e.target.dataset.type === 'open-ingredient') {
-    console.log('estb');
     delModalCocktailClick();
     onClickOpenIngr(e);
     addModalIngredientClick();
@@ -40,7 +41,10 @@ export async function onClick(e) {
     return;
   }
   if (e.target.dataset.modal === 'close-ingredient') {
-    if (refs.backdropCocktail.classList.contains('js-modal-cocktail')) {
+    if (
+      refs.backdropCocktail.classList.contains('js-modal-cocktail') &&
+      !document.querySelector('.modal__cocktail')
+    ) {
       refs.backdropCocktail.classList.remove('js-modal-cocktail');
       renderModalCocktail(cocktailApiService.drinks[0]);
       addModalCocktailClick();
@@ -51,7 +55,11 @@ export async function onClick(e) {
     return;
   }
   if (e.target.classList.contains('backdrop__cocktail')) {
-    if (refs.backdropCocktail.classList.contains('js-modal-cocktail')) {
+    console.log(document.querySelector('.modal__cocktail'));
+    if (
+      refs.backdropCocktail.classList.contains('js-modal-cocktail') &&
+      !document.querySelector('.modal__cocktail')
+    ) {
       refs.backdropCocktail.classList.remove('js-modal-cocktail');
       renderModalCocktail(cocktailApiService.drinks[0]);
       addModalCocktailClick();
@@ -65,6 +73,7 @@ export async function onClick(e) {
 
 export function onModalClose() {
   removeListeners();
+  startScrollWhenModalIsClosed();
   refs.backdropCocktail.classList.add('visually-hidden');
 }
 
@@ -79,7 +88,10 @@ export function removeListeners() {
 }
 
 export function onEscKeyPress(event) {
-  if (refs.backdropCocktail.classList.contains('js-modal-cocktail')) {
+  if (
+    refs.backdropCocktail.classList.contains('js-modal-cocktail') &&
+    !document.querySelector('.modal__cocktail')
+  ) {
     refs.backdropCocktail.classList.remove('js-modal-cocktail');
     delModalIngredientClick();
     renderModalCocktail(cocktailApiService.drinks[0]);
@@ -102,9 +114,11 @@ async function onClickOpenIngr(e) {
   } catch (error) {
     console.log(error.message);
   }
-  if (
-    cocktailApiService.ingredients[0].strIngredient === e.target.dataset.name
-  ) {
-    return renderModalIngredient(cocktailApiService.ingredients[0]);
-  }
+  return renderModalIngredient(cocktailApiService.ingredients[0]);
+}
+export function stopScrollWhenModalIsOpen() {
+  refs.body.style.overflow = 'hidden';
+}
+function startScrollWhenModalIsClosed() {
+  refs.body.style.overflow = 'auto';
 }
