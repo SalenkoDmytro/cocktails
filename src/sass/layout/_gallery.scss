@@ -102,7 +102,7 @@
   box-sizing: border-box;
   &:hover,
   &:focus {
-    box-shadow: -10px 10px 20px #acabab, 10px -10px 20px #FFFFFF;
+    box-shadow: -10px 10px 20px #acabab, 10px -10px 20px #ffffff;
   }
 }
 
@@ -295,4 +295,18 @@
 }
 .mob-open {
   color: transparent;
+}
+
+.ing-card-wrap {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ing-card-wrap-modal {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
 }
