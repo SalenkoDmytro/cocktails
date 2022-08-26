@@ -82,10 +82,10 @@ export function cardsQuantity(markup) {
   return render.join('');
 }
 
-export function renderCards(data = []) {
+export async function renderCards(data = []) {
   refs.gallery.innerHTML = '';
   const render = cardsQuantity(createMarkup(data));
   refs.gallery.insertAdjacentHTML('beforeend', render);
-  refreshFavCocktailOnPage();
+  await refreshFavCocktailOnPage();
 }
 
