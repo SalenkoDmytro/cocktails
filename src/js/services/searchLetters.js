@@ -18,7 +18,6 @@ async function onLetterClick(e) {
 
   try {
     await cocktailApiService.fetchCocktaileByFirstLetter();
-    smoothScroll(1);
     if (!cocktailApiService.drinks) return noResultRender();
 
     renderCards(cocktailApiService.drinks);

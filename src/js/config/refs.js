@@ -59,4 +59,6 @@ export const refs = {
   menuFavCock: document.querySelector('.js-menu-btn-fav-cock'),
   manuFavIngrid: document.querySelector('.js-menu-btn-fav-ingr'),
   menuBtn: document.querySelector('[data-menu-toggle]'),
+  menuForm: document.querySelector('.menu__search-wrapper'),
+  menuInput: document.querySelector('.menu__search-input'),
 };

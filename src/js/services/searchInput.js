@@ -11,6 +11,11 @@ const DEBOUNCE_DELAY = 500;
 
 refs.form.addEventListener('submit', onSubmitBtnClick);
 refs.input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
+refs.menuForm.addEventListener('submit', onSubmitBtnClick);
+refs.menuInput.addEventListener(
+  'input',
+  debounce(onInputChange, DEBOUNCE_DELAY)
+);
 
 async function onInputChange(e) {
   if (e.target.value.trim() === '') {
@@ -23,8 +28,7 @@ async function onInputChange(e) {
     }
     return;
   }
-
-  await fetchSearchValue();
+  await fetchSearchValue(e.target.value);
   if (!cocktailApiService.drinks) return noResultRender();
 
   renderCards(cocktailApiService.drinks);
@@ -35,8 +39,8 @@ async function onSubmitBtnClick(e) {
   e.preventDefault();
   if (e.currentTarget.elements.search.value.trim() === '')
     return Notify.info('Add some letters');
-  await fetchSearchValue();
-  smoothScroll(1.55);
+  await fetchSearchValue(e.currentTarget.elements.search.value);
+  if (window.screen.width > 768) smoothScroll(1.5);
 
   if (!cocktailApiService.drinks) return noResultRender();
 
@@ -45,9 +49,8 @@ async function onSubmitBtnClick(e) {
   refs.form.reset();
 }
 
-async function fetchSearchValue() {
-  const searchText = refs.input.value.trim();
-  cocktailApiService.searchQuery = searchText;
+async function fetchSearchValue(input) {
+  cocktailApiService.searchQuery = input.trim();
   try {
     await cocktailApiService.fetchCocktaileByName();
   } catch (error) {
