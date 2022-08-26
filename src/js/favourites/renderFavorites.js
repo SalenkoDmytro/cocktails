@@ -10,9 +10,12 @@ export function renderFavIngredients(array = []) {
 }
 
 function createFavIngMarkup(data) {
+  console.log(data);
   return data.map((data) => {
     const { idIngredient, strIngredient, strType } = data[0];
     return `<li class="fav-ing__list-item card-set-item">
+      <img class="ing-pict" src='https://www.thecocktaildb.com/images/ingredients/${strIngredient}-Small.png'
+       alt=${strIngredient}>
         <p class="fav-ing__list-name">${strIngredient}</p>
         <p class="fav-ing__list-type">${strType}</p>
         <div class="fav-ing__btn-container">
@@ -32,3 +35,10 @@ function createFavIngMarkup(data) {
       </li>`;
   });
 }
+
+{/* <img
+  class="gallery__img"
+  src="${strDrinkThumb}"
+  alt="${strDrink}"
+  loading="lazy"
+/> */}

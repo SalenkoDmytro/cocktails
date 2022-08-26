@@ -14,71 +14,6 @@ import DrinkingUser from '../drinkingUser/createUser';
 export const userManager = new UserManager(db);
 
 
-export async function isFavoriteCocktailsById(idDrink) {
-    const auth = JSON.parse(localStorage.getItem("user") || null);
-    let isCheck = 0;
-    if (!auth) {
-        return;
-    }
-    const dbRef = ref(getDatabase());
-    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/cocktails/`)).then((snapshot) => {
-        if (snapshot.exists()) {
-            data = snapshot.val();
-            isCheck = data.includes(idDrink);
-            if (isCheck) {
-                localStorage.setItem("favoriteCocktail", idDrink);
-            }
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error(error);
-    });
-}
-
-export async function isFavoriteIngredients(idIngredient) {
-    const auth = JSON.parse(localStorage.getItem("user") || null);
-    let isCheck = 0;
-    if (!auth) {
-        return;
-    }
-    const dbRef = ref(getDatabase());
-    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/ingredients/`)).then((snapshot) => {
-        if (snapshot.exists()) {
-            data = snapshot.val();
-            isCheck = data.includes(idIngredient);
-            if (isCheck) {
-                localStorage.setItem("favoriteIngredient", idIngredient);
-            }
-        } else {
-            console.log("No data available");
-        }
-    }).catch((error) => {
-        console.error(error);
-    });
-}
-
-
-export function getDataFromFirebase() {
-    const auth = JSON.parse(localStorage.getItem("user") || null);
-    if (!auth) {
-        return;
-    }
-    const cocktail = ref(db, `users/` + `id:${auth.uid}` + '/cocktails');
-    const ingredient = ref(db, `users/` + `id:${auth.uid}` + '/ingredients');
-
-    onValue(cocktail, snapshot => {
-        const dataDb = snapshot.val();
-        dataDb ? (cocktails = Object.values(dataDb)) : (cocktails = false);
-        console.log("🚀 ~ getDataFromFirebase ~ cocktail", cocktails)
-    });
-    onValue(ingredient, snapshot => {
-        const dataDb = snapshot.val();
-        dataDb ? (ingredients = Object.values(dataDb)) : (ingredients = false);
-        console.log("🚀 ~ getDataFromFirebase ~ ingredient", ingredients)
-    });
-}
-
 
 //Додаємо і знімаємо події
 export function addListenerAfterLogIn() {
@@ -140,8 +75,8 @@ async function onBtnFavCocktailGalleryClick(e) {
     }
 
 }
-//********************************* */
 
+//********************************* */
 
 //! маніпуляція з коктейлями модалки 
 export function addModalCocktailClick() {
@@ -210,10 +145,10 @@ function onBtnFavIngredientModalClick(e) {
     e.target.textContent = text;
     toggleIngredientModalInDb(ingredientId, btnModalRef)
 }
-//********************************* */
 
 
-
+//FireBase 
+//*********************************************************************** */
 
 //!Промісифікація функції авторизації.
 
@@ -228,9 +163,7 @@ const userPromise = new Promise((res, reg) => {
 })
 
 //! *****************************************************************************************************************
-// //відмалювати улюблені в галереї
-
-
+//відмалювати улюблені в галереї
 export function refreshFavCocktailOnPage() {
     const btnListCocktail = document.querySelectorAll('.gallery__list-item .js-btn-fav');
     console.log(btnListCocktail.length);
@@ -252,7 +185,7 @@ export function refreshFavCocktailOnPage() {
     })
 }
 
-// function displayFavIngredientOnPage(gallery = false) {
+// function displayFavIngredientOnPage() {
 //     userPromise.then((user) => {
 //         btnListIngredients.forEach(element => {
 //             favId = element.dataset.id;
@@ -270,8 +203,6 @@ export function refreshFavCocktailOnPage() {
 //     }
 //     )
 // }
-// // Якщо у функцію нічого не передаємо - то відмалює зі стилями галереї
-// // Якщо вказати true то відмалює зі стилями модального вікна
 
 
 //! *****************************************************************************************************************
@@ -314,12 +245,12 @@ export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
             addCocktailByUser(user, cocktailId)
-            btnToggleFavCocktailModal(btnGalleryRef, true);
+            btnToggleFavModal(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
         } else {
             deleteCocktailByUser(user, cocktailId)
-            btnToggleFavCocktailModal(btnGalleryRef, false);
+            btnToggleFavModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
         }
@@ -373,7 +304,7 @@ function toggleIngredientModalInDb(ingredientId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteIngredientById(ingredientId)) {
             addIngredientByUser(user, ingredientId)
-            btnToggleFavIngredientModal(btnGalleryRef, true);
+            btnToggleFavModal(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");
         } else {
@@ -403,6 +334,51 @@ function delIngredientByUser(user, ingredientId) {
 }
 
 
+export async function isFavoriteCocktailsById(idDrink) {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+    let isCheck = 0;
+    if (!auth) {
+        return;
+    }
+    const dbRef = ref(getDatabase());
+    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/cocktails/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            data = snapshot.val();
+            isCheck = data.includes(idDrink);
+            if (isCheck) {
+                localStorage.setItem("favoriteCocktail", idDrink);
+            }
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+export async function isFavoriteIngredients(idIngredient) {
+    const auth = JSON.parse(localStorage.getItem("user") || null);
+    let isCheck = 0;
+    if (!auth) {
+        return;
+    }
+    const dbRef = ref(getDatabase());
+    await get(child(dbRef, `users/` + `id:${auth.uid}` + `/ingredients/`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            data = snapshot.val();
+            isCheck = data.includes(idIngredient);
+            if (isCheck) {
+                localStorage.setItem("favoriteIngredient", idIngredient);
+            }
+        } else {
+            console.log("No data available");
+        }
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+
 //! ***********************************************************************************************************************
 // TODO зміна стилів в галереї по кліку додати до улюблених
 // !!!   рядок btn.classList.add("is-checked"); - не змінювати
@@ -419,7 +395,7 @@ function btnToggleFavGallery(btn, isChecked) {
 
 // TODO зміна стилів по кліку в модальному вікні додати до улюблених
 // !!!   рядок btn.classList.add("is-checked"); - не змінювати
-function btnToggleFavCocktailModal(btn, isChecked) {
+function btnToggleFavModal(btn, isChecked) {
     if (isChecked) {
         btn.classList.add("is-checked");
         btn.classList.textContent = "Remove from favorite"
@@ -429,15 +405,7 @@ function btnToggleFavCocktailModal(btn, isChecked) {
     }
 }
 
-function btnToggleFavIngredientModal(btn, isChecked) {
-    if (isChecked) {
-        btn.classList.add("is-checked");
-        btn.classList.textContent = "Remove from favorite"
-    } else {
-        btn.classList.remove("is-checked");
-        btn.classList.textContent = "Add to favorite"
-    }
-}
+
 //! ***********************************************************************************************************************
 
 
