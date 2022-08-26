@@ -1,14 +1,12 @@
 import { refs } from '../config/refs';
 import { renderCards } from './renderCards';
 import { renderFavIngredients } from '../favourites/renderFavorites';
-import { renderRunawayBtn } from './runawayBtn';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notifyConfigs } from './../config/notify'
 import CocktailApiService from './CocktailApiService';
-
 
 const cocktailApiService = new CocktailApiService();
 const app = initializeApp(firebaseConfig);
@@ -23,30 +21,18 @@ refs.fav.addEventListener('click', e => {
   refs.favList.classList.remove('visually-hidden');
 });
 
-
-
 refs.favCockBtn.addEventListener('click', needLoginFavCock);
 refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
 
-
-
 async function onFavoriteCocktailClick() {
-  //Вставить массив ниже  и удалить эту строку
   markUpCocktails();
-  // renderCards();
-  //Вставить массив выше  и удалить эту строку
-  renderRunawayBtn();
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite cocktails';
   refs.favList.classList.add('visually-hidden');
 }
 
 async function onFavoriteIngredientClick() {
-  //Вставить массив ниже  и удалить эту строку
   markUpIngredients();
-  // renderFavIngredients();
-  //Вставить массив выше  и удалить эту строку
-  renderRunawayBtn();
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite ingridiens';
   refs.favList.classList.add('visually-hidden');
@@ -104,7 +90,7 @@ function markUpIngredients() {
 }
 
 export function needLoginFavCock() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorite cocktails', notifyConfigs);
     refs.favList.classList.add('visually-hidden');
@@ -114,7 +100,7 @@ export function needLoginFavCock() {
 }
 
 export function needLogInFavIngrid() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorite ingridients', notifyConfigs);
     refs.favList.classList.add('visually-hidden');
@@ -127,7 +113,7 @@ refs.menuFavCock.addEventListener('click', needLoginMenuFavCock);
 refs.manuFavIngrid.addEventListener('click', needLogInMenuFavIngrid);
 
 export function needLoginMenuFavCock() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorites', notifyConfigs);
     refs.mobMenu.classList.add('visually-hidden');
@@ -140,7 +126,7 @@ export function needLoginMenuFavCock() {
 }
 
 export function needLogInMenuFavIngrid() {
-  const auth = JSON.parse(localStorage.getItem("user") || null);
+  const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorites', notifyConfigs);
     refs.mobMenu.classList.add('visually-hidden');

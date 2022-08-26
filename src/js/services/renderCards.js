@@ -4,15 +4,11 @@ import mob from '../../images/group/groupmob.png';
 import mob2 from '../../images/group/groupxmob.png';
 import tab from '../../images/group/grouptab.png';
 import tab2 from '../../images/group/groupxtab.png';
-import { refreshFavCocktailOnPage } from "./../firebase/firebaseDb"
+import { refreshFavCocktailOnPage } from './../firebase/firebaseDb';
 
-export function createMarkup(data) {
+export function createMarkup(data = []) {
+  if (!data) console.log('fignya');
   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    // isFavoriteCocktailsById(idDrink);
-    // const isCheck = JSON.parse(localStorage.getItem("favoriteCocktail") || null);
-    // localStorage.removeItem("favoriteCocktail");
-    // const text = isCheck ? "Remove" : "Add to";
-    // const isClass = isCheck ? "is-checked" : " ";
     return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
         <img
           class="gallery__img"
@@ -88,4 +84,3 @@ export async function renderCards(data = []) {
   refs.gallery.insertAdjacentHTML('beforeend', render);
   await refreshFavCocktailOnPage();
 }
-
