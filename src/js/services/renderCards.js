@@ -86,3 +86,15 @@ export async function renderCards(data = []) {
   refs.gallery.insertAdjacentHTML('beforeend', render);
   await refreshFavCocktailOnPage();
 }
+
+
+export function quantityOnPage() {
+  if (window.screen.width < 768) {
+    return 3;
+  } else if (window.screen.width >= 768 && window.screen.width < 1280) {
+    return 6;
+  }
+  return 9;
+}
+
+

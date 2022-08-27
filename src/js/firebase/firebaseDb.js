@@ -171,7 +171,7 @@ async function onBtnFavIngredientModalClick(e) {
 
 //!Промісифікація функції авторизації.
 
-const userPromise = new Promise((res, reg) => {
+export const userPromise = new Promise((res, reg) => {
     onAuthStateChanged(auth, user => {
         if (user) {
             res(userManager.fetchUserById(user.uid));
@@ -319,13 +319,13 @@ function deleteCocktailByUser(user, cocktailId) {
 function toggleIngredientGalleryInDb(ingredientId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteIngredientById(ingredientId)) {
-            addIngredientByUser(user, ingredientId)
+            user.addFavoriteIngredientById(ingredientId);
             btnToggleFavGallery(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
             Notify.info('The ingredient has been added to favorites', notifyConfigs);
             // console.log("Дописати нотіфікашку");
         } else {
-            delIngredientByUser(user, ingredientId)
+            user.deleteFavoritesIngredientById(ingredientId);
             btnToggleFavGallery(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             // console.log("Дописати нотіфікашку");
@@ -344,13 +344,13 @@ function toggleIngredientGalleryInDb(ingredientId, btnGalleryRef) {
 function toggleIngredientModalInDb(ingredientId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteIngredientById(ingredientId)) {
-            addIngredientByUser(user, ingredientId)
+            user.addFavoriteIngredientById(ingredientId);
             btnToggleFavModal(btnGalleryRef, true);
             Notify.info('The ingredient has been added to favorites', notifyConfigs);
             // TODO Дописати нотіфікашку
             // console.log("Дописати нотіфікашку");
         } else {
-            delIngredientByUser(user, ingredientId)
+            user.deleteFavoritesIngredientById(ingredientId);
             btnToggleFavModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             // console.log("Дописати нотіфікашку");
@@ -366,17 +366,6 @@ function toggleIngredientModalInDb(ingredientId, btnGalleryRef) {
     })
 }
 
-function addIngredientByUser(user, ingredientId) {
-    if (!user.hasFavoriteIngredientById(ingredientId)) {
-        user.addFavoriteIngredientById(ingredientId);
-    }
-}
-
-function delIngredientByUser(user, ingredientId) {
-    if (user.hasFavoriteIngredientById(ingredientId)) {
-        user.deleteFavoritesIngredientById(ingredientId);
-    }
-}
 
 
 export async function isFavoriteCocktailsById(idDrink) {

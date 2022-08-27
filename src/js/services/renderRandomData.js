@@ -3,7 +3,7 @@ import { renderCards } from './renderCards';
 const cocktailApiService = new CocktailApiService();
 renderStartMarkup();
 
-async function renderStartMarkup() {
+export async function renderStartMarkup() {
   const responce = await renderRandomData();
   renderCards(responce);
 }

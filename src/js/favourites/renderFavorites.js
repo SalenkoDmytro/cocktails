@@ -2,14 +2,17 @@ import { refs } from '../config/refs';
 import { cardsQuantity } from '../services/renderCards';
 import * as icons from '../../images/icons.svg';
 
+
 export function renderFavIngredients(array = []) {
   refs.gallery.innerHTML = '';
+
   const render = cardsQuantity(createFavIngMarkup(array));
   refs.gallery.insertAdjacentHTML('beforeend', render);
 }
 
 function createFavIngMarkup(data) {
   return data.map(data => {
+    if (!data) return;
     const { idIngredient, strIngredient, strType } = data[0];
     return `<li class="fav-ing__list-item card-set-item">
       <div class="ing-card-wrap"><p class="fav-ing__list-name">${strIngredient}</p>
@@ -33,3 +36,4 @@ function createFavIngMarkup(data) {
       </li>`;
   });
 }
+

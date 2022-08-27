@@ -1,7 +1,7 @@
 const toggleElement = document.querySelectorAll('.dark-mode-toggle');
 const body = document.body;
 
-console.log('toggleElement',toggleElement);
+// console.log('toggleElement',toggleElement);
 
 class ThemeToggle {
   darkTheme = 'dark-theme';
@@ -47,6 +47,6 @@ const toggle = new ThemeToggle();
 
 window.addEventListener('DOMContentLoaded', () => {
   const isOn = toggle.getTheme();
-  console.log('isOn', isOn);
+  // console.log('isOn', isOn);
   if (isOn) toggle.setThemeOn(toggle.darkTheme);
 });

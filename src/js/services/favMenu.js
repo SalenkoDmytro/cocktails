@@ -9,6 +9,16 @@ import { notifyConfigs } from './../config/notify';
 import { addListeners, removeListeners } from '../modals/modals';
 import { renderModalIngredient } from '../modals/renderModal';
 import CocktailApiService from './CocktailApiService';
+import {
+  addModalCocktailClick,
+  delModalCocktailClick,
+  addModalIngredientClick,
+  delModalIngredientClick,
+} from '../firebase/firebaseDb';
+const debounce = require('lodash.debounce');
+import { cardsQuantity } from '../services/renderCards';
+import { quantityOnPage } from './renderCards'
+
 
 const cocktailApiService = new CocktailApiService();
 const app = initializeApp(firebaseConfig);
@@ -27,18 +37,18 @@ refs.favCockBtn.addEventListener('click', needLoginFavCock);
 refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
 
 async function onFavoriteCocktailClick() {
-  markUpCocktails();
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite cocktails';
+  await markUpCocktails();
   refs.favList.classList.add('visually-hidden');
   refs.gallery.removeEventListener('click', onLearnMoreIngrClick);
 }
 
 async function onFavoriteIngredientClick() {
-  markUpIngredients();
   refs.gallery.addEventListener('click', onLearnMoreIngrClick);
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite ingredients';
+  await markUpIngredients();
   refs.favList.classList.add('visually-hidden');
 }
 
@@ -53,6 +63,7 @@ async function onLearnMoreIngrClick(e) {
   }
   addListeners();
   renderModalIngredient(cocktailApiService.ingredients[0]);
+  addModalIngredientClick();
   return;
 }
 
@@ -65,18 +76,24 @@ async function markUpCocktails() {
     ref(db, `users/` + `id:${auth.uid}` + '/cocktails'),
     async snapshot => {
       const dataDb = snapshot.val();
-      if (!dataDb) return;
+      if (!dataDb) {
+        refs.gallery.innerHTML = '';
+        return;
+      }
       const allData = dataDb.map(async el => {
         cocktailApiService.searchQuery = el;
         await cocktailApiService.fetchCocktailById();
         return cocktailApiService.drinks;
       });
-
       const result = await Promise.all(allData);
-      renderCards(result.flat(1));
+      await renderCards(result.flat(1));
     }
   );
 }
+
+
+// const debounseScroll = debounce(infinityScroll, 100);
+
 
 function markUpIngredients() {
   const auth = JSON.parse(localStorage.getItem('user') || null);
@@ -91,14 +108,17 @@ function markUpIngredients() {
         refs.gallery.innerHTML = '';
         return;
       }
-
       const allData = dataDb.map(async el => {
         cocktailApiService.searchQuery = el;
         await cocktailApiService.fetchIngredientById();
         return cocktailApiService.ingredients;
       });
       const result = await Promise.all(allData);
-      renderFavIngredients(result);
+      await renderFavIngredients(result);
+      // if (result.length > quantityOnPage) {
+      //   window.addEventListener("scroll", debounseScroll)
+
+      // }
     }
   );
 }
@@ -154,8 +174,45 @@ export function needLogInMenuFavIngrid() {
 
 
 // closing favMenu by clicking window
-window.addEventListener('click', function(event){
-	if (event.target != refs.fav && event.target.parentNode != refs.fav){
+window.addEventListener('click', function (event) {
+  if (event.target != refs.fav && event.target.parentNode != refs.fav) {
     refs.favList.classList.add('visually-hidden');
-    }
+  }
 });
+
+
+
+function addListener() {
+}
+
+
+
+// async function infinityScroll(e) {
+//   const documentRect = document.documentElement.getBoundingClientRect();
+//   try {
+//     if (documentRect.bottom < document.documentElement.clientHeight + 300) {
+//       if (!(pixabayApiService.hits.length < pixabayApiService.per_page) && !(pixabayApiService.totalHits <= imagesContainerEl.children.length)) {
+//         pixabayApiService.incrementPage();
+//         appendImagesContainerEl(pixabayApiService.hits, imagesContainerEl);
+
+//       } else {
+//         if ((!pixabayApiService.loading)) {
+//           removeListener();
+//           pixabayApiService.loading = true;
+//           letMsgAllImagesLoaded();
+//         }
+//       };
+//     }
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// }
+
+
+// import { userPromise } from '../firebase/firebaseDb'
+
+// userPromise.then((user) => {
+//   if (!user.hasFavoriteCocktailById(cocktailId)) {}
+// }).catch(error => {
+//   throw new Error(error.message)
+// })
