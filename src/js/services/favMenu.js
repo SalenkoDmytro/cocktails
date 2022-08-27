@@ -151,3 +151,11 @@ export function needLogInMenuFavIngrid() {
     onFavoriteIngredientClick();
   }
 }
+
+
+// closing favMenu by clicking window
+window.addEventListener('click', function(event){
+	if (event.target != refs.fav && event.target.parentNode != refs.fav){
+    refs.favList.classList.add('visually-hidden');
+    }
+});
