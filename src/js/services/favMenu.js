@@ -155,7 +155,7 @@ export function needLogInMenuFavIngrid() {
 
 // closing favMenu by clicking window
 window.addEventListener('click', function(event){
-	if (event.target != refs.fav && event.target.parentNode != refs.fav){
+	if (event.target != refs.fav){
     refs.favList.classList.add('visually-hidden');
     }
 });
