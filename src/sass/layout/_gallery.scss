@@ -60,7 +60,7 @@
   display: block;
   margin-bottom: 20px;
   width: 100%;
-  border-radius: 3px 3px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
 }
 
 .gallery__list-name {
@@ -98,7 +98,7 @@
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid var(--accent-color);
-  border-radius: 4px;
+  border-radius: 20px;
   box-sizing: border-box;
   &:hover,
   &:focus {
@@ -263,6 +263,7 @@
   padding: 12px 27px;
   color: var(--white-color);
   background-color: var(--btn-bg-color);
+
 
   &:hover,
   &:focus {
