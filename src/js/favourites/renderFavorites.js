@@ -12,11 +12,15 @@ function createFavIngMarkup(data) {
   return data.map(data => {
     const { idIngredient, strIngredient, strType } = data[0];
     return `<li class="fav-ing__list-item card-set-item">
-      <div class="ing-card-wrap"><p class="fav-ing__list-name">${strIngredient}</p>
-      <img class="ing-pict" src='https://www.thecocktaildb.com/images/ingredients/${strIngredient}-Small.png'
-       alt=${strIngredient}></div>
-        <p class="fav-ing__list-type">${strType}</p>
-        <div class="fav-ing__btn-container">
+      <div class="ing_card_wrap_modal">
+       <img class="ing-pict" src='https://www.thecocktaildb.com/images/ingredients/${strIngredient}-Small.png'
+       alt=${strIngredient}>
+       <div>
+        <p class="fav-ing__list-name">${strIngredient}</p>
+      <p class="fav-ing__list-type">${strType}</p>
+        </div>
+     </div>
+         <div class="fav-ing__btn-container">
           <button class="fav-ing__btn fav-ing__btn-more" type="button" data-id="${idIngredient}" data-type='open-ingredient'>
             Learn more
           </button>
