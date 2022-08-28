@@ -1,4 +1,5 @@
 import { refs } from '../config/refs';
+import { refreshFavCocktailOnPage } from '../firebase/firebaseDb'
 import { renderCards, createMarkup } from './renderCards';
 import { createFavIngMarkup, renderFavIngredients } from '../favourites/renderFavorites';
 import { getDatabase, ref, onValue } from 'firebase/database';
@@ -107,6 +108,7 @@ async function markUpCocktails() {
               let render = createMarkup(array).join('');
               if (render) {
                 refs.gallery.insertAdjacentHTML('beforeend', render);
+                refreshFavCocktailOnPage()
               }
             } else {
               flag = true;
@@ -118,7 +120,6 @@ async function markUpCocktails() {
     }
   );
 }
-
 
 function markUpIngredients() {
   const auth = JSON.parse(localStorage.getItem('user') || null);
@@ -195,6 +196,8 @@ refs.menuFavCock.addEventListener('click', needLoginMenuFavCock);
 refs.manuFavIngrid.addEventListener('click', needLogInMenuFavIngrid);
 
 export function needLoginMenuFavCock() {
+  refs.body.classList.toggle('overflow-hidden');
+
   const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorites', notifyConfigs);
@@ -208,6 +211,8 @@ export function needLoginMenuFavCock() {
 }
 
 export function needLogInMenuFavIngrid() {
+  refs.body.classList.toggle('overflow-hidden');
+
   const auth = JSON.parse(localStorage.getItem('user') || null);
   if (auth === null) {
     Notify.info('Please login to get your favorites', notifyConfigs);

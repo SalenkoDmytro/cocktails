@@ -242,14 +242,6 @@ export function refreshFavIngredientsOnPage() {
 // ************коктейлі****************************************************
 // toggle коктейль в Галереї бази даних
 
-function setFavoritesCocktailsToLS(obj) {
-    localStorage.setItem("favoriteCocktail", JSON.stringify(obj));
-}
-
-function setFavoritesIngredientsToLS(obj) {
-    localStorage.setItem("favoriteIngredient", JSON.stringify(obj));
-}
-
 function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
@@ -299,18 +291,6 @@ export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
     }).catch(error => {
         throw new Error(error.message)
     })
-}
-
-function addCocktailByUser(user, cocktailId) {
-    if (!user.hasFavoriteCocktailById(cocktailId)) {
-        user.addFavoriteCocktailById(cocktailId);
-    }
-}
-
-function deleteCocktailByUser(user, cocktailId) {
-    if (user.hasFavoriteCocktailById(cocktailId)) {
-        user.deleteFavoriteCocktailById(cocktailId);
-    }
 }
 
 // ************iнгредієнти****************************************************
