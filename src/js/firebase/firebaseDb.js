@@ -253,13 +253,13 @@ function setFavoritesIngredientsToLS(obj) {
 function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
-            addCocktailByUser(user, cocktailId);
+            user.addFavoriteCocktailById(cocktailId);
             btnToggleFavGallery(btnGalleryRef, true);
             Notify.info('The cocktail has been added to favorites', notifyConfigs);
             // TODO Дописати нотіфікашку
             // console.log("Дописати нотіфікашку");
         } else {
-            deleteCocktailByUser(user, cocktailId)
+            user.deleteFavoriteCocktailById(cocktailId);
             btnToggleFavGallery(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             // console.log("Дописати нотіфікашку");
@@ -279,13 +279,13 @@ function toggleCocktailGalleryInDb(cocktailId, btnGalleryRef) {
 export function toggleCocktailModalInDb(cocktailId, btnGalleryRef) {
     userPromise.then((user) => {
         if (!user.hasFavoriteCocktailById(cocktailId)) {
-            addCocktailByUser(user, cocktailId)
+            user.addFavoriteCocktailById(cocktailId);
             btnToggleFavModal(btnGalleryRef, true);
             // TODO Дописати нотіфікашку
             Notify.info('The cocktail has been added to favorites', notifyConfigs);
             // console.log("Дописати нотіфікашку");
         } else {
-            deleteCocktailByUser(user, cocktailId)
+            user.deleteFavoriteCocktailById(cocktailId);
             btnToggleFavModal(btnGalleryRef, false);
             // TODO Дописати нотіфікашку
             console.log("Дописати нотіфікашку");

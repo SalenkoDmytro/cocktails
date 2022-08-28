@@ -13,6 +13,7 @@ export default class CocktailApiService {
     this.favouriteIngredients = [];
   }
 
+
   async fetchCocktaileByFirstLetter() {
     try {
       const url = `${this.BASE_URL}search.php?f=${this.searchQuery}`;
@@ -137,4 +138,7 @@ export default class CocktailApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+
+
 }
