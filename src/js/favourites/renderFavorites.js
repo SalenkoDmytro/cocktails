@@ -4,13 +4,14 @@ import * as icons from '../../images/icons.svg';
 
 
 export function renderFavIngredients(array = []) {
-  // refs.gallery.innerHTML = '';
+  refs.gallery.innerHTML = '';
   const render = cardsQuantity(createFavIngMarkup(array));
   refs.gallery.insertAdjacentHTML('beforeend', render);
 }
 
-function createFavIngMarkup(data) {
+export function createFavIngMarkup(data) {
   let markupArray = [];
+  let markup = '';
   let obj = data.flat(1);
   for (let i = 0; i < obj.length; i++) {
     if (!obj[i]) {
@@ -37,7 +38,7 @@ function createFavIngMarkup(data) {
             </svg>
           </button>
         </div>
-      </li>`
+      </li>`;
     markupArray.push(markup);
   }
   return markupArray;

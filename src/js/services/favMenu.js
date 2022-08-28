@@ -1,6 +1,6 @@
 import { refs } from '../config/refs';
-import { renderCards } from './renderCards';
-import { renderFavIngredients } from '../favourites/renderFavorites';
+import { renderCards, createMarkup } from './renderCards';
+import { createFavIngMarkup, renderFavIngredients } from '../favourites/renderFavorites';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
@@ -39,6 +39,7 @@ refs.favIngrBtn.addEventListener('click', needLogInFavIngrid);
 async function onFavoriteCocktailClick() {
   refs.sectionHero.style.display = 'none';
   refs.galleryTitle.textContent = 'Favorite cocktails';
+  refs.gallery.innerHTML = '';
   await markUpCocktails();
   refs.favList.classList.add('visually-hidden');
   refs.gallery.removeEventListener('click', onLearnMoreIngrClick);
@@ -73,6 +74,8 @@ async function markUpCocktails() {
   if (!auth) {
     return;
   }
+  let flag = false;
+  cocktailApiService.resetPage();
   onValue(
     ref(db, `users/` + `id:${auth.uid}` + '/cocktails'),
     async snapshot => {
@@ -88,12 +91,33 @@ async function markUpCocktails() {
       });
       const result = await Promise.all(allData);
       await renderCards(result.flat(1));
+      const onPage = quantityOnPage()
+      if (result.length > onPage) {
+        let res = 0;
+        const nextResult = Math.ceil(result.length / onPage - 1);
+        let leftCard = nextResult * onPage;
+        window.addEventListener("scroll", debounce(infinityScroll => {
+          const documentRect = document.documentElement.getBoundingClientRect();
+          if (documentRect.bottom < document.documentElement.clientHeight + 300) {
+            if (!(leftCard < onPage) && !flag) {
+              leftCard = leftCard - onPage;
+              cocktailApiService.incrementPage();
+              res = cocktailApiService.page
+              let array = result.flat(1).slice(((res - 1) * onPage), res * onPage);
+              let render = createMarkup(array).join('');
+              if (render) {
+                refs.gallery.insertAdjacentHTML('beforeend', render);
+              }
+            } else {
+              flag = true;
+            }
+          }
+        }, 100))
+      }
+
     }
   );
 }
-
-
-// const debounseScroll = debounce(infinityScroll, 100);
 
 
 function markUpIngredients() {
@@ -131,9 +155,8 @@ function markUpIngredients() {
               leftCard = leftCard - onPage;
               cocktailApiService.incrementPage();
               res = cocktailApiService.page
-              let array = result.slice(((res - 1) * onPage), res * onPage);
-
-              let render = renderFavIngredients(array);
+              let array = result.slice(((res - 1) * onPage), res * onPage).flat(1);
+              let render = createFavIngMarkup(array).join('');
               if (render) {
                 refs.gallery.insertAdjacentHTML('beforeend', render);
               }
@@ -207,36 +230,3 @@ window.addEventListener('click', function (event) {
 
 
 
-function addListener() {
-}
-
-
-// async function infinityScroll(e) {
-//   const documentRect = document.documentElement.getBoundingClientRect();
-//   try {
-//     if (documentRect.bottom < document.documentElement.clientHeight + 300) {
-//       if (!(pixabayApiService.hits.length < pixabayApiService.per_page) && !(pixabayApiService.totalHits <= imagesContainerEl.children.length)) {
-//         pixabayApiService.incrementPage();
-//         appendImagesContainerEl(pixabayApiService.hits, imagesContainerEl);
-
-//       } else {
-//         if ((!pixabayApiService.loading)) {
-//           removeListener();
-//           pixabayApiService.loading = true;
-//           letMsgAllImagesLoaded();
-//         }
-//       };
-//     }
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
-
-
-// import { userPromise } from '../firebase/firebaseDb'
-
-// userPromise.then((user) => {
-//   if (!user.hasFavoriteCocktailById(cocktailId)) {}
-// }).catch(error => {
-//   throw new Error(error.message)
-// })

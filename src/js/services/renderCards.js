@@ -7,37 +7,76 @@ import tab2 from '../../images/group/groupxtab.png';
 import { refreshFavCocktailOnPage } from './../firebase/firebaseDb';
 
 export function createMarkup(data = []) {
-  if (!data) console.log('fignya');
-  return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
-    return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
-        <img
-          class="gallery__img"
-          src="${strDrinkThumb}"
-          alt="${strDrink}"
-          loading="lazy"
-        />
-        <p class="gallery__list-name">${strDrink}</p>
-        <div class="gallery__btn-container">
-          <button
-            class="gallery__btn gallery__btn-more"
-            type="button"
-            data-type="open-learn-more"
-            data-id="${idDrink}"
-          >
-            Learn more
-          </button>
-          <button class="gallery__btn gallery__btn-fav js-btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
-            <span class="js-btn-gallery-text">Add to</span>
-            <svg width="16" height="14" data-favorite class="gallery__btn-fav-svg">
-              <use
-                class="gallery__btn-fav-svg"
-                href="${icons}#icon-heart"
-              ></use>
-            </svg>
-          </button>
-        </div>
-      </li>`;
-  });
+  let markupArray = [];
+  let markup = '';
+  for (let i = 0; i < data.length; i++) {
+    if (!data[i]) {
+      continue;
+    };
+    const { strDrink, strDrinkThumb, idDrink } = data[i]
+    markup = `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
+          <img
+            class="gallery__img"
+            src="${strDrinkThumb}"
+            alt="${strDrink}"
+            loading="lazy"
+          />
+          <p class="gallery__list-name">${strDrink}</p>
+          <div class="gallery__btn-container">
+            <button
+              class="gallery__btn gallery__btn-more"
+              type="button"
+              data-type="open-learn-more"
+              data-id="${idDrink}"
+            >
+              Learn more
+            </button>
+            <button class="gallery__btn gallery__btn-fav js-btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
+              <span class="js-btn-gallery-text">Add to</span>
+              <svg width="16" height="14" data-favorite class="gallery__btn-fav-svg">
+                <use
+                  class="gallery__btn-fav-svg"
+                  href="${icons}#icon-heart"
+                ></use>
+              </svg>
+            </button>
+          </div>
+        </li>`;
+    markupArray.push(markup);
+  }
+  return markupArray;
+
+  // if (!data) console.log('fignya');
+  //   return data.map(({ strDrink, strDrinkThumb, idDrink }) => {
+  //     return `<li class="gallery__list-item card-set-item"  data-id="${idDrink}">
+  //         <img
+  //           class="gallery__img"
+  //           src="${strDrinkThumb}"
+  //           alt="${strDrink}"
+  //           loading="lazy"
+  //         />
+  //         <p class="gallery__list-name">${strDrink}</p>
+  //         <div class="gallery__btn-container">
+  //           <button
+  //             class="gallery__btn gallery__btn-more"
+  //             type="button"
+  //             data-type="open-learn-more"
+  //             data-id="${idDrink}"
+  //           >
+  //             Learn more
+  //           </button>
+  //           <button class="gallery__btn gallery__btn-fav js-btn-fav" type="button" data-id="${idDrink}" data-favorite="cocktail">
+  //             <span class="js-btn-gallery-text">Add to</span>
+  //             <svg width="16" height="14" data-favorite class="gallery__btn-fav-svg">
+  //               <use
+  //                 class="gallery__btn-fav-svg"
+  //                 href="${icons}#icon-heart"
+  //               ></use>
+  //             </svg>
+  //           </button>
+  //         </div>
+  //       </li>`;
+  //   });
 }
 
 export function noResultRender() {
@@ -80,11 +119,11 @@ export function cardsQuantity(markup) {
   return render.join('');
 }
 
-export async function renderCards(data = []) {
+export function renderCards(data = []) {
   refs.gallery.innerHTML = '';
   const render = cardsQuantity(createMarkup(data));
   refs.gallery.insertAdjacentHTML('beforeend', render);
-  await refreshFavCocktailOnPage();
+  refreshFavCocktailOnPage();
 }
 
 
