@@ -61,7 +61,7 @@
   }
 
   .fav-ing__list-name {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     text-align: center;
     font-weight: 900;
     font-size: 28px;
@@ -69,21 +69,21 @@
     color: var(--title-light-color);
 
     @include mq(fab) {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       font-weight: 900;
       font-size: 28px;
       line-height: 1.2;
     }
 
     @include mq(tab) {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       font-weight: 900;
       font-size: 28px;
       line-height: 1.2;
     }
 
     @include mq(desk) {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
       font-weight: 900;
       font-size: 32px;
       line-height: 1.2;
@@ -97,14 +97,14 @@
     padding: 20px;
   }
 
-  
+
     .fav-ing__list-name {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-weight: 900;
       font-size: 26px;
       line-height: 1.6;
       text-align: inherit;
-      color: var(--fav-ing-title-color);
+      color: var(--gallery-title-color);
 
       @include mq(fab) {
         font-weight: 900;
@@ -134,7 +134,7 @@
       font-size: 14px;
       line-height: 1.5;
       text-transform: uppercase;
-      color: var(--fav-ing-subtitle-color);
+      color: var(--gallery-subtitle-color);
 
       @include mq(fab) {
         font-weight: 600;
@@ -156,7 +156,7 @@
         line-height: 1.5;
       }
     }
-  
+
 
   // --- buttons styles
   .fav-ing__btn-container {
@@ -225,4 +225,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+  }
+
+  .ing_card_wrap_modal {
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
   }

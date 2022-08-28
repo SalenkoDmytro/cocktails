@@ -70,9 +70,11 @@ export async function renderModalIngredient(data) {
   const markup = `  <div class='modal__ingredient'>
     <div class='modal__wrap'>
       <div class='ingredient__wrap'>
-      <div class="ing-card-wrap-modal"><div><h2 class='ingredient__name'>${name}</h2>
+      <div class="ing_card_wrap">
+       <img class="ing-card" src='https://www.thecocktaildb.com/images/ingredients/${name}-Small.png' alt=${name}>
+      <div><h2 class='ingredient__name'>${name}</h2>
        <h3 class='ingredient__title view'>${type || ''}</h3></div>
-      <img class="ing-card" src='https://www.thecocktaildb.com/images/ingredients/${name}-Small.png' alt=${name}></div>
+     </div>
         <div class='line'></div>
         <p class='description__text'><span class='accent__text'>${name} </span>${description?.replace(name, '') || 'No description'
     }</p>
