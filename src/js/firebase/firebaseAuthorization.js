@@ -9,8 +9,10 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
-  createUserWithEmailAndPassword,
 } from 'firebase/auth';
+import { renderStartMarkup } from '../services/renderRandomData'
+import { refs } from '../config/refs';
+
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notifyConfigs } from './../config/notify'
@@ -98,6 +100,9 @@ onAuthStateChanged(auth, user => {
     }
     // // LogOut(modalBtnSignIn);
     localStorage.removeItem("user");
+    renderStartMarkup();
+    refs.sectionHero.style.display = 'block';
+    refs.galleryTitle.textContent = 'Cocktails';
     delBtnFavoriteClassChecked();
     delListenerAfterLogOut();
     addListenerAuthLogOut();

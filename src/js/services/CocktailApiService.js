@@ -13,44 +13,69 @@ export default class CocktailApiService {
     this.favouriteIngredients = [];
   }
 
+
   async fetchCocktaileByFirstLetter() {
-    const url = `${this.BASE_URL}search.php?f=${this.searchQuery}`;
-    const response = await axios.get(url);
-    this.drinks = response.data.drinks;
+    try {
+      const url = `${this.BASE_URL}search.php?f=${this.searchQuery}`;
+      const response = await axios.get(url);
+      this.drinks = response.data.drinks;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   async fetchCocktaileByName(search) {
-    const url = `${this.BASE_URL}search.php?s=${search || this.searchQuery}`;
-    const response = await axios.get(url);
-    this.drinks = response.data.drinks;
+    try {
+      const url = `${this.BASE_URL}search.php?s=${search || this.searchQuery}`;
+      const response = await axios.get(url);
+      this.drinks = response.data.drinks;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   async fetchIngredientsByName(query) {
-    const url = `${this.BASE_URL}search.php?i=${query || this.searchQuery}`;
-    const response = await axios.get(url);
-    this.ingredients = response.data.ingredients;
-    return response.data.ingredients;
+    try {
+      const url = `${this.BASE_URL}search.php?i=${query || this.searchQuery}`;
+      const response = await axios.get(url);
+      this.ingredients = response.data.ingredients;
+      return response.data.ingredients;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   async fetchRandomCocktaile() {
-    const url = `${this.BASE_URL}random.php`;
-    const response = await axios.get(url);
-    // return response.data.drinks;
-    this.randomDrink = response.data.drinks;
+    try {
+      const url = `${this.BASE_URL}random.php`;
+      const response = await axios.get(url);
+      this.randomDrink = response.data.drinks;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   async fetchCocktailById() {
-    const url = `${this.BASE_URL}lookup.php?i=${this.searchQuery}`;
-    const response = await axios.get(url);
-    // return response.data.drinks;
-    this.drinks = response.data.drinks;
+    try {
+      const url = `${this.BASE_URL}lookup.php?i=${this.searchQuery}`;
+      const response = await axios.get(url);
+      // return response.data.drinks;
+      this.drinks = response.data.drinks;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+
   }
 
   async fetchIngredientById() {
-    const url = `${this.BASE_URL}lookup.php?iid=${this.searchQuery}`;
-    const response = await axios.get(url);
-    // return response.data.ingredients;
-    this.ingredients = response.data.ingredients;
+    try {
+      const url = `${this.BASE_URL}lookup.php?iid=${this.searchQuery}`;
+      const response = await axios.get(url);
+      // return response.data.ingredients;
+      this.ingredients = response.data.ingredients;
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 
   addFavouriteDrinksById(idDrink) {
@@ -113,4 +138,7 @@ export default class CocktailApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+
+
 }

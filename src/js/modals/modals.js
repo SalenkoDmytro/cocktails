@@ -6,7 +6,6 @@ import {
   delModalCocktailClick,
   addModalIngredientClick,
   delModalIngredientClick,
-  displayFavCocktailOnPage,
 } from '../firebase/firebaseDb';
 
 const cocktailApiService = new CocktailApiService();
