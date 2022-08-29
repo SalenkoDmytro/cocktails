@@ -1,7 +1,10 @@
 import { refs } from '../config/refs';
 import { cardsQuantity } from '../services/renderCards';
 import * as icons from '../../images/icons.svg';
-
+import mob from '../../images/group/groupmob.png';
+import mob2 from '../../images/group/groupxmob.png';
+import tab from '../../images/group/grouptab.png';
+import tab2 from '../../images/group/groupxtab.png';
 
 export function renderFavIngredients(array = []) {
   refs.gallery.innerHTML = '';
@@ -16,8 +19,8 @@ export function createFavIngMarkup(data) {
   for (let i = 0; i < obj.length; i++) {
     if (!obj[i]) {
       continue;
-    };
-    const { idIngredient, strIngredient, strType } = obj[i] //data[0];
+    }
+    const { idIngredient, strIngredient, strType } = obj[i]; //data[0];
 
     markup = `<li class="fav-ing__list-item card-set-item">
       <div class="ing-card-wrap"><p class="fav-ing__list-name">${strIngredient}</p>
@@ -70,3 +73,29 @@ export function createFavIngMarkup(data) {
   // });
 }
 
+export function renderNoFavorites() {
+  refs.galleryTitle.textContent = '';
+  refs.gallery.innerHTML = '';
+  const markup = ` <div class="container sorry ">
+    <h2 class="sorry__title">Your card is empty. Add some to favorites!</h2>
+    <div class="sorry__picture">
+      <picture>
+        <source
+          srcset="${mob} 1x, ${mob2} 2x"
+          media="(min-width: 768px)"
+        />
+        <source
+          srcset="${tab} 1x, ${tab2} 2x"
+          media="(max-width: 767px)"
+        />
+        <img
+          class="sorry__img"
+          src="${mob}"
+          alt="group"
+          loading="lazy"
+        />
+      </picture>
+    </div>
+  </div>`;
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
+}

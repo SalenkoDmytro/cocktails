@@ -1,25 +1,21 @@
 import { refs } from '../config/refs';
-import { refreshFavCocktailOnPage } from '../firebase/firebaseDb'
-import { renderCards, createMarkup } from './renderCards';
-import { createFavIngMarkup, renderFavIngredients } from '../favourites/renderFavorites';
+import { refreshFavCocktailOnPage } from '../firebase/firebaseDb';
+import { renderCards, createMarkup, quantityOnPage } from './renderCards';
+import {
+  createFavIngMarkup,
+  renderFavIngredients,
+  renderNoFavorites,
+} from '../favourites/renderFavorites';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../config/firebaseConfig';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { notifyConfigs } from './../config/notify';
-import { addListeners, removeListeners } from '../modals/modals';
+import { addListeners } from '../modals/modals';
 import { renderModalIngredient } from '../modals/renderModal';
 import CocktailApiService from './CocktailApiService';
-import {
-  addModalCocktailClick,
-  delModalCocktailClick,
-  addModalIngredientClick,
-  delModalIngredientClick,
-} from '../firebase/firebaseDb';
+import { addModalIngredientClick } from '../firebase/firebaseDb';
 const debounce = require('lodash.debounce');
-import { cardsQuantity } from '../services/renderCards';
-import { quantityOnPage } from './renderCards'
-
 
 const cocktailApiService = new CocktailApiService();
 const app = initializeApp(firebaseConfig);
@@ -82,7 +78,7 @@ async function markUpCocktails() {
     async snapshot => {
       const dataDb = snapshot.val();
       if (!dataDb) {
-        refs.gallery.innerHTML = '';
+        renderNoFavorites();
         return;
       }
       const allData = dataDb.map(async el => {
@@ -92,31 +88,39 @@ async function markUpCocktails() {
       });
       const result = await Promise.all(allData);
       await renderCards(result.flat(1));
-      const onPage = quantityOnPage()
+      const onPage = quantityOnPage();
       if (result.length > onPage) {
         let res = 0;
         const nextResult = Math.ceil(result.length / onPage - 1);
         let leftCard = nextResult * onPage;
-        window.addEventListener("scroll", debounce(infinityScroll => {
-          const documentRect = document.documentElement.getBoundingClientRect();
-          if (documentRect.bottom < document.documentElement.clientHeight + 300) {
-            if (!(leftCard < onPage) && !flag) {
-              leftCard = leftCard - onPage;
-              cocktailApiService.incrementPage();
-              res = cocktailApiService.page
-              let array = result.flat(1).slice(((res - 1) * onPage), res * onPage);
-              let render = createMarkup(array).join('');
-              if (render) {
-                refs.gallery.insertAdjacentHTML('beforeend', render);
-                refreshFavCocktailOnPage()
+        window.addEventListener(
+          'scroll',
+          debounce(infinityScroll => {
+            const documentRect =
+              document.documentElement.getBoundingClientRect();
+            if (
+              documentRect.bottom <
+              document.documentElement.clientHeight + 300
+            ) {
+              if (!(leftCard < onPage) && !flag) {
+                leftCard = leftCard - onPage;
+                cocktailApiService.incrementPage();
+                res = cocktailApiService.page;
+                let array = result
+                  .flat(1)
+                  .slice((res - 1) * onPage, res * onPage);
+                let render = createMarkup(array).join('');
+                if (render) {
+                  refs.gallery.insertAdjacentHTML('beforeend', render);
+                  refreshFavCocktailOnPage();
+                }
+              } else {
+                flag = true;
               }
-            } else {
-              flag = true;
             }
-          }
-        }, 100))
+          }, 100)
+        );
       }
-
     }
   );
 }
@@ -134,7 +138,7 @@ function markUpIngredients() {
     async snapshot => {
       const dataDb = snapshot.val();
       if (!dataDb) {
-        refs.gallery.innerHTML = '';
+        renderNoFavorites();
         return;
       }
       const allData = dataDb.map(async el => {
@@ -144,29 +148,38 @@ function markUpIngredients() {
       });
       const result = await Promise.all(allData);
       await renderFavIngredients(result);
-      const onPage = quantityOnPage()
+      const onPage = quantityOnPage();
       if (result.length > onPage) {
         let res = 0;
         const nextResult = Math.ceil(result.length / onPage - 1);
         let leftCard = nextResult * onPage;
-        window.addEventListener("scroll", debounce(infinityScroll => {
-          const documentRect = document.documentElement.getBoundingClientRect();
-          if (documentRect.bottom < document.documentElement.clientHeight + 300) {
-            if (!(leftCard < onPage) && !flag) {
-              leftCard = leftCard - onPage;
-              cocktailApiService.incrementPage();
-              res = cocktailApiService.page
-              let array = result.slice(((res - 1) * onPage), res * onPage).flat(1);
-              let render = createFavIngMarkup(array).join('');
-              if (render) {
-                refs.gallery.insertAdjacentHTML('beforeend', render);
+        window.addEventListener(
+          'scroll',
+          debounce(infinityScroll => {
+            const documentRect =
+              document.documentElement.getBoundingClientRect();
+            if (
+              documentRect.bottom <
+              document.documentElement.clientHeight + 300
+            ) {
+              if (!(leftCard < onPage) && !flag) {
+                leftCard = leftCard - onPage;
+                cocktailApiService.incrementPage();
+                res = cocktailApiService.page;
+                let array = result
+                  .slice((res - 1) * onPage, res * onPage)
+                  .flat(1);
+                let render = createFavIngMarkup(array).join('');
+                if (render) {
+                  refs.gallery.insertAdjacentHTML('beforeend', render);
+                }
+              } else {
+                flag = true;
               }
-            } else {
-              flag = true;
+              // await renderFavIngredients(result.slice(onPage + 1, 2 * onPage));
             }
-            // await renderFavIngredients(result.slice(onPage + 1, 2 * onPage));
-          }
-        }, 100))
+          }, 100)
+        );
       }
     }
   );
@@ -225,13 +238,9 @@ export function needLogInMenuFavIngrid() {
   }
 }
 
-
 // closing favMenu by clicking window
 window.addEventListener('click', function (event) {
   if (event.target != refs.fav) {
     refs.favList.classList.add('visually-hidden');
   }
 });
-
-
-
