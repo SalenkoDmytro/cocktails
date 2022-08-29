@@ -1,74 +1,35 @@
-<section class="header">
+<header class="header">
   <div class="container header__container">
-    <a href="./index.html" class="header__logo"
-      ><span>COCKTAILS</span>
+    <a href="./index.html" class="header__logo"><span>COCKTAILS</span>
       <picture>
-        <source
-          srcset="
+        <source srcset="
             ./images/test/cocktailXtab.png,
             ./images/test/cocktailXxtab.png 2x
-          "
-          type="image/png"
-          media="(min-width: 768px)"
-        />
-        <source
-          srcset="
+          " type="image/png" media="(min-width: 768px)" />
+        <source srcset="
             ./images/test/cocktailXmob.png  1x,
             ./images/test/cocktailXxmob.png 2x
-          "
-          type="image/png"
-          media="(max-width: 767px)"
-        />
-        <img
-          class="coctail-header"
-          loading="lazy"
-          src="./images/test/cocktailXmob.png"
-          alt="coctail"
-        />
+          " type="image/png" media="(max-width: 767px)" />
+        <img class="coctail-header" loading="lazy" src="./images/test/cocktailXmob.png" alt="coctail" />
       </picture>
       <picture>
-        <source
-          srcset="
+        <source srcset="
             ./images/test/whiteXtab.png  1x,
             ./images/test/whiteXxtab.png 2x
-          "
-          type="image/png"
-          media="(min-width: 768px)"
-        />
-        <source
-          srcset="
+          " type="image/png" media="(min-width: 768px)" />
+        <source srcset="
             ./images/test/whiteXmob.png  1x,
             ./images/test/whiteXxmob.png 2x
-          "
-          type="image/png"
-          media="(max-width: 767px)"
-        />
-        <img
-          class="drink-white"
-          loading="lazy"
-          src="./images/test/whiteXmob.png"
-          alt="drink"
-        />
+          " type="image/png" media="(max-width: 767px)" />
+        <img class="drink-white" loading="lazy" src="./images/test/whiteXmob.png" alt="drink" />
       </picture>
 
       <picture>
-        <source
-          srcset="./images/test/vtab.png 1x, ./images/test/vectab.png 2x"
-          type="image/png"
-          media="(min-width: 768px)"
-        />
-        <source
-          srcset="./images/test/vmob.png 1x, ./images/test/vecmob.png 2x"
-          type="image/png"
-          media="(max-width: 767px)"
-        />
-        <img
-          id="fill"
-          class="drink-header"
-          loading="lazy"
-          src="./images/test/vmob.png"
-          alt="drink"
-        />
+        <source srcset="./images/test/vtab.png 1x, ./images/test/vectab.png 2x" type="image/png"
+          media="(min-width: 768px)" />
+        <source srcset="./images/test/vmob.png 1x, ./images/test/vecmob.png 2x" type="image/png"
+          media="(max-width: 767px)" />
+        <img id="fill" class="drink-header" loading="lazy" src="./images/test/vmob.png" alt="drink" />
       </picture>
     </a>
 
@@ -90,12 +51,7 @@
     </ul>
     <div class="header__search">
       <form class="header__search-wrapper">
-        <input
-          type="search"
-          placeholder="Search"
-          name="search"
-          class="header__search-input"
-        />
+        <input type="search" placeholder="Search" name="search" class="header__search-input" />
         <button class="header__search-btn" type="submit">
           <span class="header__search-border"></span>
           <svg class="header__search-icon" width="24" height="24">
@@ -108,39 +64,21 @@
       <li class="header__theme-item header__theme-light">Light</li>
       <li>
         <div class="toggle">
-          <input
-            type="checkbox"
-            name="toggle"
-            id="toggle-button"
-            class="toggle-button dark-mode-toggle"
-          />
+          <input type="checkbox" name="toggle" id="toggle-button" class="toggle-button dark-mode-toggle" />
           <label for="toggle-button" class="text"></label>
         </div>
       </li>
 
       <li class="header__theme-item header__theme-dark">Dark</li>
     </ul>
-    <button
-      class="btn login-btn js-btn-login pulse"
-      type="button"
-      data-modal-sign-in-open
-      data-sign
-    >
+    <button class="btn login-btn js-btn-login pulse" type="button" data-modal-sign-in-open data-sign>
       Log in
     </button>
-    <button
-      type="button"
-      class="btn btn__burger-menu-toggle"
-      data-menu-toggle
-      aria-expanded="false"
-    >
+    <button type="button" class="btn btn__burger-menu-toggle" data-menu-toggle aria-expanded="false">
       <svg class="menu__toggle-icon" width="40" height="40">
         <use class="menu__open-icon" href="./images/icons.svg#icon-menu"></use>
-        <use
-          class="menu__close-icon"
-          href="./images/icons.svg#icon-close"
-        ></use>
+        <use class="menu__close-icon" href="./images/icons.svg#icon-close"></use>
       </svg>
     </button>
   </div>
-</section>
+</header>
