@@ -196,7 +196,6 @@
 
 // search
 .menu__search {
-
   margin-bottom: 40px;
   position: relative;
   @include mq(tab) {
@@ -218,11 +217,11 @@
   border: 1px solid #fd5103;
   border-radius: 5px;
   outline: none;
+  color: var(--white-color);
   background-color: var(--search-input-color);
   @include mq(fab) {
     width: 50%;
   }
-
 }
 
 .menu__search-btn {

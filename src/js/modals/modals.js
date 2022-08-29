@@ -24,7 +24,6 @@ async function onOpenModalCocktail(e) {
   addModalCocktailClick();
   addListeners();
   const body = document.body;
-  console.log(body.style);
 }
 
 export async function onClick(e) {
@@ -54,7 +53,6 @@ export async function onClick(e) {
     return;
   }
   if (e.target.classList.contains('backdrop__cocktail')) {
-    console.log(document.querySelector('.modal__cocktail'));
     if (
       refs.backdropCocktail.classList.contains('js-modal-cocktail') &&
       !document.querySelector('.modal__cocktail')
