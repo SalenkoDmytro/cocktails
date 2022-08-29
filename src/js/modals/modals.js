@@ -23,7 +23,6 @@ async function onOpenModalCocktail(e) {
   renderModalCocktail(cocktailApiService.drinks[0]);
   addModalCocktailClick();
   addListeners();
-  const body = document.body;
 }
 
 export async function onClick(e) {
